@@ -1,0 +1,4 @@
+SiberianCMS Documentation
+=========================
+
+Init project.
