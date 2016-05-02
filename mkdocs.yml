@@ -1,0 +1,9 @@
+site_name: SiberianCMS Documentation
+pages:
+  - Getting started: index.md
+  - Documentation: documentation.md
+  - Modules: module.md
+  - Contribute: contribute.md
+theme_dir: themes/xtraball
+site_dir: siberiancms
+repo_url: https://github.com/Xtraball/SiberianCMS/

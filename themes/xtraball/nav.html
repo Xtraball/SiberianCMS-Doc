@@ -1,0 +1,46 @@
+<div class="navbar navbar-default sb-header" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="{{ homepage_url }}"><img src="/img/logo.png"/></a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav sb-nav">
+            {% for nav_item in nav %}
+                <li class="{% if nav_item.active %}active{% endif %} sb-item">
+                    <a href="{{ nav_item.url }}">{{ nav_item.title }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                {% if repo_url %}
+                <li class="sb-item">
+                    <a href="{{ repo_url }}" class="btn btn-primary sb-white">
+                        {% if repo_name == 'GitHub' %}
+                            <i class="fa fa-github"></i>
+                        {% elif repo_name == 'Bitbucket' %}
+                            <i class="fa fa-bitbucket"></i>
+                        {% endif %}
+                        {{ repo_name }}
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

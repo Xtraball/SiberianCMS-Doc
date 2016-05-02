@@ -1,4 +1,4 @@
 SiberianCMS Documentation
 =========================
 
-Init project.
+Our documentation is built with MkDocs http://www.mkdocs.org/
