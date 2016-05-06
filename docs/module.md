@@ -1,6 +1,12 @@
 # Modules
 
-Here you'll find everything needed to start developing your first module, from the structure to the update routine & packaging.
+Here you'll find everything needed to start developing your first module, from structure to update routine & packaging.
+
+## What is a module ?
+
+Modules are the core of SiberianCMS, they run frontend, backend, features & even more.
+
+A module can be a single front page with new features or settings, or a complete feature for SiberianCMS to be used in your Mobile apps and managed in your App editor.
 
 ## Structure
 
@@ -9,6 +15,7 @@ Here you'll find everything needed to start developing your first module, from t
 ``` 
 ModuleName
 ├─ Controller
+│  └─ Default.php   /** If you need to override the default controller Classes */
 ├─ controllers
 │  ├─ Backoffice
 │  │  └─ ModuleName.php
@@ -23,7 +30,7 @@ ModuleName
 │  ├─ media 
 │  │  └─ library
 │  ├─ translations
-│  └─ var
+│  └─ var           /** Everything related to native apps. */
 └─ package.json
 ```
 
