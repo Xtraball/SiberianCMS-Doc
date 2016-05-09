@@ -6,8 +6,13 @@ $( document ).ready(function() {
 });
 
 
-$('body').scrollspy({
+/**$('body').scrollspy({
     target: '.bs-sidebar',
+});*/
+
+$(".bs-sidebar li").on("click", function() {
+    $(".bs-sidebar li").removeClass("active");
+    $(this).addClass("active");
 });
 
 

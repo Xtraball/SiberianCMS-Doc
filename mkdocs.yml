@@ -3,6 +3,10 @@ pages:
   - Getting started: index.md
   - Documentation: documentation.md
   - Modules: module.md
+  - API:
+    - 'Introduction': 'api.md'
+    - 'Application': 'api/application.md'
+    - 'User': 'api/user.md'
   - Contribute: contribute.md
 theme_dir: themes/xtraball
 site_dir: siberiancms

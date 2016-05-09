@@ -211,6 +211,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 16px;
 }
 
+.sb-radius {
+    border-radius: 2px;
+}
+
 .sb-affix {
     min-height:90px;
 }
@@ -240,7 +244,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 pre {
-    padding: 20px;
+    padding: 0 0 0 4px;
     margin: 20px 0;
     border: 1px solid #eee;
     border-left-width: 5px;
@@ -256,4 +260,19 @@ ul ul {
 code {
     color: #0e9fd3;
     background-color: #def0f7;
+}
+
+li.level-1 {
+
+}
+
+li.level-2 {
+    text-indent: 10px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+li.level-3 {
+    text-indent: 20px;
+    font-size: 14px;
 }
