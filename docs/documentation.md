@@ -2,7 +2,9 @@
 
 ## Software
 
-* OS: `Linux`, `OSX`
+* Recommended OS: `Linux`
+
+    * May work on `OSX` with [homebrew](http://brew.sh/), and on `Windows` with [cygwin](https://www.cygwin.com/)
 
 * [Apache](#apache) or [Nginx](#nginx)
 
