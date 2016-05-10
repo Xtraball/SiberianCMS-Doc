@@ -30,6 +30,11 @@ ModuleName
 │  ├─ media 
 │  │  └─ library
 │  ├─ translations
+│  │  ├─ default
+│  │  │  └─ mymodule.csv
+│  │  ├─ en
+│  │  └─ [...]
+│  ├─ design
 │  └─ var           /** Everything related to native apps. */
 └─ package.json
 ```
