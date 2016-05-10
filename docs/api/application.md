@@ -4,7 +4,7 @@
 
 ## Create
 
-### Description
+#### Description
 
 Create a new application by providing at least a name and a user identifier.
 
@@ -67,7 +67,7 @@ app_url|string|URL of the application
 
 ## Update
 
-### Description
+#### Description
 
 Update an existing user.
 
@@ -121,6 +121,7 @@ is_locked|boolean|Activate or deactivate the application|true
 }
 ```
 
+### Response
 
 Param|Type|Details|Default
 -----|----|-------|-------
@@ -132,7 +133,7 @@ app_url|string|URL of the application
 
 ## Grant user
 
-### Description
+#### Description
 
 Allows an existing user to manage an application.
 
@@ -149,7 +150,7 @@ $endpoint = "http://www.domain.com/application/api_admin/add"
 }
 ```
 
-#### Request
+### Request
 
 Param|Type|Details
 -----|----|-------
@@ -175,7 +176,7 @@ user_id *|int|User identifier
 }
 ```
 
-#### Response
+### Response
 
 Param|Type|Details|Default
 -----|----|-------|-------
@@ -185,7 +186,7 @@ success/error|int|Indicate whether there was an error during the process|1
 
 ## Revoke user
 
-### Description
+#### Description
 
 Denies an existing user to manage an application.
 
@@ -193,7 +194,7 @@ Denies an existing user to manage an application.
 $endpoint = "http://www.domain.com/application/api_admin/remove"
 ```
 
-#### Example
+##### Example
 
 ```json
 {
@@ -202,7 +203,7 @@ $endpoint = "http://www.domain.com/application/api_admin/remove"
 }
 ```
 
-#### Request
+### Request
 
 Param|Type|Details
 -----|----|-------
@@ -228,7 +229,7 @@ user_id *|int|User identifier
 }
 ```
 
-#### Response
+### Response
 
 Param|Type|Details|Default
 -----|----|-------|-------

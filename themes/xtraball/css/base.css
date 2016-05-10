@@ -276,3 +276,8 @@ li.level-3 {
     text-indent: 20px;
     font-size: 14px;
 }
+
+.Application .level-3,
+.User .level-3 {
+    display: none;
+}

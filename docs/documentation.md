@@ -16,7 +16,7 @@
     
     * functions: `exec()`
 
-* MySQL/MariaDB >=5.5 with InnoDB engine
+* MySQL/MariaDB >=5.5 with InnoDB/XtraDB engine
 
 * Binaries: 
 

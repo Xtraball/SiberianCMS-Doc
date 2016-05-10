@@ -1,14 +1,10 @@
-Start building mobile Apps with SiberianCMS !
-=============================================
+# Start building mobile Apps with SiberianCMS !
+
 
 Get into our documentation where you'll find everything needed to setup, use & contribute to SiberianCMS
 
+#### [Installation](documentation#installation) & [Configuration](documentation#configuration)
 
-# [Documentation](documentation#installation)
+#### [Creating a module for SiberianCMS](module)
 
-# [Configuration](documentation#configuration)
-
-# [Creating a module for SiberianCMS](module)
-
-# [Structure of a module](module#structure)
-
+#### [Structure of a module](module#structure)

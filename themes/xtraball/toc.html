@@ -1,19 +1,13 @@
 <div class="bs-sidebar hidden-print" role="complementary">
-    <!--{% for toc_item in toc %}
-        {% if loop.index is equalto 1 %}
-            <h2>{{ toc_item.title }}</h2>
-        {% endif %}
-    {% endfor %}-->
     <ul class="nav">
-    {% for toc_item in toc %}
-        {% if loop.index != "1" %}
-            {% for toc_item in toc_item.children %}
+        {% for toc_item in toc %}
             <li class="level-1"><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
-                {% for toc_item in toc_item.children %}
+            {% for toc_item in toc_item.children %}
                 <li class="level-2"><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+                {% for toc_item in toc_item.children %}
+                    <li class="level-3"><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
                 {% endfor %}
             {% endfor %}
-        {% endif %}
-    {% endfor %}
+        {% endfor %}
     </ul>
 </div>
