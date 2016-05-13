@@ -253,6 +253,10 @@ pre {
     border-left-color: #0e9fd3;
 }
 
+hr {
+    border-top: 2px solid #0e9fd3;
+}
+
 ul ul {
     margin-bottom: 12px;
 }
@@ -277,7 +281,19 @@ li.level-3 {
     font-size: 14px;
 }
 
+.Index h4 {
+    width: 30% !important;
+    float: left;
+    height: 100px;
+    padding-top: 80px;
+    text-align: center;
+}
+
 .Application .level-3,
 .User .level-3 {
     display: none;
+}
+
+.Modules code.raw {
+    line-height: 16px;
 }

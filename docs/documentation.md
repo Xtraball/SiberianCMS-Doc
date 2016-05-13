@@ -28,7 +28,7 @@
 
 ## Configuration
 
-1. First you will need to either checkout the project `git clone https://github.com/Xtraball/SiberianCMS` 
+1. First you will need to either checkout the project `git clone https://github.com/Xtraball/SiberianCMS.git`
 
     or download the [zip archive](https://github.com/Xtraball/SiberianCMS/archive/master.zip) then extract it on your webserver.
 
@@ -123,16 +123,4 @@ When you're done with the previous steps, reload your web server.
 
 * Go to `http://yourdomain.tld` then follow the instructions
 
-![welcome](img/install_welcome.jpg)
-
-* Accept the License agreement
-
-![agreement](img/install_agreement.jpg)
-
-* Fill the database informations
-
-![database](img/install_database.jpg)
-
-* Then waiting for the installer to complete it's process
-
-![installation](img/install_installation.jpg)
+![welcome](img/install-sae.gif)

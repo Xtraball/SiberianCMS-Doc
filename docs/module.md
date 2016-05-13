@@ -12,7 +12,7 @@ A module can be a single front page with new features or settings, or a complete
 
 ### Folder structure of a Module
 
-``` 
+```raw
 ModuleName
 ├─ Controller
 │  └─ Default.php   /** If you need to override the default controller Classes */
@@ -49,6 +49,7 @@ The `package.json` is used by the Installer to know the requirements, and routin
 {
   "name": "ModuleName",
   "description": "Module description",
+  "type": "module",
   "version": "1.0",
   "dependencies": {
     "system": {
@@ -62,9 +63,9 @@ The `package.json` is used by the Installer to know the requirements, and routin
 }
 ```
 
-### db/schema
+### resources/db/schema
 
-We use `db/schema/table_name.php` to describe the table schema; below an example of a basic table.
+We use `resources/db/schema/table_name.php` to describe the table schema; below an example of a basic table.
 
 ```php
 <?php
@@ -134,17 +135,19 @@ index_type|String|BTREE, HASH
 is_null|Boolean|
 is_unique|Boolean|
 
-### db/data
+### resources/db/data
 
 This folder is used to insert default values when installing, or updating a Module.
 
-The default file is `db/data/install.php` which get called only when installing the module, other files are named with the version
-`db/data/4.1.0.php`, `db/data/4.1.0.1.php`, `db/data/4.1.0.2.php`, `db/data/4.2.0.php`, etc ...
+The default file is `resources/db/data/install.php` which get called only when installing the module, other files are named with the version
+`resources/db/data/4.1.0.php`, `resources/db/data/4.1.0.1.php`, `resources/db/data/4.1.0.2.php`, `resources/db/data/4.2.0.php`, etc ...
 
 
 ## Translations
 
-First create a new file named `default.csv` then place this file in the `translations` folder
+First create a new file named `mymodule.csv` then place this file in the `translations/default` folder
+
+If you want to ship your module with translations, place files in directories named with the locale code, example: english will be in `translations/en/mymodule.csv`
 
 Below as an example the `contact.csv` file.
 
@@ -167,4 +170,13 @@ Below as an example the `contact.csv` file.
 "Zip code"
 ```
 
-## Advanced usage
+Here is an example of what a translated file should like
+
+```csv
+[...]
+"City";"Ville"
+"Contact information";"Informations de contact"
+"Here is his email:";"Voici son e-mail"
+"Here is his message:";"Voici son message"
+[...]
+```

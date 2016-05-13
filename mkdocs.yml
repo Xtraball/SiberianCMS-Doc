@@ -2,7 +2,10 @@ site_name: SiberianCMS Documentation
 pages:
   - Getting started: index.md
   - Documentation: documentation.md
-  - Modules: module.md
+  - Modules:
+    - 'Structure': 'module.md'
+#    - 'Advanced usage': 'module/advanced.md'
+    - 'Core inheritance': 'module/core-inheritance.md'
   - API:
     - 'Introduction': 'api.md'
     - 'Application': 'api/application.md'

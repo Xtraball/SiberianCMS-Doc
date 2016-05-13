@@ -32,12 +32,12 @@ Here is the list of the available APIs:
 
 ### User
 
-* [Create a user](api/user)
+* [Create a user](api/user#create)
 
-* [Update an existing user](api/user)
+* [Update an existing user](api/user#update)
 
-* [Check whether a user exists](api/user)
+* [Check whether a user exists](api/user#exists)
 
-* [Authenticate a user](api/user)
+* [Authenticate a user](api/user#authentication)
 
-* [Send a new password to a user](api/user)
+* [Send a new password to a user](api/user#forgot-password)

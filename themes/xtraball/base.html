@@ -44,7 +44,7 @@
 
         {% include "nav.html" %}
 
-        <div class="container sb-main {% if page_title %}{{ page_title }}{% endif %}">
+        <div class="container sb-main {% if page_title %}{{ page_title }}{% else %}Index{% endif %}">
             <div class="col-md-3">
                 <div id="aside-dock">
                     {% include "toc.html" %}
