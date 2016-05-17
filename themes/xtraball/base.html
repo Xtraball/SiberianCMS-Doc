@@ -44,6 +44,11 @@
 
         {% include "nav.html" %}
 
+        {% if page_title %}
+        {% else %}
+            {% include "home-header.html" %}
+        {% endif %}
+
         <div class="container sb-main {% if page_title %}{{ page_title }}{% else %}Index{% endif %}">
             <div class="col-md-3">
                 <div id="aside-dock">

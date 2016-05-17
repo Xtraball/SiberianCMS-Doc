@@ -6,10 +6,6 @@ $( document ).ready(function() {
 });
 
 
-/**$('body').scrollspy({
-    target: '.bs-sidebar',
-});*/
-
 $(".bs-sidebar li").on("click", function() {
     $(".bs-sidebar li").removeClass("active");
     $(this).addClass("active");
@@ -37,7 +33,7 @@ $(window).resize(function() {
 function position() {
     if ($(window).scrollTop() > aside_top) {
         $('#aside-dock').css({
-            top: 20,
+            top: 0,
             width: aside_width,
             position: 'fixed'
         });

@@ -204,7 +204,47 @@ h1, h2, h3, h4, h5, h6 {
 
 .sb-header {
     background-color: #0e9fd3;
+    border-color: #0e9fd3;
+    border-bottom-color: #0d83b0;
+    border-bottom-width: 2px;
+    border-radius: 0;
     height: 88px;
+    margin-bottom: 0;
+    z-index: 1000;
+}
+
+.index-header {
+    background-color: #0e9fd3;
+    padding: 20px 0;
+    z-index: 1000;
+}
+
+
+.index-header b,
+.index-header p,
+.index-header span,
+.index-header a {
+    color: white;
+}
+
+.index-header b {
+    font-size: 30px;
+}
+
+.index-header p {
+    font-size: 16px;
+}
+
+.index-header span {
+    font-size: 20px;
+}
+
+.index-header a {
+    margin-left: 10px;
+    color: black;
+}
+.index-header a:hover {
+    text-decoration: none;
 }
 
 .sb-item {
@@ -241,6 +281,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .bs-sidenav {
     font-family: 'Lato';
+}
+
+.bs-sidebar {
+    margin-top: 20px;
 }
 
 pre {
