@@ -5,11 +5,11 @@ Get into our documentation where you'll find everything needed to setup, use & c
 
 #### [Installation](documentation#installation) *Easy steps on how to install your first SiberianCMS*
 
-#### [Configuration](documentation#configuration) *Dive into the Core configuration*
-
-#### [SiberianCMS Modules](module) *Learn how modules are working*
+#### [SiberianCMS Modules](module) *Learn everything about creating a module*
 
 #### [Structure of a module](module#structure) *Read our detailed documentation about modules*
+
+#### [Customization](module/core-inheritance) *Dive into the Core configuration & start customize to your needs*
 
 #### [API](api) *Our API documentation will help you to integrate SiberianCMS into your Workflows*
 

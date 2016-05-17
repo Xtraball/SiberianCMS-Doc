@@ -448,7 +448,7 @@ li.level-3 {
 }
 
 .Index h4[id^="installation"] a,
-.Index h4[id^="configuration"] a,
+.Index h4[id^="customization"] a,
 .Index h4[id^="siberiancms-modules"] a,
 .Index h4[id^="structure-of-a-module"] a,
 .Index h4[id^="api"] a,
@@ -471,10 +471,10 @@ li.level-3 {
     background-image: url("/img/installation-blue.png");
 }
 
-.Index h4[id^="configuration"] a {
+.Index h4[id^="customization"] a {
     background-image: url("/img/configuration.png");
 }
-.Index h4[id^="configuration"] a:hover {
+.Index h4[id^="customization"] a:hover {
     background-image: url("/img/configuration-blue.png");
 }
 
