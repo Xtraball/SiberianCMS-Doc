@@ -78,7 +78,7 @@ div.col-md-9 img {
 }
 
 #aside-dock .active a {
-    color: #101010;
+    color: #404040;
 }
 
 /* Nav: second level (shown on .active) */
@@ -279,14 +279,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .index-header a {
     margin-left: 10px;
-    color: black;
+    color: #404040;
 }
 .index-header a:hover {
     text-decoration: none;
 }
 
 .sb-item {
-    margin-top: 16px;
+    margin-top: 24px;
 }
 
 .sb-radius {
@@ -299,32 +299,72 @@ h1, h2, h3, h4, h5, h6 {
 
 .sb-white {
     background-color: white;
-    color: #101010 !important;
+    border: 0;
+    color: #404040 !important;
 }
 
 .sb-white:hover {
-    background-color: #101010 !important;
+    background-color: #404040 !important;
     color: white !important;
 }
 
+.index-header .github {
+    color: white;
+}
+
 .index-header .github:hover {
-    color: white !important;
+    color: #404040 !important;
 }
 
 .affix + .sb-affix-content {
     padding-left: 90px
 }
 
+.navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus
+{
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+}
+
 .navbar-default .navbar-nav>li>a {
     color: white;
-    font-size: 18px;
+    font-size: 16px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    margin-right: 8px;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-    color: #101010;
-    background-color: transparent;
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
 }
 
+.navbar-default .navbar-nav>li>a:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+ul.dropdown-menu {
+    background-color: #0c87b4;
+    border-radius: 4px !important;
+    margin-top: 6px !important;
+}
+
+ul.dropdown-menu a {
+    color: white;
+    text-transform: uppercase;
+}
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+    color: white;
+    text-transform: uppercase;
+    background-color: #0c6b96;
+}
 
 .bs-sidenav {
     font-family: 'Lato';
@@ -364,7 +404,6 @@ li.level-1 {
 li.level-2 {
     text-indent: 10px;
     font-size: 14px;
-    font-style: italic;
 }
 
 li.level-3 {
@@ -415,7 +454,7 @@ li.level-3 {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    color: black;
+    color: #404040;
 }
 
 .Index h4 a:hover{
