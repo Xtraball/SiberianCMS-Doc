@@ -7,11 +7,11 @@ There are multiple ways to contribute: [report bugs](#submit-an-issue), [improve
 ## Submit An Issue
 
 1. Search into existing issues before submitting yours
-2. Fork the Github repo: `git clone https://github.com/Xtraball/SiberianCMS`
+2. Fork the Github repo: `git clone https://github.com/Xtraball/SiberianCMS.git`
 3. Create a new branch from master: `git checkout -b issueid-shortdescription`
 4. Review our [pull request guidelines](#pull-request).
 5. Follow our [coding conventions](#conventions).
-6. Test everything so your code won't break any feature`
+6. Test your code so it won't break any feature`
 7. [Submit a pull request!](#pull-request)
 
 ## Help Improve The Docs

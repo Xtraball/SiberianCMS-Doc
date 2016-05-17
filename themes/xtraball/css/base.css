@@ -281,14 +281,6 @@ li.level-3 {
     font-size: 14px;
 }
 
-.Index h4 {
-    width: 30% !important;
-    float: left;
-    height: 100px;
-    padding-top: 80px;
-    text-align: center;
-}
-
 .Application .level-3,
 .User .level-3 {
     display: none;
@@ -296,4 +288,88 @@ li.level-3 {
 
 .Modules code.raw {
     line-height: 16px;
+}
+
+.Index h4[id]:before {
+    margin-top: 0px;
+    height: 0px;
+}
+
+.Index h4 {
+    width: 30% !important;
+    float: left;
+    height: 170px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.Index h4 em {
+    font-size: 12px;
+}
+
+.Index h4 a {
+    width: 100%;
+    height: 170px;
+    float: left;
+    padding-top: 160px;
+    margin-bottom: 12px;
+}
+
+.Index h4[id^="installation"] a,
+.Index h4[id^="configuration"] a,
+.Index h4[id^="siberiancms-modules"] a,
+.Index h4[id^="structure-of-a-module"] a,
+.Index h4[id^="api"] a,
+.Index h4[id^="contribute"] a {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: black;
+}
+
+.Index h4 a:hover{
+    color: #0e9fd3 !important;
+    text-decoration: none;
+}
+
+.Index h4[id^="installation"] a {
+    background-image: url("/img/installation.png");
+}
+.Index h4[id^="installation"] a:hover {
+    background-image: url("/img/installation-blue.png");
+}
+
+.Index h4[id^="configuration"] a {
+    background-image: url("/img/configuration.png");
+}
+.Index h4[id^="configuration"] a:hover {
+    background-image: url("/img/configuration-blue.png");
+}
+
+.Index h4[id^="siberiancms-modules"] a {
+    background-image: url("/img/creating-module.png");
+}
+.Index h4[id^="siberiancms-modules"] a:hover {
+    background-image: url("/img/creating-module-blue.png");
+}
+
+.Index h4[id^="structure-of-a-module"] a {
+    background-image: url("/img/structure.png");
+}
+.Index h4[id^="structure-of-a-module"] a:hover {
+    background-image: url("/img/structure-blue.png");
+}
+
+.Index h4[id^="api"] a {
+    background-image: url("/img/api.png");
+}
+.Index h4[id^="api"] a:hover {
+    background-image: url("/img/api-blue.png");
+}
+
+.Index h4[id^="contribute"] a {
+    background-image: url("/img/contribute.png");
+}
+.Index h4[id^="contribute"] a:hover {
+    background-image: url("/img/contribute-blue.png");
 }

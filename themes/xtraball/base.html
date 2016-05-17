@@ -47,7 +47,11 @@
         <div class="container sb-main {% if page_title %}{{ page_title }}{% else %}Index{% endif %}">
             <div class="col-md-3">
                 <div id="aside-dock">
-                    {% include "toc.html" %}
+                    {% if page_title %}
+                        {% include "toc.html" %}
+                    {% else %}
+                    {% include "home-toc.html" %}
+                    {% endif %}
                 </div>
             </div>
             <div class="col-md-9" role="main">{% include "content.html" %}</div>
