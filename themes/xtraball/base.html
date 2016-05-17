@@ -62,11 +62,63 @@
             <div class="col-md-9" role="main">{% include "content.html" %}</div>
         </div>
 
-    <footer class="col-md-12">
-        {% if copyright %}
-        <center>{{ copyright }}</center>
-        {% endif %}
-    </footer>
+        <div class="container-fluid footer">
+            <div class="container">
+                <footer>
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-3 docs">
+                            <ul>
+                                <li>DOCS</li>
+                                <li><a href="/documentation#installation">Installation</a></li>
+                                <li><a href="/documentation#configuration">Configuration</a></li>
+                                <li><a href="/module">SiberianCMS Modules</a></li>
+                                <li><a href="/module#structure">Structure of a module</a></li>
+                                <li><a href="/api">API</a></li>
+                                <li><a href="/contribute">Contribute</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 docs">
+                            <ul>
+                                <li>RESOURCES</li>
+                                <li><a href="http://extensions.siberiancms.com/">Marketplace</a></li>
+                                <li><a href="http://doc.siberiancms.com/">Knowledge Base</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 docs">
+                            <ul>
+                                <li>ABOUT</li>
+                                <li><a href="http://www.siberiancms.com/contact-us/">Contact</a></li>
+                                <li><a href="http://www.siberiancms.com/license/">License & Trademarks</a></li>
+                                <li><a href="http://www.siberiancms.com/privacy/">Privacy</a></li>
+                                <li><a href="http://www.siberiancms.com/terms-of-service/">Terms of Service</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 docs">
+                            <ul>
+                                <li>CONNECT</li>
+                                <li><a href="https://www.facebook.com/siberiancms">Facebook</a></li>
+                                <li><a href="https://twitter.com/siberiancms">Twitter</a></li>
+                                <li><a href="https://vimeo.com/user27472178">Vimeo</a></li>
+                                <li><a href="https://github.com/Xtraball">Github</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </footer>
+            </div>
+        </div>
+
+        <div class="container-fluid footer-two">
+            <div class="container">
+                <div class="row copyright">
+                    <div class="col-md-12">
+                        Code licensed under OSL. Docs under Apache 2 | © 2013-2016 Xtraball SAS
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
 
         <script src="{{ base_url }}/js/jquery-1.10.2.min.js"></script>

@@ -206,7 +206,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #0e9fd3;
     border-color: #0e9fd3;
     border-bottom-color: #0d83b0;
-    border-bottom-width: 2px;
+    border-bottom-width: 1px;
     border-radius: 0;
     height: 88px;
     margin-bottom: 0;
@@ -215,8 +215,45 @@ h1, h2, h3, h4, h5, h6 {
 
 .index-header {
     background-color: #0e9fd3;
+    border-top: 1px solid #0ebcf0;
     padding: 20px 0;
     z-index: 1000;
+}
+
+.footer-two {
+    background-color: #333;
+    color: white;
+}
+
+.footer {
+    color: white;
+    background-color: #0e9fd3;
+    padding: 20px 0;
+}
+
+.footer .docs a {
+    color: white;
+    margin: 10px 0;
+}
+
+.footer .docs ul {
+    padding-left: 0;
+}
+
+.footer .docs li:first-child {
+    margin-bottom: 10px;
+}
+
+.footer .docs li {
+    color: white;
+    list-style-type: none;
+    text-indent: 0;
+    margin-bottom: 6px;
+}
+
+.copyright {
+    padding: 20px 0;
+    text-align: right;
 }
 
 
