@@ -5,7 +5,7 @@ Get into our documentation where you'll find everything needed to setup, use & c
 
 #### [Installation](documentation#installation) *Easy steps on how to install your first SiberianCMS*
 
-#### [SiberianCMS Modules](module) *Learn everything about creating a module*
+#### [Make your Module](module) *Learn everything about creating a module*
 
 #### [Structure of a module](module#structure) *Read our detailed documentation about modules*
 

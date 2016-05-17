@@ -321,6 +321,10 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 90px
 }
 
+.navbar-nav {
+    margin-left: 25px;
+}
+
 .navbar-nav>li>a {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -437,6 +441,7 @@ li.level-3 {
 
 .Index h4 em {
     font-size: 12px;
+    font-style: normal;
 }
 
 .Index h4 a {
@@ -449,7 +454,7 @@ li.level-3 {
 
 .Index h4[id^="installation"] a,
 .Index h4[id^="customization"] a,
-.Index h4[id^="siberiancms-modules"] a,
+.Index h4[id^="make"] a,
 .Index h4[id^="structure-of-a-module"] a,
 .Index h4[id^="api"] a,
 .Index h4[id^="contribute"] a {
@@ -478,10 +483,10 @@ li.level-3 {
     background-image: url("/img/configuration-blue.png");
 }
 
-.Index h4[id^="siberiancms-modules"] a {
+.Index h4[id^="make"] a {
     background-image: url("/img/creating-module.png");
 }
-.Index h4[id^="siberiancms-modules"] a:hover {
+.Index h4[id^="make"] a:hover {
     background-image: url("/img/creating-module-blue.png");
 }
 
