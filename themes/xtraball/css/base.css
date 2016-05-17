@@ -301,6 +301,15 @@ h1, h2, h3, h4, h5, h6 {
     color: #101010 !important;
 }
 
+.sb-white:hover {
+    background-color: #101010 !important;
+    color: white !important;
+}
+
+.index-header .github:hover {
+    color: white !important;
+}
+
 .affix + .sb-affix-content {
     padding-left: 90px
 }
