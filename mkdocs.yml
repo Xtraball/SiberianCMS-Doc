@@ -1,7 +1,7 @@
 site_name: SiberianCMS Documentation
 pages:
-  - Getting started: index.md
-  - Documentation: documentation.md
+  - Home: index.md
+  - Getting started: documentation.md
   - Modules:
     - 'Structure': 'module.md'
 #    - 'Advanced usage': 'module/advanced.md'
