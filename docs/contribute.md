@@ -20,7 +20,7 @@ Our documentation is hosted on github too, and will grow with new features, help
 
 If you found a typo, make a tutorial or have a better way to describe our documentation, fork it !
 
-Fork the Github repo: `git clone https://github.com/Xtraball/SiberianCMS-Doc` 
+Fork the Github repo: `git clone https://github.com/Xtraball/SiberianCMS-Doc.git`
 
 We use MkDocs to generate the docs, so every page is written in Markdowns
 
@@ -42,4 +42,4 @@ We try to follow the PSR-1 standard as much as possible, and to keep our code cl
 
 ## License
 
-By contributing your code, you agree to license your contribution under the OSL license.
+By contributing your code, you agree to license your contribution under the [OSL license](https://opensource.org/licenses/OSL-3.0).
