@@ -422,7 +422,7 @@ li.level-3 {
     display: none;
 }
 
-.Modules code.raw {
+code.raw {
     line-height: 16px;
 }
 

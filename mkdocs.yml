@@ -3,8 +3,8 @@ pages:
   - Home: index.md
   - Getting started: documentation.md
   - Modules:
-    - 'Structure': 'module.md'
-#    - 'Advanced usage': 'module/advanced.md'
+    - 'Structure & Basics': 'module.md'
+    - 'Advanced usage': 'module/advanced.md'
     - 'Core inheritance': 'module/core-inheritance.md'
   - API:
     - 'Introduction': 'api.md'
