@@ -8,6 +8,10 @@ Modules are the core of SiberianCMS, they run frontend, backend, features & even
 
 A module can be a single front page with new features or settings, or a complete feature for SiberianCMS to be used in your Mobile apps and managed in your App editor.
 
+Here you can find a module skeleton to start with [Siberian module Skeleton, Job](https://github.com/Xtraball/siberian-module-skeleton)
+
+Modules are installed in the `app/local/modules` folder, for more information about the inheritance see this page [module/core-inheritance](module/core-inheritance)
+
 ## Structure
 
 ### Folder structure of a Module
@@ -53,8 +57,8 @@ The `package.json` is used by the Installer to know the requirements, and routin
   "version": "1.0",
   "dependencies": {
     "system": {
-      "type": "SAE", /** Required Siberian Edition (SAE/MAE/PE) */
-      "version": "4.1.0" /** Required Siberian version */
+      "type": "SAE", /** Required minimal Siberian Edition (SAE/MAE/PE) */
+      "version": "4.1.0" /** Required minimal Siberian version */
     },
     "modules": {
       "OtherModule": "4.1.0"
@@ -66,6 +70,10 @@ The `package.json` is used by the Installer to know the requirements, and routin
 ### resources/db/schema
 
 We use `resources/db/schema/table_name.php` to describe the table schema; below an example of a basic table.
+
+This file(s) reflects your database at it's latest version, each time you update your module, the local schema is compared against this file and updating
+
+*Note: the schema only add fields if they are new or missing, fields are never removed.*
 
 ```php
 <?php
@@ -139,9 +147,96 @@ is_unique|Boolean|
 
 This folder is used to insert default values when installing, or updating a Module.
 
-The default file is `resources/db/data/install.php` which get called only when installing the module, other files are named with the version
-`resources/db/data/4.1.0.php`, `resources/db/data/4.1.0.1.php`, `resources/db/data/4.1.0.2.php`, `resources/db/data/4.2.0.php`, etc ...
+Every php file in this folder will be executed when installing and/or updating the module, they should reflect the required data as the latest version.
 
+**Protected names are `install.php` & `%VERSION%.php` where %VERSION% is a semver string, you must never use them.**
+
+Best practice:
+    
+* If your module is about to install multiple features, split them into multiple files, 
+    
+    * ex: `feature1.php`, `feature2.php`, etc...
+
+Here is an example file `job.php`
+
+```php
+<?php
+# Job module, data.
+$name = "Job";
+$category = "social";
+
+# Icons, the first icon is set as default for the Feature, 
+# then all the icons are inserted in a library
+$icons = array(
+    "/app/local/modules/Job/resources/media/library/job1.png",
+    "/app/local/modules/Job/resources/media/library/job2.png",
+);
+
+$result = Siberian_Feature::installIcons($name, $icons);
+
+# Install the Feature
+$data = array(
+    "library_id"                    => $result["library_id"],
+    "icon_id"                       => $result["icon_id"],
+    "code"                          => "job",
+    "name"                          => $name,                   
+    "model"                         => "Job_Model_Company",
+    "desktop_uri"                   => "job/application_job/",
+    "mobile_uri"                    => "job/mobile_list/",
+    "mobile_view_uri"               => "job/mobile_view/",
+    "mobile_view_uri_parameter"     => "company_id",
+    "only_once"                     => 0,
+    "is_ajax"                       => 1,           
+    "position"                      => 1000,
+    "social_sharing_is_available"   => 1
+);
+
+$option = Siberian_Feature::install($category, $data, array("code"));
+
+# Multiple layouts
+#
+# If your feature have multiple layouts, use the following section, otherwise skip it
+# Layouts
+$layout_data = array(1, 2);
+$slug = "job";
+
+Siberian_Feature::installLayouts($option->getId(), $slug, $layout_data);
+# !Multiple layouts
+
+# This section duplicates the icons for the Flat design, you can have different icons, 
+# or use the same, however since 4.2 you must write this section
+# Icons
+$icons = array(
+    "/app/local/modules/Job/resources/media/library/job1.png",
+    "/app/local/modules/Job/resources/media/library/job2.png",
+);
+
+$result = Siberian_Feature::installIcons("{$name}-flat", $icons);
+```
+ 
+#### List of options
+
+Key|Type|Usage, values, comment
+---|----|--------------
+$name|String|Your feature name
+$category|String|`social`, `media`, `contact`, `monetization`, `customization`, `integration`, `events`, `misc`
+ 
+#### List of options for $data
+
+Key|Type|Usage, values, comment
+---|----|--------------
+code|String|This code is unique to your Feature, Module
+name|String|Your feature name
+model|String|Default model class used in the editor
+desktop_uri|String|Default controller class uri used in the editor
+mobile_uri|String|
+mobile_view_uri|String|
+mobile_view_uri_parameter|String|
+only_once|Boolean| Whether an app may have this feature only once, or more 
+is_ajax|Boolean|
+position|Integer|The position in the feature list, leave empty for automatic
+social_sharing_is_available|Boolean| nable the social sharing on your feature (experimental)
+ 
 
 ## Translations
 
@@ -150,6 +245,8 @@ First create a new file named `mymodule.csv` then place this file in the `transl
 If you want to ship your module with translations, place files in directories named with the locale code, example: english will be in `translations/en/mymodule.csv`
 
 Below as an example the `contact.csv` file.
+
+*Be sure to not use existing filename which are located in `SIBERIANCMS_ROOT/languages/default` otherwise your translations won't work.*
 
 ```csv
 "An error occurred while saving your contact informations."
@@ -179,4 +276,98 @@ Here is an example of what a translated file should like
 "Here is his email:";"Voici son e-mail"
 "Here is his message:";"Voici son message"
 [...]
+```
+
+## Design
+
+Everything you need to organize, style & interact with your Feature is located in the `design` folder
+
+```raw
+ModuleName
+├─ [...]
+├─ resources
+│  └─ design
+│     ├─ desktop
+│     │  ├─ siberian
+│     │  │  ├─ css
+│     │  │  │  └─ job.css
+│     │  │  ├─ js
+│     │  │  │  └─ job.js
+│     │  │  ├─ images
+│     │  │  │  └─ customization
+│     │  │  │     └─ layout
+│     │  │  │        └─ job
+│     │  │  │           ├─ layout-1.png
+│     │  │  │           └─ layout-2.png
+│     │  │  ├─ layout
+│     │  │  │  ├─ job.xml
+│     │  │  │  └─ company.xml
+│     │  │  └─ template
+│     │  │     ├─ company
+│     │  │     │  └─ [...]
+│     │  │     └─ job
+│     │  │        ├─ index.phtml
+│     │  │        └─ application
+│     │  │           ├─ edit.css
+│     │  │           ├─ edit.js
+│     │  │           └─ edit.phtml
+│     │  └─ flat
+│     │     └─ [...] # Same as siberian, flat is the code for the Flat design from 4.2.0
+│     └─ email
+│        ├─ layout
+│        └─ template
+└─ [...]
+```
+
+### layout/job.xml example
+
+This is the minimum required information in the default `layout.xml`, the file should be named as the module itself, lower-cased so `job.xml` in our case.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <job_application_job_edit>
+        <views>
+            <content class="application_view_customization_features_edit_tabbareditor" template="application/customization/features/edit/tabbar_editor.phtml" />
+            <content_editor class="core_view_default" template="job/application/edit.phtml" />
+        </views>
+    </job_application_job_edit>
+</layout>
+```   
+
+The section `content` is the default for the feature editor tab, you should not need to change it.
+
+The section `content_editor` should point to the feature editor template
+
+here: the short path `job/application/edit.phtml` referring to `ModuleName/resources/design/template/job/application/edit.phtml` 
+
+* Use only the short path.
+
+## Advanced Usage, Ionic
+
+See [module/advanced](module/advanced) for more informations about Ionic code.
+
+## Cache
+
+Module inheritance is cached, so each time you add or remove a file in your module, you must delete the file `var/cache/design.cache`
+
+*Note: when installing and/or updating a module with the regular zip package, the cache is automatically cleared for the users.*
+
+
+## Package
+
+When you are done with your module, it's time to pack !
+
+zip everything at the root of your module and you're done !
+
+```raw
+ModuleName.zip
+├─ Controller
+├─ controllers
+│  └─[...]
+├─ Model
+├─ View
+├─ resources
+│  └─[...]
+└─ package.json
 ```

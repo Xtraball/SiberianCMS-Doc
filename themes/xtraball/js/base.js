@@ -1,4 +1,3 @@
-
 /* Highlight */
 $( document ).ready(function() {
     hljs.initHighlightingOnLoad();
@@ -11,7 +10,6 @@ $(".bs-sidebar li").on("click", function() {
     $(this).addClass("active");
 });
 
-
 /* Prevent disabled links from causing a page reload */
 $("li.disabled a").click(function() {
     event.preventDefault();
@@ -20,6 +18,7 @@ $("li.disabled a").click(function() {
 /* jQuery scroll */
 var aside_top = $('#aside-dock').offset().top - 20;
 var aside_width = $('#aside-dock').width();
+
 $(window).scroll(function () {
     position();
 });
