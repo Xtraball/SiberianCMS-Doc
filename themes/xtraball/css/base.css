@@ -457,6 +457,7 @@ code.raw {
 .Index h4[id^="make"] a,
 .Index h4[id^="structure-of-a-module"] a,
 .Index h4[id^="api"] a,
+.Index h4[id^="layout"] a,
 .Index h4[id^="contribute"] a {
     background-size: contain;
     background-position: center;
@@ -509,6 +510,13 @@ code.raw {
 }
 .Index h4[id^="contribute"] a:hover {
     background-image: url("/img/contribute-blue.png");
+}
+
+.Index h4[id^="layout"] a {
+    background-image: url("/img/layout.png");
+}
+.Index h4[id^="layout"] a:hover {
+    background-image: url("/img/layout-blue.png");
 }
 
 ul.nav.navbar-nav.sb-nav > li:first-child {

@@ -11,6 +11,8 @@ Get into our documentation where you'll find everything needed to setup, use & c
 
 #### [Customization](module/core-inheritance) *Dive into the Core configuration & start customize to your needs*
 
+#### [Layouts](layout) *Learn how to create your own layouts and customize your applications*
+
 #### [API](api) *Our API documentation will help you to integrate SiberianCMS into your Workflows*
 
 #### [Contribute](contribute) *If you want to share any improvement or feature, you're welcome !*
