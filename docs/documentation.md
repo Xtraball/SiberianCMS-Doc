@@ -4,15 +4,19 @@
 
 * Recommended OS: `Linux`
 
-    * May work on `OSX` with [homebrew](http://brew.sh/), and on `Windows` with [cygwin](https://www.cygwin.com/)
+    * Works on `OSX` with [homebrew](http://brew.sh/), and on `Windows` with [cygwin](https://www.cygwin.com/)
+    
+* OpenSSL >=1.0.1
+
+    * with TLS v1.2 support
 
 * [Apache](#apache) or [Nginx](#nginx)
 
 * PHP
 
-    * version: >=5.4
+    * version: >=5.6
     
-    * extensions: `gd`, `pdo_mysql`, `SimpleXML`, `curl`, `dom`.
+    * extensions: `gd`, `pdo_mysql`, `SimpleXML`, `curl`, `dom`, `SQLite3`.
     
     * functions: `exec()`
 
@@ -95,7 +99,6 @@ server {
 		fastcgi_connect_timeout 300s;
 		fastcgi_send_timeout 300s;
 		fastcgi_read_timeout 300s;
-		fastcgi_param APPLICATION_ENV "production";
 	}
 
     location ~* ^.+.(js|css|png|jpg|jpeg|gif|ico|html)$ {
@@ -115,12 +118,14 @@ server {
 	gzip_proxied any;
 	gzip_types text/plain application/xml text/css text/js application/x-javascript;
 	
-	client_max_body_size 256M;
+	client_max_body_size 128M;
 
 }
 ```
 
 When you're done with the previous steps, reload your web server.
+
+Ensure `post_max_size` & `upload_max_filesize` are higher than 32M (64-128M recommended) at least, in case of large updates
 
 
 ## Web installer

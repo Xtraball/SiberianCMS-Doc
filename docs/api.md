@@ -8,6 +8,10 @@ This doc contains reference materials to help you implementing the API into your
 
 SiberianCMS API provides you with the ability to manage your users, as well as your applications.
 
+You can find our PHP Library:
+    
+* [Siberian API php](https://github.com/Xtraball/siberiancms-api-php).
+
 ## At a glance
 
 * The API is implemented with REST and is secured by an HTTP Basic Authentication.

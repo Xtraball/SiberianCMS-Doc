@@ -57,8 +57,8 @@ The `package.json` is used by the Installer to know the requirements, and routin
   "version": "1.0",
   "dependencies": {
     "system": {
-      "type": "SAE", /** Required minimal Siberian Edition (SAE/MAE/PE) */
-      "version": "4.1.0" /** Required minimal Siberian version */
+      "type": "SAE",
+      "version": "4.1.0"
     },
     "modules": {
       "OtherModule": "4.1.0"
@@ -370,4 +370,41 @@ ModuleName.zip
 ├─ resources
 │  └─[...]
 └─ package.json
+```
+
+## Uninstall a Module
+
+Each module must come with it's own un-installer, which is a single file named `uninstall.php` at the root of the package.
+
+Everything installed by the files located in `resources/db/data` & every table created in `resources/db/schema`
+
+```php
+<?php
+# Job module un-installer.
+
+$name = "Job";
+
+# Clean-up library icons
+Siberian_Feature::removeIcons($name);
+Siberian_Feature::removeIcons("{$name}-flat");
+
+# Clean-up Layouts
+$layout_data = array(1, 2);
+$slug = "job";
+
+Siberian_Feature::removeLayouts($option->getId(), $slug, $layout_data);
+
+# Clean-up Option(s)/Feature(s)
+$code = "job";
+Siberian_Feature::uninstallFeature($code);
+
+# Clean-up DB be really carefull with this.
+$tables = array(
+    "job_company",
+    "job_place",
+);
+Siberian_Feature::dropTables($tables);
+
+# Clean-up module
+Siberian_Feature::uninstallModule($name);
 ```

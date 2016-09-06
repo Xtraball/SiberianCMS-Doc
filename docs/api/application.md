@@ -155,7 +155,7 @@ $endpoint = "http://www.domain.com/application/api_admin/add"
 Param|Type|Details
 -----|----|-------
 app_id *|int|Unique identifier
-user_id *|int|User identifier
+admin_id *|int|User identifier
 
 **\* Required fields**
 
@@ -208,7 +208,7 @@ $endpoint = "http://www.domain.com/application/api_admin/remove"
 Param|Type|Details
 -----|----|-------
 app_id *|int|Unique identifier
-user_id *|int|User identifier
+admin_id *|int|User identifier
 
 **\* Required fields**
 

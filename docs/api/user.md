@@ -134,7 +134,7 @@ user_id|int|User unique identifier|
 Check whether a user exists.
 
 ```php
-$endpoint = "http://www.domain.com/admin/api_account/exists"
+$endpoint = "http://www.domain.com/admin/api_account/exist"
 ```
 
 #### Example
