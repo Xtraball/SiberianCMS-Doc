@@ -194,6 +194,14 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Lato';
 }
 
+h2 {
+    margin-top: 50px;
+}
+
+h3 {
+    margin-top: 40px;
+}
+
 .bs-sidebar.affix {
     top: 110px;
 }
@@ -458,6 +466,7 @@ code.raw {
 .Index h4[id^="structure-of-a-module"] a,
 .Index h4[id^="api"] a,
 .Index h4[id^="layout"] a,
+.Index h4[id^="template"] a,
 .Index h4[id^="contribute"] a {
     background-size: contain;
     background-position: center;
@@ -498,6 +507,14 @@ code.raw {
     background-image: url("/img/structure-blue.png");
 }
 
+/**.Index h4[id^="api"] {
+    margin-left: 15%;
+}*/
+
+.Index h4[id^="contribute"] {
+    margin-left: 30%;
+}
+
 .Index h4[id^="api"] a {
     background-image: url("/img/api.png");
 }
@@ -517,6 +534,13 @@ code.raw {
 }
 .Index h4[id^="layout"] a:hover {
     background-image: url("/img/layout-blue.png");
+}
+
+.Index h4[id^="template"] a {
+    background-image: url("/img/template.png");
+}
+.Index h4[id^="template"] a:hover {
+    background-image: url("/img/template-blue.png");
 }
 
 ul.nav.navbar-nav.sb-nav > li:first-child {
