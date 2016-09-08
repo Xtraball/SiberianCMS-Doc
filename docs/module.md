@@ -1,5 +1,7 @@
 # Modules
 
+[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/module.md)
+
 Here you'll find everything needed to start developing your first module, from structure to update routine & packaging.
 
 ## What is a module ?

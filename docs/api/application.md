@@ -1,5 +1,7 @@
 # Application
 
+[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/api/application.md)
+
 ---
 
 ## Create

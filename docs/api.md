@@ -1,5 +1,7 @@
 # SiberianCMS API Documentation
 
+[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/api.md)
+
 ## Introduction
 
 Welcome to the SiberianCMS REST API documentation.

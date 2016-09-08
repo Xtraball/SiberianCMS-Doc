@@ -1,5 +1,7 @@
 # Requirements
 
+[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/documentation.md)
+
 ## Software
 
 * Recommended OS: `Linux`

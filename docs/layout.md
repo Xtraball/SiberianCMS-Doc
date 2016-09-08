@@ -1,5 +1,7 @@
 # Layout
 
+[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/layout.md)
+
 ** *Note: layout packages require Siberian 4.5.0 and above, otherwise they will not work* **
 
 Here you'll find everything needed to start developing your first layout, from structure to update routine & packaging.
@@ -99,7 +101,7 @@ The `package.json` is used by the Installer to know the requirements, and routin
 ```
 
 |Field|Required&nbsp;?|Description|
-|-----|----------|-----------|
+|-----|---------------|-----------|
 |name|yes|Package name, avoid spaces and numbers as this is also your `bootstrap.php` Class name & Folder name in `app/local/modules/MyAwesomeLayout/[...]`|
 |description|yes|Package description|
 |type|yes|must be `layout`|
@@ -179,7 +181,7 @@ Siberian_Assets::copyAssets("/app/local/modules/MyAwesomeLayout/resources/var/ap
 ```
 
 |Field|Required&nbsp;?|Description|
-|-|-|-|
+|-----|---------------|-----------|
 |name|yes|This is your layout name, this can be `My Awesome Layout`|
 |visibility|yes|VISIBILITY_HOMEPAGE, VISIBILITY_ALWAYS, VISIBILITY_TOGGLE|
 |code|yes|must be your layout_code, here `my_awesome_layout`|
@@ -194,8 +196,8 @@ Siberian_Assets::copyAssets("/app/local/modules/MyAwesomeLayout/resources/var/ap
 
 #### Visibility
 
-||||
-|-|-|-|
+|&nbsp;|&nbsp;|&nbsp;|
+|------|------|------|
 |VISIBILITY_HOMEPAGE|The layout is displayed only on the homepage|![homepage](img/layout/homepage-1.png)|
 |VISIBILITY_ALWAYS|The layout is displayed everywhere and must take in consideration audio player controls & features UI|![always-1](img/layout/always-1.png)|
 |VISIBILITY_TOGGLE|Toggle layout side-menu|![toggle-1](img/layout/toggle-1.png)|
@@ -363,7 +365,7 @@ App.service('my_awesome_layout', function ($rootScope, HomepageLayout) {
 ```
 
 |Function|Description|
-|-|-|
+|--------|-----------|
 |service.getTemplate|Must return the path to the layout file|
 |service.getModalTemplate|Must return the path to a valid modal file|
 |service.onResize|Called when device orientation is changed or resized (for browser)|

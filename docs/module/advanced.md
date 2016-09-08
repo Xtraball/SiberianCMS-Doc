@@ -1,5 +1,7 @@
 # Advanced usage 
 
+[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/module/advanced.md)
+
 ## Ionic code
 
 Everything you need to organize, style & interact with your Feature in the native apps is located in the `var` folder
