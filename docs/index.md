@@ -13,6 +13,8 @@ Get into our documentation where you'll find everything needed to setup, use & c
 
 #### [Layouts](layout) *Learn how to create your own homepage layouts*
 
+#### [Icons](customization/icon) *Create your own icon packs for awesome features*
+
 #### [API](api) *Our API documentation will help you to integrate SiberianCMS into your Workflows*
 
 #### [Contribute](contribute) *If you want to share any improvement or feature, you're welcome !*

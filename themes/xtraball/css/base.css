@@ -467,6 +467,7 @@ code.raw {
 .Index h4[id^="api"] a,
 .Index h4[id^="layout"] a,
 .Index h4[id^="template"] a,
+.Index h4[id^="icon"] a,
 .Index h4[id^="contribute"] a {
     background-size: contain;
     background-position: center;
@@ -511,8 +512,8 @@ code.raw {
     margin-left: 15%;
 }*/
 
-.Index h4[id^="contribute"] {
-    margin-left: 30%;
+.Index h4[id^="api"] {
+    margin-left: 15%;
 }
 
 .Index h4[id^="api"] a {
@@ -541,6 +542,13 @@ code.raw {
 }
 .Index h4[id^="template"] a:hover {
     background-image: url("/img/template-blue.png");
+}
+
+.Index h4[id^="icon"] a {
+    background-image: url("/img/icon.png");
+}
+.Index h4[id^="icon"] a:hover {
+    background-image: url("/img/icon-blue.png");
 }
 
 ul.nav.navbar-nav.sb-nav > li:first-child {

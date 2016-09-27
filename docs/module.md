@@ -27,6 +27,7 @@ ModuleName
 │  │  └─ ModuleName.php
 │  └─ Mobile
 │     └─ ModuleName.php
+├─ Form
 ├─ Model
 ├─ View
 ├─ resources

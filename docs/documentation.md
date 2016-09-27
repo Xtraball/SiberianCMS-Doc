@@ -21,6 +21,8 @@
     * extensions: `gd`, `pdo_mysql`, `SimpleXML`, `curl`, `dom`, `SQLite3`.
     
     * functions: `exec()`
+    
+    * parameters: `allow_url_fopen = On`, `memory_limit >= 128M`
 
 * MySQL/MariaDB >=5.5 with InnoDB/XtraDB engine
 
