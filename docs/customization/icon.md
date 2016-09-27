@@ -14,7 +14,7 @@
 
 ### Requirements
 
-* Icons must be 512x512, border to border, can be fulle white if you want them to be colozired, or colorfull !
+* Icons must be 512x512, border to border, can be full white if you want them to be colozired, or colorfull !
 
 ## Structure of a layout package
 
@@ -54,7 +54,7 @@ The `package.json` is used by the Installer to know the requirements, and routin
   "dependencies": {
     "system": {
       "type": "SAE",
-      "version": "4.5.0"
+      "version": "4.6.1"
     }
   }
 }

@@ -8,6 +8,7 @@ pages:
   - Modules:
     - 'Structure & Basics': 'module.md'
     - 'Advanced usage': 'module/advanced.md'
+    - 'Forms': 'module/forms.md'
     - 'Core inheritance': 'module/core-inheritance.md'
   - API:
     - 'Introduction': 'api.md'
