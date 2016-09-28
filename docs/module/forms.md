@@ -1,8 +1,12 @@
 # Siberian Forms
 
+[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/module/forms.md)
+
 In Siberian we have implemented our own Forms & Elements to control design and javascript events
 
 Here is listed all these elements, how to use them from the  `View`, to the `Controller`
+
+**Form fields must respect the case of the field they represent in the database.**
 
 ## Form example
 
@@ -97,7 +101,7 @@ The action to were the form submit its data is defined by `->setAction()`
 $this->setAction(__path("/form/test"))
 ```
         
-### Form default nav `->addNav([...])` (required)
+### Form default nav
 
 This will add on top of your a default navigation, with a back arrow & a submit button
 
@@ -323,3 +327,259 @@ $this->addNav("submit-repeat", "OK", false);
 ```
 
 ![13-repeat-submit](/img/forms/13-repeat-submit.png)
+
+## Form usage
+
+Creating the form object
+
+```php
+$form_test = new Form_Test();
+```
+
+Populating with a Siberian object/model
+
+```php
+$siberian_object = new Job_Model_Place();
+
+$form_test->populate($siberian_object->getData());
+```
+
+`->getData()` will return a raw key, values array reprensenting the object.
+
+Manual fill with default values
+
+```php
+$form_test->getElement('element_textarea')->setValue('My textarea default value');
+```
+
+`->getElement($name)` will return the form element identified by `$name`, you can then set value, options, attributes, etc...
+
+Displaying the form
+
+```php
+echo $form_test;
+```
+
+## Controller side
+
+### Basic form validation
+
+here the edit action is used for both creating & editing the corresponding object
+
+```php
+public function editAction() {
+    /** Retrive the form submit values */
+    $values = $this->getRequest()->getPost(); 
+
+    /** Init the form */
+    $form = new Job_Form_Place(); 
+    
+    /** Testing if the form is valid with the given values */
+    if($form->isValid($values)) {  
+    
+        /** Do whatever you need when form is valid */
+        $place = new Job_Model_Place(); 
+        $place
+            ->addData($values)
+            ->addData(array(
+                "is_active" => true,
+            ))
+        ;
+
+        /** Moving the uploaded file to the app folder */
+        $path_banner = Siberian_Feature::moveUploadedFile($this->getCurrentOptionValue(), Core_Model_Directory::getTmpDirectory()."/".$values['banner'], $values['banner']);
+        
+        /** Replacing the tmp path, with the file path */
+        $place->setData("banner", $path_banner);
+
+
+        /** When an image is not required, this parts handles the deletion */
+        if($values["icon"] == "_delete_") {
+            $place->setData("icon", "");
+        } else if(file_exists(Core_Model_Directory::getBasePathTo("images/application".$values["icon"]))) {
+            # Nothing changed, skip
+        } else {
+            $path_icon = Siberian_Feature::moveUploadedFile($this->getCurrentOptionValue(), Core_Model_Directory::getTmpDirectory()."/".$values["icon"]);
+            $place->setData("icon", $path_icon);
+        }
+
+        /** An example of geocoding an Address */
+        if(!empty($values["location"])) {
+            $coordinates = Siberian_Google_Geocoding::getLatLng(array("address" => $values["location"]));
+            $place->setData("latitude", $coordinates[0]);
+            $place->setData("longitude", $coordinates[1]);
+        }
+
+
+        /** Saving the object in */
+        $place->save();
+
+        $html = array(
+            "success" => 1,
+            "message" => __("Success."),
+        );
+    } else {
+        /** Do whatever you need when form is not valid */
+        $html = array(
+            "error" => 1,
+            "message" => $form->getTextErrors(),    /** Required for javascript to handle errors */
+            "errors" => $form->getTextErrors(true), /** Required for javascript to handle errors */
+        );
+    }
+
+    $this->_sendHtml($html);
+}
+```
+
+### Basic toggling form & action
+
+### Form toggle
+
+```php
+class Job_Form_Place_Toggle extends Siberian_Form_Abstract {
+
+    public function init() {
+        parent::init();
+
+        $this
+            ->setAction(__path("/job/place/togglepost"))
+            ->setAttrib("id", "form-place-toggle")
+        ;
+
+        /** Bind as a delete form */
+        self::addClass("toggle", $this);
+
+        $db = Zend_Db_Table::getDefaultAdapter();
+        $select = $db->select()
+            ->from('job_place')
+            ->where('job_place.place_id = :value')
+        ;
+
+        $place_id = $this->addSimpleHidden("place_id", __("Place"));
+        $place_id->addValidator("Db_RecordExists", true, $select);
+        $place_id->setMinimalDecorator();
+
+        $this->addMiniSubmit(null, "<i class='fa fa-power-off icon icon-power-off'></i>", "<i class='fa fa-check icon icon-ok'></i>");
+
+        $this->defaultToggle($this->mini_submit, "Enable place", "Disable place");
+    }
+}
+```
+
+Toggle form requires validators, and a "mini submit" like this:
+
+```php
+$this->addMiniSubmit(
+    null, 
+    "<i class='fa fa-power-off icon icon-power-off'></i>", 
+    "<i class='fa fa-check icon icon-ok'></i>"
+);
+```
+
+And if you need a tooltip message to indicate the action:
+
+```php
+$this->defaultToggle(
+    $this->mini_submit, 
+    "Enable place", 
+    "Disable place"
+);
+```
+
+
+---
+
+```php
+public function toggleAction() {
+    $values = $this->getRequest()->getPost();
+
+    $form = new Job_Form_Place_Toggle();
+    if($form->isValid($values)) {
+        $place = new Job_Model_Place();
+        
+        /** Toggling the field */
+        $result = $place->find($values["place_id"])->toggle();
+
+        $html = array(
+            "success" => 1,
+            /** Return the new state for javascript to toggle the icon */
+            "state" => $result,
+            /** Return the message corresponding to the new state */
+            "message" => ($result) ? __("Place enabled") : __("Place disabled"), 
+        );
+    } else {
+        /** Do whatever you need when form is not valid */
+        $html = array(
+            "error" => 1,
+            "message" => $form->getTextErrors(),
+            "errors" => $form->getTextErrors(true),
+        );
+    }
+
+    $this->_sendHtml($html);
+}
+```
+
+### Basic delete form & action
+
+### Form delete
+
+```php
+class Job_Form_Place_Delete extends Siberian_Form_Abstract {
+
+    public function init() {
+        parent::init();
+
+        $this
+            ->setAction(__path("/job/place/deletepost"))
+            ->setAttrib("id", "form-place-delete")
+            ->setConfirmText("You are about to remove this Place !\n Are you sure ?");
+        ;
+
+        /** Bind as a delete form */
+        self::addClass("delete", $this);
+
+        $db = Zend_Db_Table::getDefaultAdapter();
+        $select = $db->select()
+            ->from('job_place')
+            ->where('job_place.place_id = :value')
+        ;
+
+        $place_id = $this->addSimpleHidden("place_id", __("Place"));
+        $place_id->addValidator("Db_RecordExists", true, $select);
+        $place_id->setMinimalDecorator();
+
+        $mini_submit = $this->addMiniSubmit();
+    }
+}
+```
+
+### Delete action
+
+```php
+public function deleteAction() {
+    $values = $this->getRequest()->getPost();
+
+    $form = new Job_Form_Place_Delete();
+    if($form->isValid($values)) {
+        $place = new Job_Model_Company();
+        $place->find($values["place_id"]);
+        
+        /** Delete the object */
+        $place->delete();
+
+        $html = array(
+            'success' => 1,
+            'success_message' => __('Place successfully deleted.'),
+        );
+    } else {
+        $html = array(
+            "error" => 1,
+            "message" => $form->getTextErrors(),
+            "errors" => $form->getTextErrors(true),
+        );
+    }
+
+    $this->_sendHtml($html);
+}
+```

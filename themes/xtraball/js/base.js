@@ -30,7 +30,17 @@ $(window).resize(function() {
 });
 
 function position() {
-    if ($(window).scrollTop() > aside_top) {
+    console.log($(window).scrollTop() + $(".bs-sidebar").height(), $(".footer").position().top);
+    if($(window).scrollTop() + $(".bs-sidebar").height() > $(".footer").position().top) {
+        console.log($(".footer").height());
+        var bottom = $(window).scrollTop() + $(".bs-sidebar").height() - $(".footer").position().top + $(".footer").height();
+        $('#aside-dock').css({
+            bottom: bottom,
+            top: 'initial',
+            width: aside_width,
+            position: 'fixed'
+        });
+    } else if ($(window).scrollTop() > aside_top) {
         $('#aside-dock').css({
             top: 0,
             width: aside_width,
