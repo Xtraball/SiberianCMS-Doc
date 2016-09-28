@@ -336,7 +336,7 @@ This is the minimum required information in the default `layout.xml`, the file s
         </views>
     </job_application_job_edit>
 </layout>
-```   
+```
 
 The section `content` is the default for the feature editor tab, you should not need to change it.
 

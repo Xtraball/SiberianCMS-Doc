@@ -6,13 +6,9 @@
 
 Everything you need to organize, style & interact with your Feature in the native apps is located in the `var` folder
 
-Files are merged at install/update `var/apps/browser` for the Overview & HTML5 App.
+Assets are merged on install & updates with the `bootstrap.php` see [register assets](#register-assets)
 
-For the native apps, files are merged only when downloading source code, or generating the APK:
-
-* The `CSS` & `JS` files are automatically appended to the index.html
-
-* The `templates`  & `images` are copied into the source code, so path's are relative to it [example](#controller-example)
+You must place your files in a `modules/yourmodule` folder, here `modules/job`.
 
 ```raw
 ModuleName
@@ -22,25 +18,22 @@ ModuleName
 │     └─ apps
 │        └─ modules
 │           └─ job
-│              ├─ css
+│              ├─ styles
 │              │  └─ job.css
-│              ├─ js
-│              │  ├─ job.js
-│              │  ├─ controllers
-│              │  │  └─ job.js
-│              │  ├─ services
-│              │  │  └─ job.js
-│              │  ├─ factory
-│              │  │  └─ [...]
-│              │  └─ directives
-│              │     └─ [...]
+│              ├─ controllers
+│              │  └─ job.js
+│              ├─ services
+│              │  └─ job.js
+│              ├─ factory
+│              │  └─ job.js
+│              ├─ directives
+│              │  └─ job.js
 │              ├─ img
 │              │  ├─ company.png
 │              │  └─ job.png
 │              └─ templates
-│                 └─ job
-│                    └─ l1
-│                       └─ view.html
+│                 └─ l1
+│                    └─ view.html
 └─ [...]
 ```
 
@@ -52,33 +45,27 @@ App.config(function($stateProvider) {
     $stateProvider.state('job-view', {
         url: BASE_PATH+"/job/mobile_view/index/value_id/:value_id",
         controller: 'JobController',
-        templateUrl: "templates/job/l1/view.html"
+        templateUrl: "modules/job/templates/l1/view.html"
     });
     
-}).controller('BookingController', function($rootScope[...]
-
+}).controller('JobController', function($rootScope[...]
 ```
 
 The part `templateUrl: "templates/job/l1/view.html"` concerns our template `app/local/modules/Job/resources/var/apps/templates/job/l1/view.html`, we only keep the relative part of the path. 
 
 ## Bootstrap
 
-If your module require some advanced configuration & tweaks, you may consider using the module bootstrapper.
-
 Basically it's a file named `bootstrap.php` at the root of your package, below an example:
 
-**Note: as the bootstrap file is run at every request, please consider making it as light as possible and error free**
+**Note: Consider making this file as light as possible and error free**
 
-```raw
+```php
 <?php
 
 class ModuleName_Bootstrap {
 
     public static function init($bootstrap) {
-        # Do whatever you need
-        # 1. copy a custom library
-        # 2. link some files
-        # 3. etc ...
+
     }
 }
 ```
@@ -86,3 +73,22 @@ class ModuleName_Bootstrap {
 `ModuleName` should respect your module name case.
 
 `$bootstrap` is a reference to the Zend Bootstrap if you need to hook it.
+
+### Register assets
+
+```php
+
+/** Register the Assets path, to be copied in native apps/overview */
+Siberian_Assets::registerAssets("Job", "/app/local/modules/Job/resources/var/apps/");
+
+/** Register javascripts to be loaded by the ionic apps */
+Siberian_Assets::addJavascripts(array(
+  "modules/job/controllers/job.js",
+  "modules/job/factories/job.js",
+));
+
+/** Register stylesheets to be loaded by the ionic apps */
+Siberian_Assets::addStylesheets(array(
+  "modules/job/css/styles.css",
+));
+```
