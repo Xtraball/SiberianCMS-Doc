@@ -7,7 +7,7 @@ Get into our documentation where you'll find everything needed to setup, use & c
 
 #### [Make your Module](module) *Learn everything about creating a module*
 
-#### [Structure of a module](module#structure) *Read our detailed documentation about modules*
+#### [Forms](module/forms) *Use our forms to create your editor*
 
 #### [Customization](module/core-inheritance) *Dive into the Core configuration & start customize to your needs*
 
