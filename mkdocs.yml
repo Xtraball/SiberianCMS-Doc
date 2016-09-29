@@ -10,7 +10,6 @@ pages:
     - 'Basic usage': 'module/basic.md'
     - 'Forms': 'module/forms.md'
     - 'Utils': 'module/utils.md'
-    - 'Advanced usage': 'module/advanced.md'
     - 'Core inheritance': 'module/core-inheritance.md'
   - API:
     - 'Introduction': 'api.md'
