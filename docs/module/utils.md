@@ -6,7 +6,9 @@ In this section you'll find a description of the tools & libraries shipped with 
 
 ## Translations
 
-To translate anything you must user this function `__($format [, mixed $args [, mixed $... ]])`
+`__($format [, mixed $args [, mixed $... ]])`
+
+To translate anything you must use this function 
 
 Behind the scene we use a sprintf to format the strings, so this functions works the same
 
@@ -50,7 +52,9 @@ Note also that this functions use the translation function `__()` behind the sce
 
 ### __path
 
-This function allows to build URI relative path.
+`__path($path, $values, $locale)`
+
+This function allows to build URI relative path, you can also specify the `$locale` if you need to build a specific page.
 
 Example:
 
@@ -59,6 +63,21 @@ echo __path("/job/application/edit", array("value_id" => 12, "option_id" => 42))
 
 # output
 /job/application/edit/value_id/12/option_id/42
+```
+
+### __url
+
+`__url($path, $values, $locale)`
+
+This function allows to build fully qualified URI, you can also specify the `$locale` if you need to build a specific page.
+
+Example:
+
+```php
+echo __path("/job/application/edit", array("value_id" => 12, "option_id" => 42));
+
+# output
+http://www.yourdomain.com/job/application/edit/value_id/12/option_id/42
 ```
 
 ### data_to_utf8
