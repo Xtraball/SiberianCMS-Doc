@@ -4,7 +4,7 @@
 
 In Siberian we have implemented our own Forms & Elements to control design and javascript events
 
-Here is listed all these elements, how to use them from the  `View`, to the `Controller`
+Here is listed all these elements, how to use them from the  `View` to the `Controller`
 
 **Form fields must respect the case of the field they represent in the database.**
 
@@ -103,7 +103,7 @@ $this->setAction(__path("/form/test"))
         
 ### Form default nav
 
-This will add on top of your a default navigation, with a back arrow & a submit button
+This will add on your form a default navigation, with back arrow & a submit button
 
 ```php
 $this->addNav("form-test-nav")
@@ -125,7 +125,7 @@ $this->addNav($name, $save_text = "OK", $display_back_button = true)
 
 Form events like `submit` or `change` are binded with css classes like below:
 
-#### create
+#### > create
 
 Binds a form to submit data `onSubmit` event, add the css class `create`
 
@@ -133,9 +133,9 @@ Binds a form to submit data `onSubmit` event, add the css class `create`
 self::addClass("create", $this);
 ```
 
-This form reloads the feature on success, of append the form errors otherwise.
+This form reloads the feature on success, or appends the form errors to the DOM.
 
-#### toggle
+#### > toggle
 
 Binds a form to submit data `onSubmit` event for single toggling forms, add the css class `toggle` see [#toggle-forms](module/forms#toggle-forms)
 
@@ -143,7 +143,7 @@ Binds a form to submit data `onSubmit` event for single toggling forms, add the 
 self::addClass("toggle", $this);
 ```
 
-#### onchange
+#### > onchange
 
 Binds a form to submit data `onChange` event for every single item in the form, add the css class `onchange` see [#toggle-forms](module/forms#onchange-forms)
 
@@ -152,7 +152,7 @@ self::addClass("onchange", $this);
 ```
 
 
-#### delete
+#### > delete
 
 Binds a form to submit data `onSubmit` event for single row forms, add the css class `delete` see [#toggle-forms](module/forms#delete-row)
 
@@ -160,10 +160,11 @@ Binds a form to submit data `onSubmit` event for single row forms, add the css c
 self::addClass("delete", $this);
 ```
 
-This binder is used form small delete forms, to trigger various events
+This binder is used for small delete forms, to trigger various events
 
 * Submit the delete form
 * Check if the row was deleted, then remove the corresponding row dynamically from the table
+* Or reload the page if this was the only row
 
 ## Elements
 
@@ -214,7 +215,7 @@ $this->addSimpleText("element_text", __("Text"));
 
 ```php
 /** Input text */
-$this->addSimpleText("element_text", __("Text"));
+$this->addSimplePassword("element_password", __("Password"));
 ```
 
 ![04-password](/img/forms/04-password.png)
@@ -336,7 +337,7 @@ Creating the form object
 $form_test = new Form_Test();
 ```
 
-Populating with a Siberian object/model
+Populating with a Siberian object/model:
 
 ```php
 $siberian_object = new Job_Model_Place();
@@ -344,9 +345,11 @@ $siberian_object = new Job_Model_Place();
 $form_test->populate($siberian_object->getData());
 ```
 
-`->getData()` will return a raw key, values array reprensenting the object.
+`->getData()` will return a raw key => values array representing the object.
 
-Manual fill with default values
+&nbsp;
+
+Manually filled with default values:
 
 ```php
 $form_test->getElement('element_textarea')->setValue('My textarea default value');
@@ -354,7 +357,7 @@ $form_test->getElement('element_textarea')->setValue('My textarea default value'
 
 `->getElement($name)` will return the form element identified by `$name`, you can then set value, options, attributes, etc...
 
-Displaying the form
+Displaying the form:
 
 ```php
 echo $form_test;
@@ -387,7 +390,11 @@ public function editAction() {
         ;
 
         /** Moving the uploaded file to the app folder */
-        $path_banner = Siberian_Feature::moveUploadedFile($this->getCurrentOptionValue(), Core_Model_Directory::getTmpDirectory()."/".$values['banner'], $values['banner']);
+        $path_banner = Siberian_Feature::moveUploadedFile(
+            $this->getCurrentOptionValue(), 
+            Core_Model_Directory::getTmpDirectory()."/".$values['banner'], 
+            $values['banner']
+        );
         
         /** Replacing the tmp path, with the file path */
         $place->setData("banner", $path_banner);
@@ -399,13 +406,19 @@ public function editAction() {
         } else if(file_exists(Core_Model_Directory::getBasePathTo("images/application".$values["icon"]))) {
             # Nothing changed, skip
         } else {
-            $path_icon = Siberian_Feature::moveUploadedFile($this->getCurrentOptionValue(), Core_Model_Directory::getTmpDirectory()."/".$values["icon"]);
+            $path_icon = Siberian_Feature::moveUploadedFile(
+                $this->getCurrentOptionValue(), 
+                Core_Model_Directory::getTmpDirectory()."/".$values["icon"],
+                $values["icon"]
+            );
             $place->setData("icon", $path_icon);
         }
 
         /** An example of geocoding an Address */
         if(!empty($values["location"])) {
-            $coordinates = Siberian_Google_Geocoding::getLatLng(array("address" => $values["location"]));
+            $coordinates = Siberian_Google_Geocoding::getLatLng(array(
+                "address" => $values["location"]
+            ));
             $place->setData("latitude", $coordinates[0]);
             $place->setData("longitude", $coordinates[1]);
         }
