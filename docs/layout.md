@@ -145,6 +145,30 @@ class MyAwesomeLayout_Bootstrap {
 }
 ```
 
+#### Icon & Image sizing
+
+**Available from version 4.7.10**
+
+If your layout requires custom ratio images to illustrate features, you can register a callback function in the `bootstrap.php` to be called like this.
+
+```php
+Siberian_Feature::registerRatioCallback("my_awesome_layout", function($position) {
+    $sizes = array(
+        "width" => 800,
+        "height" => 400,
+    );
+    
+    return $sizes;
+});
+
+```
+
+`my_awesome_layout` is your unique layout code.
+
+`$position` is the position of the current feature, this way you can have different sizes for different positions in your layout.
+
+the function must return an array with `width` and `height` keys. 
+
 ### Data
 
 This file creates & updates the entry in database and copy assets at installation time
