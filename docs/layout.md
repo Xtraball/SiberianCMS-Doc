@@ -192,6 +192,7 @@ $datas = array(
     'position'                   => "bottom",
     "order"                      => 1200,
     "is_active"                  => 1,
+    "use_subtitle"               => 1,
 );
 
 $layout = new Application_Model_Layout_Homepage();
@@ -216,6 +217,7 @@ Siberian_Assets::copyAssets("/app/local/modules/MyAwesomeLayout/resources/var/ap
 |position|yes|Position of your menu: bottom, left, right|
 |order|yes|The order in the section Design > CHOOSE YOUR LAYOUT|
 |is_active|yes|must be 1|
+|use_subtitle|yes|Whether your layout uses subtitles|
 
 
 #### Visibility
