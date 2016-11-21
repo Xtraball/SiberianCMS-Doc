@@ -253,6 +253,7 @@ The layout is composed of 3 or 4 files generally, `view.html`, `style.css`, `hoo
         	
         	<img ng-src="{{ feature.icon_url }}" />
         	<h2>{{ feature.name }}</h2>
+        	<p ng-if="feature.subtitle">{{ feature.subtitle }}</p>
         </li>
 	</ul>
 </div> 
