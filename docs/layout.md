@@ -217,7 +217,7 @@ Siberian_Assets::copyAssets("/app/local/modules/MyAwesomeLayout/resources/var/ap
 |position|yes|Position of your menu: bottom, left, right|
 |order|yes|The order in the section Design > CHOOSE YOUR LAYOUT|
 |is_active|yes|must be 1|
-|use_subtitle|yes|Whether your layout uses subtitles|
+|use_subtitle|yes|Whether your layout uses subtitles. **/!\ Only available in flat design**|
 
 
 #### Visibility
