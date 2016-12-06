@@ -79,7 +79,7 @@ class ModuleName_Bootstrap {
 ```php
 
 /** Register the Assets path, to be copied in native apps/overview */
-Siberian_Assets::registerAssets("Job", "/app/local/modules/Job/resources/var/apps/");
+Siberian_Assets::registerAssets("Job");
 
 /** Register javascripts to be loaded by the ionic apps */
 Siberian_Assets::addJavascripts(array(

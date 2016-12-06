@@ -319,6 +319,43 @@ $this->addSimpleRadio(
 
 ![12-radio](/img/forms/12-radio.png)
 
+### Date, Datetime & Time pickers
+
+#### code
+
+```php
+$this->addSimpleDatetimepicker(
+    "date", 
+    __("Date Picker"), 
+    false, 
+    Siberian_Form_Abstract::DATEPICKER
+); 
+```    
+
+![datepicker](/img/forms/datepicker.png)
+
+```php
+$this->addSimpleDatetimepicker(
+    "datetimepicker", 
+    __("DateTime Picker"), 
+    false, 
+    Siberian_Form_Abstract::DATETIMEPICKER
+); 
+```    
+
+![datetimepicker](/img/forms/datetimepicker.png)
+
+```php
+$this->addSimpleDatetimepicker(
+    "timepicker", 
+    __("Time Picker"), 
+    false, 
+    Siberian_Form_Abstract::TIMEPICKER
+); 
+```    
+
+![timepicker](/img/forms/timepicker.png)
+
 ### Submit repeat (for long forms)
 
 #### code
