@@ -356,6 +356,26 @@ $this->addSimpleDatetimepicker(
 
 ![timepicker](/img/forms/timepicker.png)
 
+### Slider element
+
+#### code
+
+```php
+$this->addSimpleSlider(
+    "element_slidero", 
+    __("Slider"), 
+    array(
+        "min" => -100, 
+        "max" => 100, 
+        "step" => 5, 
+        "unit" => "%"
+    ), true);
+```
+
+The option `unit` goes along with the last parameter `$with_indicator` to show or not an indicator, `%`, `°`, `px`, etc...
+
+![12-radio](/img/forms/14-slider.png)
+
 ### Submit repeat (for long forms)
 
 #### code

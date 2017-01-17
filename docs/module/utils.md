@@ -76,7 +76,7 @@ This function allows to build fully qualified URI, you can also specify the `$lo
 Example:
 
 ```php
-echo __path("/job/application/edit", array("value_id" => 12, "option_id" => 42));
+echo __url("/job/application/edit", array("value_id" => 12, "option_id" => 42));
 
 # output
 http://www.yourdomain.com/job/application/edit/value_id/12/option_id/42

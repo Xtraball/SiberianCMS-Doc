@@ -141,6 +141,13 @@ class MyAwesomeLayout_Bootstrap {
         Siberian_Assets::addStylesheets(array(
             "modules/layout/home/my_awesome_layout/style.css",
         ));
+        
+        # Register a custom form for the Layout Options
+        Siberian_Feature::registerLayoutOptionsCallbacks("my_awesome_layout", "MyAwesomeLayout_Form_MyAwesomeLayout", function($datas) {
+            $options = array();
+            
+            return $options;
+        });
     }
 }
 ```
@@ -179,6 +186,15 @@ If you need to change options in your module while providing an update you must 
 
 ```php
 <?php
+/** Available in Siberian 4.8.6+ only */
+$default_options = Siberian_Json::encode(array(
+    "borders" => "border-right",
+    "borders" => "border-left",
+    "borders" => "border-top",
+    "label" => "label-left",
+    "textTransform" => "title-lowcase",
+));
+
 # MyAwesomeLayout
 $datas = array(
     'name'                       => 'MyAwesomeLayout',
@@ -193,6 +209,8 @@ $datas = array(
     "order"                      => 1200,
     "is_active"                  => 1,
     "use_subtitle"               => 1,
+    "use_homepage_slider"        => 1,
+    "options"                    => $default_options,
 );
 
 $layout = new Application_Model_Layout_Homepage();
@@ -218,6 +236,8 @@ Siberian_Assets::copyAssets("/app/local/modules/MyAwesomeLayout/resources/var/ap
 |order|yes|The order in the section Design > CHOOSE YOUR LAYOUT|
 |is_active|yes|must be 1|
 |use_subtitle|yes|Whether your layout uses subtitles. **/!\ Only available in flat design**|
+|use_homepage_slider|no|Whether your layout is designed to work with the homepageslider.|
+|options|no|Default options for your layout Siberian 4.8.6+ only|
 
 
 #### Visibility
@@ -342,6 +362,8 @@ The hooks.js file is an Angular service, lazy loaded when using a custom Layout,
 App.service('my_awesome_layout', function ($rootScope, HomepageLayout) {
 
     var service = {};
+    
+    var _features;
 
     /**
      * Must return a valid template
@@ -380,6 +402,9 @@ App.service('my_awesome_layout', function ($rootScope, HomepageLayout) {
      * @returns {*}
      */
     service.features = function(features, more_button) {
+        /** Keep a copy of the features in your hook */
+        _features = features;
+        
         /** Place more button at the end */
         features.overview.options.push(more_button);
 
@@ -395,7 +420,7 @@ App.service('my_awesome_layout', function ($rootScope, HomepageLayout) {
 |--------|-----------|
 |service.getTemplate|Must return the path to the layout file|
 |service.getModalTemplate|Must return the path to a valid modal file|
-|service.onResize|Called when device orientation is changed or resized (for browser)|
+|service.onResize|Called when device orientation is changed or resized and everytime the homepage is shown|
 |service.features|Called to manipulate features|
 
 * Default modal templates are `templates/home/l10/modal.html` & `templates/home/modal/view.html`
@@ -426,7 +451,6 @@ App.service('my_awesome_layout', function ($rootScope, HomepageLayout) {
   "options": [...]
 }
 ```
-
 
 #### Option
 
@@ -493,6 +517,8 @@ The second example is used by the `Apartments` layout to create chunks of featur
 ```js
 [...]
     service.features = function(features, more_button) {
+        _features = features;
+    
         var more_options = features.options.slice(12);
         var chunks = new Array();
         var i, j, temparray, chunk = 2;
@@ -506,6 +532,181 @@ The second example is used by the `Apartments` layout to create chunks of featur
     };
 [...]
 ```
+
+## Layout Options
+
+In the version 4.8.6 we introduced new Layout options, you can offer easy customization of your layouts to the final user with a simple form.
+
+If you want to add custom options to your layout you must create a Form and register it in your bootstrap.
+
+```raw
+MyAwesomeLayout.zip
+└─ Form
+   └─ MyAwesomeLayout.php
+```
+
+### Bootstrap hook
+
+```php
+# Register a custom form for the Layout Options
+Siberian_Feature::registerLayoutOptionsCallbacks("my_awesome_layout", "MyAwesomeLayout_Form_MyAwesomeLayout", function($datas) {
+    $options = array();
+    
+    return $options;
+});
+```
+
+### Form options
+
+Here is a simple example of what the form could look (from Layout 18).
+
+![layout-18](img/layout/layout-18-form.png)
+
+And the example code
+
+```php
+<?php
+
+class MyAwesomeLayout_Form_MyAwesomeLayout extends Siberian_Form_Options_Abstract {
+
+
+    public function init() {
+        parent::init();
+
+        /** Bind as a create form */
+        self::addClass("create", $this);
+        self::addClass("form-layout-options", $this);
+
+        $label = $this->addSimpleSelect("label", __("Title position"), array(
+            "label-left" => __("Left"),
+            "label-right" => __("Right"),
+        ));
+
+        $textTransform = $this->addSimpleSelect("textTransform", __("Title case"), array(
+            "title-lowcase" => __("Lower case"),
+            "title-uppercase" => __("Upper case"),
+        ));
+
+        $borders = $this->addSimpleMultiCheckbox("borders", __("Display Borders"), array(
+            "border-left" => __("Left"),
+            "border-right" => __("Right"),
+            "border-top" => __("Top"),
+            "border-bottom" => __("Bottom"),
+        ));
+
+        $this->addNav("submit", __("Save"), false, false);
+
+        self::addClass("btn-sm", $this->getDisplayGroup("submit")->getElement(__("Save")));
+
+    }
+
+}
+```
+
+Your form `MUST` inherit `Siberian_Form_Options_Abstract` class.
+
+Then you can add your options.
+
+### style.css
+
+And the view.html & style.css examples
+
+Here in the style.css we are using classes with the same names as the form values below, this is one way of doing it.
+
+```css
+[...]
+.layout.layout_siberian_18 .label-right {
+    text-align: right;
+}
+.layout.layout_siberian_18 .label-left {
+    text-align: left;
+}
+
+.layout.layout_siberian_18 .title-lowcase {
+    text-transform: inherit;
+}
+.layout.layout_siberian_18 .title-uppercase {
+    text-transform: uppercase;
+}
+[...]
+```
+
+### view.html
+
+And then in the view.html
+
+```html
+<div class="layout layout_siberian_18">
+	<ion-scroll direction="y" scrollbar-y="false" class="scroll-view ionic-scroll">
+		<div ng-repeat="feature in features.options">
+			<a tabbar-items class="item item-avatar item-avatar-square homepage-custom border-custom translucent {{ features.layoutOptions.borders.join(' ') }}" option="feature" go-to-url="goTo(feature)" ng-class="{ 'no-border': tabbar_is_transparent }">
+				<img ng-src="{{ feature.icon_url }}" />
+				<h2 class="{{ features.layoutOptions.label+' '+features.layoutOptions.textTransform }}">{{ feature.name }}</h2>
+				<span ng-if="feature.code == 'push_notification' && push_badge" class="badge badge-assertive">{{ push_badge }}</span>
+			</a>
+		</div>
+	</ion-scroll>
+</div>
+```
+
+Here we are using a simple javascript "join" to concatenate all the selected options which have the same classes names.
+
+For the multi-select
+
+`{{ features.layoutOptions.borders.join(' ') }}`
+
+And for the simple selects we only echo the class, or classes
+
+`{{ features.layoutOptions.label+' '+features.layoutOptions.textTransform }}`
+
+### Advanced usage of the options
+
+In the layout swiper, we are using the options to configure the Slider javascript object
+
+Here is an example of how we do it.
+
+in our hooks.js file, within the onResize function
+
+```js
+/**
+ * onResize is used for css/js callbacks when orientation change
+ */
+service.onResize = function() {
+    
+    var options = _features.layoutOptions;
+    /** Do nothing for this particular one */
+    var time_out = ($rootScope.isOverview) ? 1000 : 200;
+    
+    $timeout(function() {
+        if(swipe_instance != null && typeof swipe_instance.destroy == "function") {
+            swipe_instance.destroy(true, false);
+        }
+        swipe_instance = new Swiper('.layout.layout_siberian_swipe .swiper-container', {
+            direction: 'vertical',
+            loop: (options.loop == "1") ? true : false,
+            effect: 'coverflow',
+            centeredSlides: true,
+            initialSlide: (options.backcurrent == "1") ? service.last_index : 0,
+            slidesPerView: 'auto',
+            loopedSlides: 6,
+            coverflow: {
+                rotate: options.angle,
+                stretch: options.stretch,
+                depth: options.depth,
+                modifier: 1,
+                slideShadows : false
+            }
+        });
+
+    }, time_out);
+};
+```
+
+previously we saved the `_features` array in the features function, and thus can use it.
+
+However, you can also access the layout options here
+
+`HomepageLayout.layoutOptions`
 
 ## Package
 
