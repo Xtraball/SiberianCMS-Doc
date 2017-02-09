@@ -346,10 +346,6 @@ here: the short path `job/application/edit.phtml` referring to `ModuleName/resou
 
 * Use only the short path.
 
-## Advanced Usage, Ionic
-
-See [module/advanced](module/advanced) for more informations about Ionic code.
-
 ## Cache
 
 Module inheritance is cached, so each time you add or remove a file in your module, you must delete the file `var/cache/design.cache`

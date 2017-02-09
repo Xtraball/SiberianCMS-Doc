@@ -9,6 +9,7 @@ pages:
     - 'Structure & Basics': 'module.md'
     - 'Basic usage': 'module/basic.md'
     - 'Forms': 'module/forms.md'
+    - 'Offline Mode': 'module/offline-mode.md'
     - 'Utils': 'module/utils.md'
     - 'Core inheritance': 'module/core-inheritance.md'
   - API:
