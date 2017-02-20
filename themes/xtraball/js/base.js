@@ -30,10 +30,8 @@ $(window).resize(function() {
 });
 
 function position() {
-    console.log($(window).scrollTop() + $(".bs-sidebar").height(), $(".footer").position().top);
-    if($(window).scrollTop() + $(".bs-sidebar").height() > $(".footer").position().top) {
-        console.log($(".footer").height());
-        var bottom = $(window).scrollTop() + $(".bs-sidebar").height() - $(".footer").position().top + $(".footer").height();
+    if($(window).scrollTop() + $(".bs-sidebar").outerHeight() > $(".footer").position().top) {
+        var bottom = $(window).scrollTop() + $(".bs-sidebar").outerHeight() - $(".footer").position().top + $(".footer").outerHeight();
         $('#aside-dock').css({
             bottom: bottom,
             top: 'initial',

@@ -20,3 +20,4 @@ pages:
 theme_dir: themes/xtraball
 site_dir: siberiancms
 repo_url: https://github.com/Xtraball/SiberianCMS/
+google_analytics: ['UA-90544135-3', 'auto']
