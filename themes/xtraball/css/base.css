@@ -577,7 +577,7 @@ ul.nav.navbar-nav.sb-nav > li:first-child {
     display: none;
 }
 
-a[href*='https://github.com']:not(.btn):before {
+a[href*='https://github.com']:not(.btn):not(.github):before {
     display: inline-block;
     font-family: FontAwesome;
     font-style: normal;
@@ -589,7 +589,7 @@ a[href*='https://github.com']:not(.btn):before {
     margin-right: 6px;
 }
 
-a[href*='https://github.com']:not(.btn) {
+a[href*='https://github.com']:not(.btn):not(.github) {
     cursor: pointer;
     margin-top: -44px;
     padding: 6px;
@@ -598,12 +598,12 @@ a[href*='https://github.com']:not(.btn) {
     text-decoration: none;
 }
 
-a[href*='https://github.com']:not(.btn):hover {
+a[href*='https://github.com']:not(.btn):not(.github):hover {
     color: white;
     border-color: white;
     background-color: #0099c7;
 }
 
-a[href*='https://github.com/Xtraball/SiberianCMS-Doc/blob/master']:not(.btn) {
+a[href*='https://github.com/Xtraball/SiberianCMS-Doc/blob/master']:not(.btn):not(.github) {
     float: right;
 }
