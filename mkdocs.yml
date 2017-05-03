@@ -12,6 +12,9 @@ pages:
     - 'Offline Mode': 'module/offline-mode.md'
     - 'Utils': 'module/utils.md'
     - 'Core inheritance': 'module/core-inheritance.md'
+  - Stack:
+#    - 'Ionic tools': 'stack/ionic-tools.md'
+    - 'Frameworks': 'stack/frameworks.md'
   - API:
     - 'Introduction': 'api.md'
     - 'Application': 'api/application.md'
