@@ -30,6 +30,12 @@ div.col-md-9 img {
   max-width: 100%;
 }
 
+@media(min-width:1600px) {
+    .container {
+        width:1570px
+    }
+}
+
 /*
  * Side navigation
  *
@@ -571,9 +577,20 @@ ul.nav.navbar-nav.sb-nav > li:first-child {
     display: none;
 }
 
-a[href*='https://github.com/Xtraball/SiberianCMS-Doc/blob/master'] {
+a[href*='https://github.com']:not(.btn):before {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f09b";
+    margin-right: 6px;
+}
+
+a[href*='https://github.com']:not(.btn) {
     cursor: pointer;
-    float: right;
     margin-top: -44px;
     padding: 6px;
     border: 1px solid;
@@ -581,8 +598,12 @@ a[href*='https://github.com/Xtraball/SiberianCMS-Doc/blob/master'] {
     text-decoration: none;
 }
 
-a[href*='https://github.com/Xtraball/SiberianCMS-Doc/blob/master']:hover {
+a[href*='https://github.com']:not(.btn):hover {
     color: white;
     border-color: white;
     background-color: #0099c7;
+}
+
+a[href*='https://github.com/Xtraball/SiberianCMS-Doc/blob/master']:not(.btn) {
+    float: right;
 }

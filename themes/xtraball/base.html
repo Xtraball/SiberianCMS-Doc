@@ -50,7 +50,7 @@
         {% endif %}
 
         <div class="container sb-main {% if page_title %}{{ page_title }}{% else %}Index{% endif %}">
-            <div class="col-md-3">
+            <div class="col-md-3 col-lg-2">
                 <div id="aside-dock">
                     {% if page_title %}
                         {% include "toc.html" %}
@@ -59,7 +59,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="col-md-9" role="main">{% include "content.html" %}</div>
+            <div class="col-md-9 col-lg-10" role="main">{% include "content.html" %}</div>
         </div>
 
         <div class="container-fluid footer">
