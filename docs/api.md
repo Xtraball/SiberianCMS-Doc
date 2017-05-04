@@ -28,7 +28,7 @@ Here is the list of the available APIs:
 
 ### Application
 
-* [Create an application](../api/application#create)
+* [Create an application](api/application#create)
 
 * [Update an existing application](api/application#update)
 

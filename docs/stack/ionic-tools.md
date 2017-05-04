@@ -16,7 +16,7 @@ This service also takes care of the translations, every `String` goes into `$tra
 Dialog.alert(title, message, button, dismiss);
 ```
 
-![dialog-alert](/img/stack/dialogalert.png)
+![dialog-alert](../img/stack/dialogalert.png)
 
 #### options
 
@@ -33,7 +33,7 @@ Dialog.alert(title, message, button, dismiss);
 Dialog.prompt(title, message, type, value);
 ```
 
-![dialog-prompt](/img/stack/dialogprompt.png)
+![dialog-prompt](../img/stack/dialogprompt.png)
 
 #### options
 
@@ -51,7 +51,7 @@ Dialog.prompt(title, message, type, value);
 Dialog.confirm(title, message, buttons_array, css_class);
 ```
 
-![dialog-confirm](/img/stack/dialogconfirm.png)
+![dialog-confirm](../img/stack/dialogconfirm.png)
 
 #### options
 
@@ -109,7 +109,7 @@ Loader.show(text, config);
 Loader.show()
 ```
 
-![loader-simple](/img/stack/loader-simple.png)
+![loader-simple](../img/stack/loader-simple.png)
 
 #### example with text
 
@@ -117,7 +117,7 @@ Loader.show()
 Loader.show("Custom text...")
 ```
 
-![loader-custom](/img/stack/loader-custom.png)
+![loader-custom](../img/stack/loader-custom.png)
 
 #### example with image
 
@@ -125,7 +125,7 @@ Loader.show("Custom text...")
 Loader.show("<br /><img src='https://goo.gl/SBAxdl' style='width: 60px;' />")
 ```
 
-![loader-image](/img/stack/loader-image.png)
+![loader-image](../img/stack/loader-image.png)
 
 ## Hide
 

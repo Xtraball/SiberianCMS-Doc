@@ -176,7 +176,7 @@ This binder is used for small delete forms, to trigger various events
 $this->addNav("form-test-nav")
 ```
 
-![01-top-nav](/img/forms/01-top-nav.png)
+![01-top-nav](../img/forms/01-top-nav.png)
 
 ### Image upload with crop
 
@@ -192,11 +192,11 @@ $this->addSimpleImage(
 );
 ```
 
-![02-image-upload](/img/forms/02-image-upload.png)
+![02-image-upload](../img/forms/02-image-upload.png)
 
 **Crop modal**
 
-![02-image-crop](/img/forms/02-image-crop.png)
+![02-image-crop](../img/forms/02-image-crop.png)
 
 ### Input text
 
@@ -207,7 +207,7 @@ $this->addSimpleImage(
 $this->addSimpleText("element_text", __("Text"));
 ```
 
-![03-text](/img/forms/03-text.png)
+![03-text](../img/forms/03-text.png)
 
 ### Input password
 
@@ -218,7 +218,7 @@ $this->addSimpleText("element_text", __("Text"));
 $this->addSimplePassword("element_password", __("Password"));
 ```
 
-![04-password](/img/forms/04-password.png)
+![04-password](../img/forms/04-password.png)
 
 ### Textarea
 
@@ -229,7 +229,7 @@ $this->addSimplePassword("element_password", __("Password"));
 $this->addSimpleTextarea("element_textarea", __("Textarea"));
 ```
 
-![05-textarea](/img/forms/05-textarea.png)
+![05-textarea](../img/forms/05-textarea.png)
 
 ### Textarea 100%
 
@@ -240,7 +240,7 @@ $textarea_100 = $this->addSimpleTextarea("element_textarea_100", __("Textarea 10
 $textarea_100->setNewDesignLarge();
 ```
 
-![06-textarea-100](/img/forms/06-textarea-100.png)
+![06-textarea-100](../img/forms/06-textarea-100.png)
 
 ### Richtext (CKEditor)
 
@@ -252,7 +252,7 @@ $richtext = $this->addSimpleTextarea("element_textarea_richtext", __("Textarea R
 $richtext->setRichtext();
 ```
 
-![07-richtext](/img/forms/07-richtext.png)
+![07-richtext](../img/forms/07-richtext.png)
 
 ### Select
 
@@ -266,7 +266,7 @@ $this->addSimpleSelect(
 );
 ```
 
-![08-select](/img/forms/08-select.png)
+![08-select](../img/forms/08-select.png)
 
 ### MultiSelect
 
@@ -280,7 +280,7 @@ $this->addSimpleMultiSelect(
 );
 ```
 
-![09-multiselect](/img/forms/09-multiselect.png)
+![09-multiselect](../img/forms/09-multiselect.png)
 
 ### Checkbox
 
@@ -290,7 +290,7 @@ $this->addSimpleMultiSelect(
 $this->addSimpleCheckbox("element_checbox", __("Checkbox"));
 ```
 
-![10-checkbox](/img/forms/10-checkbox.png)
+![10-checkbox](../img/forms/10-checkbox.png)
 
 ### MultiCheckbox
 
@@ -304,7 +304,7 @@ $this->addSimpleMultiCheckbox(
 );
 ```
 
-![11-multicheckbox](/img/forms/11-multicheckbox.png)
+![11-multicheckbox](../img/forms/11-multicheckbox.png)
 
 ### Radio button
 
@@ -317,7 +317,7 @@ $this->addSimpleRadio(
     array("Option #1", "Option #2", "Option #3", "Option #4"));
 ```
 
-![12-radio](/img/forms/12-radio.png)
+![12-radio](../img/forms/12-radio.png)
 
 ### Date, Datetime & Time pickers
 
@@ -332,7 +332,7 @@ $this->addSimpleDatetimepicker(
 ); 
 ```    
 
-![datepicker](/img/forms/datepicker.png)
+![datepicker](../img/forms/datepicker.png)
 
 ```php
 $this->addSimpleDatetimepicker(
@@ -343,7 +343,7 @@ $this->addSimpleDatetimepicker(
 ); 
 ```    
 
-![datetimepicker](/img/forms/datetimepicker.png)
+![datetimepicker](../img/forms/datetimepicker.png)
 
 ```php
 $this->addSimpleDatetimepicker(
@@ -354,7 +354,7 @@ $this->addSimpleDatetimepicker(
 ); 
 ```    
 
-![timepicker](/img/forms/timepicker.png)
+![timepicker](../img/forms/timepicker.png)
 
 ### Slider element
 
@@ -374,7 +374,7 @@ $this->addSimpleSlider(
 
 The option `unit` goes along with the last parameter `$with_indicator` to show or not an indicator, `%`, `°`, `px`, etc...
 
-![12-radio](/img/forms/14-slider.png)
+![12-radio](../img/forms/14-slider.png)
 
 ### Submit repeat (for long forms)
 
@@ -384,7 +384,7 @@ The option `unit` goes along with the last parameter `$with_indicator` to show o
 $this->addNav("submit-repeat", "OK", false);
 ```
 
-![13-repeat-submit](/img/forms/13-repeat-submit.png)
+![13-repeat-submit](../img/forms/13-repeat-submit.png)
 
 ## Form usage
 

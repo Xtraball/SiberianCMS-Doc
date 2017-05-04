@@ -18,7 +18,7 @@ The core inheritance is cached, so each time you add or remove a file in local, 
 
 However you can also wipe various cache levels manually in the Backoffice dashboard:
 
-![dashboard-cache](/img/module/dashboard-cache.png)
+![dashboard-cache](../img/module/dashboard-cache.png)
 
 ## Example
 
