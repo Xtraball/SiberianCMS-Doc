@@ -315,3 +315,39 @@ All our backend is running under Zend Framework with a complete custom stack on 
 - Version: `1.10.0`
 
 - [See on Github](https://github.com/Xtraball/siberian-plugin-push)
+
+&nbsp;
+
+### Javascript
+
+#### Swiper
+
+- Version: `3.4.1`
+
+- [See on Github](https://github.com/nolimits4web/Swiper)
+
+&nbsp;
+
+#### Lodash
+
+- Version: `1.8.3`
+
+- [See on Github](https://github.com/lodash/lodash)
+
+&nbsp;
+
+#### LocalForage
+
+- Version: `1.4.3`
+
+- [See on Github](https://github.com/localForage/localForage)
+
+&nbsp;
+
+#### Angular Queue
+
+- Version: `1.0.0`
+
+- [See on Github](https://github.com/Xtraball/angular-queue)
+
+&nbsp;
