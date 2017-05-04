@@ -263,7 +263,7 @@ The layout is composed of 3 or 4 files generally, `view.html`, `style.css`, `hoo
 ```html
 <div class="layout my_awesome_layout">
 	<ul id="container">
-		<li class="item homepage-custom translucent"
+		<li class="item homepage-custom"
         	ng-class="{ 'background-transparent' : tabbar_is_transparent, 'no-border' : tabbar_is_transparent }"
         	ng-show="tabbar_is_visible"
         	tabbar-items
@@ -289,7 +289,7 @@ Each feature is an item and needs some directives:
 |-------|---------------|-----------|
 |tabbar-items|yes|This directive binds the on-click of your element|
 |option="feature"|yes|Sets the option to the current feature|
-|go-to-url="goTo(feature);"|yes|Tells the tabbar-items directive what function to use|
+|go-to-url="goTo(feature);"|yes|**This option is deprecated in Siberian 5.0**|
 |ng-show="tabbar_is_visible"|yes|Condition used when the layout is always displayed|
 |ng-class="[...]"|yes|Used by the option in Editor > Colors > Homepage > Transparent to remove border & background|
 
@@ -301,15 +301,12 @@ Elements also use CSS classes to bind their colors upon the application defined 
 |-----|---------------|
 |item|yes|
 |homepage-custom|yes|
-|translucent|no|
 
 &nbsp;
 
-Examples for the class `translucent`:
-
-|Classic (opaque)|Translucent (default: opacity 0.8)|
-|----------------|----------------------------------|
-|![opaque](img/layout/opaque-1.png)|![translucent-1](img/layout/translucent-1.png) ![translucent-2](img/layout/translucent-2.png)|
+|Classic|
+|----------------|
+|![opaque](img/layout/opaque-1.png)![translucent-1](img/layout/translucent-1.png) ![translucent-2](img/layout/translucent-2.png)|
 
 
 ### style.css
@@ -639,7 +636,7 @@ And then in the view.html
 <div class="layout layout_siberian_18">
 	<ion-scroll direction="y" scrollbar-y="false" class="scroll-view ionic-scroll">
 		<div ng-repeat="feature in features.options">
-			<a tabbar-items class="item item-avatar item-avatar-square homepage-custom border-custom translucent {{ features.layoutOptions.borders.join(' ') }}" option="feature" go-to-url="goTo(feature)" ng-class="{ 'no-border': tabbar_is_transparent }">
+			<a tabbar-items class="item item-avatar item-avatar-square homepage-custom border-custom {{ features.layoutOptions.borders.join(' ') }}" option="feature" go-to-url="goTo(feature)" ng-class="{ 'no-border': tabbar_is_transparent }">
 				<img ng-src="{{ feature.icon_url }}" />
 				<h2 class="{{ features.layoutOptions.label+' '+features.layoutOptions.textTransform }}">{{ feature.name }}</h2>
 				<span ng-if="feature.code == 'push_notification' && push_badge" class="badge badge-assertive">{{ push_badge }}</span>
