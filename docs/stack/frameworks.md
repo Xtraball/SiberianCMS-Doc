@@ -42,7 +42,7 @@ The main codebase inside the editor is powered with `jQuery` and `bootstrap`.
 
 - [See on Github](https://github.com/chartjs/Chart.js) 
 
-![chart-js](/img/stack/chartjs.png)
+![chart-js](../img/stack/chartjs.png)
 
 ### DataTables
 
@@ -66,7 +66,7 @@ The main codebase inside the editor is powered with `jQuery` and `bootstrap`.
 
 - [See on Github](https://github.com/t4t5/sweetalert)
 
-![sweet-alert](/img/stack/sweetalert.png)
+![sweet-alert](../img/stack/sweetalert.png)
 
 *Basic example*
 
