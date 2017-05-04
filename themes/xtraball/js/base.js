@@ -16,7 +16,7 @@ $("li.disabled a").click(function() {
 });
 
 /* jQuery scroll */
-var aside_top = $('#aside-dock').offset().top - 20;
+/**var aside_top = $('#aside-dock').offset().top - 20;
 var aside_width = $('#aside-dock').width();
 
 $(window).scroll(function () {
@@ -51,4 +51,4 @@ function position() {
             position: 'relative'
         });
     }
-}
+}*/

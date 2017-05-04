@@ -16,7 +16,7 @@ Modules are installed in the `app/local/modules` folder, for more information ab
 
 ## Structure
 
-### Folder structure of a Module
+### Folder structure
 
 ```raw
 ModuleName
@@ -48,7 +48,7 @@ ModuleName
 
 ## Basics
 
-### Structure of package.json
+### package.json
 
 The `package.json` is used by the Installer to know the requirements, and routines to run during the installation/update process
 
@@ -322,7 +322,7 @@ ModuleName
 └─ [...]
 ```
 
-### layout/job.xml example
+### job.xml example
 
 This is the minimum required information in the default `layout.xml`, the file should be named as the module itself, lower-cased so `job.xml` in our case.
 

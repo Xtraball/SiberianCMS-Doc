@@ -230,7 +230,7 @@ h5 {
     border-bottom-color: #0d83b0;
     border-bottom-width: 1px;
     border-radius: 0;
-    height: 88px;
+    min-height: 88px;
     margin-bottom: 0;
     z-index: 1000;
 }
@@ -361,11 +361,22 @@ h5 {
 
 .navbar-default .navbar-nav>li>a {
     color: white;
-    font-size: 16px;
     text-transform: uppercase;
     border-radius: 4px;
     margin-right: 8px;
     font-weight: 700;
+}
+
+@media (max-width: 1499px) {
+    .navbar-default .navbar-nav>li>a {
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .navbar-default .navbar-nav>li>a {
+        font-size: 16px;
+    }
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
@@ -432,6 +443,18 @@ li.level-1 {
 li.level-2 {
     text-indent: 10px;
     font-size: 14px;
+}
+
+.level-1 a {
+    font-weight: bold;
+}
+
+.level-3 a {
+    color: #333;
+}
+
+.level-3 a:before {
+    content: "- ";
 }
 
 li.level-3 {

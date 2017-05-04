@@ -13,7 +13,7 @@ pages:
     - 'Utils': 'module/utils.md'
     - 'Core inheritance': 'module/core-inheritance.md'
   - Stack:
-#    - 'Ionic tools': 'stack/ionic-tools.md'
+    - 'Ionic tools': 'stack/ionic-tools.md'
     - 'Frameworks': 'stack/frameworks.md'
   - API:
     - 'Introduction': 'api.md'

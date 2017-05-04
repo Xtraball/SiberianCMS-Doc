@@ -1,5 +1,7 @@
 # Frameworks
 
+[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/stack/frameworks.md)
+
 Below you'll find a complete list of the various frameworks we use both in Editor, Backoffice & Applications.
 
 ## Editor
@@ -77,6 +79,8 @@ You can see [this page](http://t4t5.github.io/sweetalert/) for more advanced usa
 
 ## Backoffice
 
+In the backoffice we are mainly using AngularJS along with some plugins for UI, CKEditor, Graphs.
+
 ### FontAwesome 
 
 - Version: `4.2.0`
@@ -103,6 +107,24 @@ You can see [this page](http://t4t5.github.io/sweetalert/) for more advanced usa
 - Version: `3`
 
 - [See on Github](https://github.com/ckeditor)
+
+
+## Backend
+
+All our backend is running under Zend Framework with a complete custom stack on top of it, we also use libraries for Push & SCSS.
+
+### PHP
+
+- Version: `>= 5.6`
+
+- [See on Github](https://github.com/php)
+
+### Zend Framework
+
+- Version: `1.12.3`
+
+- [See on Github](https://github.com/zendframework/zf1)
+
 
 ## Applications
 
