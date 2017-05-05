@@ -72,7 +72,7 @@ MyAwesomeLayout.zip
 │                    ├─ hooks.js
 │                    ├─ style.css
 │                    └─ view.html
-├─ bootstrap.php
+├─ init.php
 ├─ package.json
 └─ [...]
 ```
@@ -102,7 +102,7 @@ The `package.json` is used by the Installer to know the requirements, and routin
 
 |Field|Required&nbsp;?|Description|
 |-----|---------------|-----------|
-|name|yes|Package name, avoid spaces and numbers as this is also your `bootstrap.php` Class name & Folder name in `app/local/modules/MyAwesomeLayout/[...]`|
+|name|yes|Package name, avoid spaces and numbers as this is also your Class name & Folder name in `app/local/modules/MyAwesomeLayout/[...]`|
 |description|yes|Package description|
 |type|yes|must be `layout`|
 |version|yes|Your layout version, for updates|
@@ -113,10 +113,15 @@ The `package.json` is used by the Installer to know the requirements, and routin
 
 ### Bootstrap
 
+**Note: the `bootstrap.php` file is deprecated since Siberian 5.0 see the Init section below for the new flavor**
+
 We use `bootstrap.php` to hook & register the layout files into Siberian & update assets.
 
 ```php
 <?php
+/**
+ * @deprecated from Siberian 5.0, see Init.
+ */
 class MyAwesomeLayout_Bootstrap {
 
     public static function init($bootstrap) {
@@ -152,11 +157,58 @@ class MyAwesomeLayout_Bootstrap {
 }
 ```
 
+
+## Init
+
+**The new init syntax is available from Siberian 5.0, this new syntax avoids conflicts with already exisiting bootstrap classes**
+
+The file `init.php` is used to hook & register the layout files into Siberian & update assets.
+
+However the syntax & methods used inside **Init** remains the same as with the older bootstrap files.
+
+```php
+<?php
+
+$init = function($bootstrap) {
+    # Register assets
+    # This path must be "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
+    # Where "MyAwesomeLayout" is your layout package name #what-you-need
+    Siberian_Assets::registerAssets(
+        "MyAwesomeLayout", 
+        "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
+    );
+    
+    # Hook javascript to index.html
+    # These path are relative to the previously defined before:
+    # "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
+    Siberian_Assets::addJavascripts(array(
+        "modules/layout/home/my_awesome_layout/hooks.js",
+    ));
+    
+    # Hook stylesheets to index.html
+    # These path are relative to the previously defined before:
+    # "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
+    Siberian_Assets::addStylesheets(array(
+        "modules/layout/home/my_awesome_layout/style.css",
+    ));
+    
+    # Register a custom form for the Layout Options
+    Siberian_Feature::registerLayoutOptionsCallbacks("my_awesome_layout", "MyAwesomeLayout_Form_MyAwesomeLayout", function($datas) {
+        $options = array();
+        
+        return $options;
+    });
+};
+```
+
+`$bootstrap` is a reference to the Zend Bootstrap if you need to hook it.
+
+
 #### Icon & Image sizing
 
 **Available from version 4.7.10**
 
-If your layout requires custom ratio images to illustrate features, you can register a callback function in the `bootstrap.php` to be called like this.
+If your layout requires custom ratio images to illustrate features, you can register a callback function in the `init.php` to be called like this.
 
 ```php
 Siberian_Feature::registerRatioCallback("my_awesome_layout", function($position) {
@@ -534,7 +586,7 @@ The second example is used by the `Apartments` layout to create chunks of featur
 
 In the version 4.8.6 we introduced new Layout options, you can offer easy customization of your layouts to the final user with a simple form.
 
-If you want to add custom options to your layout you must create a Form and register it in your bootstrap.
+If you want to add custom options to your layout you must create a Form and register it in your init.
 
 ```raw
 MyAwesomeLayout.zip
@@ -542,7 +594,7 @@ MyAwesomeLayout.zip
    └─ MyAwesomeLayout.php
 ```
 
-### Bootstrap hook
+### Init hook
 
 ```php
 # Register a custom form for the Layout Options
@@ -716,6 +768,6 @@ If you have created your own module from the [skeleton](https://github.com/Xtrab
 ```raw
 MyAwesomeLayout.zip
 ├─ resources
-├─ bootstrap.php
+├─ init.php
 └─ package.json
 ```

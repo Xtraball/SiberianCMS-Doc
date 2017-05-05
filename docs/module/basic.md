@@ -6,7 +6,7 @@
 
 Everything you need to organize, style & interact with your Feature in the native apps is located in the `var` folder
 
-Assets are merged on install & updates with the `bootstrap.php` see [register assets](#register-assets)
+Assets are merged on install & updates with the `init.php` see [register assets](#register-assets)
 
 You must place your files in a `modules/yourmodule` folder, here `modules/job`.
 
@@ -55,22 +55,42 @@ The part `templateUrl: "templates/job/l1/view.html"` concerns our template `app/
 
 ## Bootstrap
 
-Basically it's a file named `bootstrap.php` at the root of your package, below an example:
+**Note: the `bootstrap.php` file is deprecated since Siberian 5.0 see the Init section below for the new flavor**
 
-**Note: Consider making this file as light as possible and error free**
+Basically it's a file named `bootstrap.php` at the root of your package, below an example:
 
 ```php
 <?php
-
+/**
+ * @deprecated from Siberian 5.0, see Init.
+ */
 class ModuleName_Bootstrap {
 
     public static function init($bootstrap) {
-
+        # Your assets, options, etc ...
     }
 }
 ```
 
 `ModuleName` should respect your module name case.
+
+`$bootstrap` is a reference to the Zend Bootstrap if you need to hook it.
+
+## Init
+
+**The new init syntax is available from Siberian 5.0, this new syntax avoids conflicts with already exisiting bootstrap classes**
+
+The file `init.php` is used to hook & register the layout files into Siberian & update assets.
+
+However the syntax & methods used inside **Init** remains the same as with the older bootstrap files.
+
+```php
+<?php
+
+$init = function($bootstrap) {
+    # Your assets, options, etc ...
+};
+```
 
 `$bootstrap` is a reference to the Zend Bootstrap if you need to hook it.
 
