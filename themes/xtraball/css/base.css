@@ -379,6 +379,13 @@ h5 {
     }
 }
 
+@media (max-width: 1100px) {
+    .sb-header .navbar-brand {
+        overflow: hidden;
+        width: 68px;
+    }
+}
+
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
     color: white;
     background: rgba(0, 0, 0, 0.2);
@@ -506,6 +513,7 @@ code.raw {
 .Index h4[id^="template"] a,
 .Index h4[id^="forms"] a,
 .Index h4[id^="icon"] a,
+.Index h4[id^="stack"] a,
 .Index h4[id^="contribute"] a {
     background-size: contain;
     background-position: center;
@@ -550,9 +558,9 @@ code.raw {
     margin-left: 15%;
 }*/
 
-.Index h4[id^="api"] {
+/**.Index h4[id^="api"] {
     margin-left: 15%;
-}
+}*/
 
 .Index h4[id^="api"] a {
     background-image: url("/img/api.png");
@@ -594,6 +602,13 @@ code.raw {
 }
 .Index h4[id^="forms"] a:hover {
     background-image: url("/img/form-blue.png");
+}
+
+.Index h4[id^="stack"] a {
+    background-image: url("/img/stack.png");
+}
+.Index h4[id^="stack"] a:hover {
+    background-image: url("/img/stack-blue.png");
 }
 
 ul.nav.navbar-nav.sb-nav > li:first-child {

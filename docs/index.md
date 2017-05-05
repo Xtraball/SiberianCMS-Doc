@@ -17,4 +17,6 @@ Get into our documentation where you'll find everything needed to setup, use & c
 
 #### [API](api) *Our API documentation will help you to integrate SiberianCMS into your Workflows*
 
+#### [Stack](stack/frameworks) *An exhaustive list of the tools that make up the heart of Siberian*
+
 #### [Contribute](contribute) *If you want to share any improvement or feature, you're welcome !*
