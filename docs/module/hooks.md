@@ -6,7 +6,7 @@ From Siberian 4.11.1 we added a hook to the Sidebar Left menu & Backoffice heade
 
 ## Editor side menu
 
-For utility reasons, and convenience, when creating your module you need a way to access it configuration page somewhere.
+For utility reasons, and convenience, when creating your module you need a way to access its configuration page somewhere.
 
 ```php
 Siberian_Module::addEditorMenu($module, $code, $title, $link);
@@ -30,7 +30,7 @@ The previous code will result in something like this.
 
 ## Backoffice side menu
 
-Backoffice hook works almot the same as Editor hooks.
+Backoffice hook works almost the same as Editor hooks.
 
 ```php
 Siberian_Module::addMenu($module, $code, $title, $link);
