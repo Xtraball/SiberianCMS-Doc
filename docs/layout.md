@@ -1,6 +1,6 @@
 # Layout
 
-[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/layout.md)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/layout.md)
 
 ** *Note: layout packages require Siberian 4.5.0 and above, otherwise they will not work* **
 

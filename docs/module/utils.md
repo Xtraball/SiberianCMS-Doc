@@ -1,6 +1,6 @@
 # Utils
 
-[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/module/utils.md)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/utils.md)
 
 In this section you'll find a description of the tools & libraries shipped with Siberian, some are usefull other are almost mandatory.
 

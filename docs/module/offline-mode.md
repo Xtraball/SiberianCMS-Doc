@@ -1,5 +1,7 @@
 # Offline Mode #
 
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/offline-mode.md)
+
 **Offline mode solely concerns mobile features modules.** If your feature doesn't require real time interaction with a server and can work without network access, the following guide will help you through the process of making your feature accessible in offline mode.
 
 ## Server side ##

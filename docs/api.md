@@ -1,6 +1,6 @@
 # SiberianCMS API Documentation
 
-[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/api.md)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/api.md)
 
 ## Introduction
 

@@ -1,6 +1,6 @@
 # Application
 
-[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/api/application.md)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/api/application.md)
 
 ---
 

@@ -1,6 +1,6 @@
 # Ionic Tools
 
-[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/stack/ionic-tools.md)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/stack/ionic-tools.md)
 
 **Note: The documentation below will apply only after the Siberian 5.0 release.**
 
@@ -346,7 +346,7 @@ $session.getDeviceUid()
 ## getDeviceScreen
 
 ```js
-$session.getDeviceUid()
+$session.getDeviceScreen()
 
 /**
 {

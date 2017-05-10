@@ -1,6 +1,6 @@
 # Frameworks
 
-[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/stack/frameworks.md)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/stack/frameworks.md)
 
 Below you'll find a complete list of the various frameworks we use both in Editor, Backoffice & Applications.
 

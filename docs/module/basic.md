@@ -1,6 +1,6 @@
 # Basic usage 
 
-[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/module/basic.md)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/basic.md)
 
 ## Ionic code
 

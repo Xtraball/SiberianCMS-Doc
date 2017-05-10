@@ -15,6 +15,7 @@ pages:
     - 'Core inheritance': 'module/core-inheritance.md'
   - Stack:
     - 'Ionic tools': 'stack/ionic-tools.md'
+    - 'Utilities': 'stack/utilities.md'
     - 'Frameworks': 'stack/frameworks.md'
   - API:
     - 'Introduction': 'api.md'

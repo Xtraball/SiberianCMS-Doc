@@ -1,6 +1,6 @@
 # Icon
 
-[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/customization/icon.md)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/customization/icon.md)
 
 ** *Note: icon packages require Siberian 4.6.1 and above, otherwise they will not work* **
 

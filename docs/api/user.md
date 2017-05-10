@@ -1,6 +1,6 @@
 # User
 
-[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/api/user.md)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/api/user.md)
 
 ---
 

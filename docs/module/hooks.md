@@ -1,8 +1,8 @@
 # Hooks
 
-From Siberian 4.11.1 we added a hook to the Sidebar Left menu & Backoffice header menu (more will come in next updates)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/hooks.md)
 
-[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/module/hooks.md)
+From Siberian 4.11.1 we added a hook to the Sidebar Left menu & Backoffice header menu (more will come in next updates)
 
 ## Editor side menu
 

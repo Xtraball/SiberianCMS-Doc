@@ -1,6 +1,6 @@
 ## Contribute To SiberianCMS
 
-[Improve this doc](https://github.com/Xtraball/SiberianCMS-Doc/blob/master/docs/contribute.md)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/contribute.md)
 
 Anyone can contribute to SiberianCMS. And we need your contributions.
 
