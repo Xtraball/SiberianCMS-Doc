@@ -4,9 +4,9 @@
 
 ## Software
 
-* Recommended OS: `Linux`
+* Recommended Server OS: `Linux`
 
-    * Works on `OSX` with [homebrew](http://brew.sh/), and on `Windows` with [cygwin](https://www.cygwin.com/)
+    * **For local development only**: Works on `OSX` with [homebrew](http://brew.sh/), and on `Windows` with [cygwin](https://www.cygwin.com/)
     
 * OpenSSL >=1.0.1
 

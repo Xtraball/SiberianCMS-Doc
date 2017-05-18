@@ -351,3 +351,11 @@ All our backend is running under Zend Framework with a complete custom stack on 
 - [See on Github](https://github.com/Xtraball/angular-queue)
 
 &nbsp;
+
+#### Moment.js
+
+- Version: `2.18.1`
+
+- [See on Github](https://github.com/moment/moment)
+
+&nbsp;
