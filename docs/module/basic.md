@@ -55,7 +55,7 @@ The part `templateUrl: "templates/job/l1/view.html"` concerns our template `app/
 
 ## Bootstrap
 
-**Note: the `bootstrap.php` file is deprecated since Siberian 5.0 see the Init section below for the new flavor**
+**Note: the `bootstrap.php` file is deprecated since Siberian 4.12.0 see the Init section below for the new flavor**
 
 Basically it's a file named `bootstrap.php` at the root of your package, below an example:
 
@@ -78,7 +78,7 @@ class ModuleName_Bootstrap {
 
 ## Init
 
-**The new init syntax is available from Siberian 5.0, this new syntax avoids conflicts with already exisiting bootstrap classes**
+**The new init syntax is available from Siberian 4.12.0, this new syntax avoids conflicts with already exisiting bootstrap classes**
 
 The file `init.php` is used to hook & register the layout files into Siberian & update assets.
 

@@ -359,3 +359,12 @@ All our backend is running under Zend Framework with a complete custom stack on 
 - [See on Github](https://github.com/moment/moment)
 
 &nbsp;
+
+#### ProgressBar
+
+- Version: `1.0.1`
+
+- [See on Github](https://github.com/kimmobrunfeldt/progressbar.js)
+
+&nbsp;
+

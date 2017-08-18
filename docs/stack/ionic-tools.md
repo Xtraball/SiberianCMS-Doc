@@ -2,7 +2,7 @@
 
 [Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/stack/ionic-tools.md)
 
-**Note: The documentation below will apply only after the Siberian 5.0 release.**
+**Note: The documentation below will apply only after the Siberian 4.12.0 release.**
 
 # Dialog
 
