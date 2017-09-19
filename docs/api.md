@@ -47,3 +47,19 @@ Here is the list of the available APIs:
 * [Authenticate a user](api/user#authentication)
 
 * [Send a new password to a user](api/user#forgot-password)
+
+### Backoffice
+
+* [Rebuild manifest](api/backoffice#manifest)
+
+* [Clear tmp](api/backoffice#clear-tmp)
+
+* [Clear cache](api/backoffice#clear-cache)
+
+* [Clear logs](api/backoffice#clear-logs)
+
+### Push notifications
+
+* [List available applications](api/push#list)
+
+* [Send global push notification](api/push#send)

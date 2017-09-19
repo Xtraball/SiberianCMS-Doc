@@ -21,6 +21,8 @@ pages:
     - 'Introduction': 'api.md'
     - 'Application': 'api/application.md'
     - 'User': 'api/user.md'
+    - 'Backoffice': 'api/backoffice.md'
+    - 'Push': 'api/push.md'
   - Contribute: contribute.md
 theme_dir: themes/xtraball
 site_dir: siberiancms
