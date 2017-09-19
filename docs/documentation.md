@@ -22,7 +22,7 @@
     
     * functions: `exec()`
     
-    * parameters: `allow_url_fopen = On`, `memory_limit >= 128M`
+    * parameters: `allow_url_fopen = On`, `memory_limit >= 256M`
 
 * MySQL/MariaDB >=5.5 with InnoDB/XtraDB engine
 

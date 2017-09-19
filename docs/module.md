@@ -353,6 +353,53 @@ Module inheritance is cached, so each time you add or remove a file in your modu
 *Note: when installing and/or updating a module with the regular zip package, the cache is automatically cleared for the users.*
 
 
+## Background images
+
+### Editor side
+
+In order to be able to use **portrait & landscape** background for your Features, you will need to replace the old code like this one
+
+```php
+<?php
+    echo $this->getLayout()
+        ->addPartial('background_image', 'core_view_default', 'application/customization/features/edit/background_image.phtml')
+        ->setValueId($option_value->getId())
+        ->toHtml()
+    ;
+?>
+```
+
+With the new code like
+
+```html
+<div class="background-images-import">
+    <?php echo $this->importBackground($option_value); ?>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    // Bind form, only if the current form is not binded from a parent (this could bind it twice)
+    bindForms('.background-images-import');
+});
+</script>
+```
+
+This is as easy as the code below, as everything is linked to the feature, and cropped/saved automatically for you.
+
+### Application / Ionic
+
+Then to be sure your background images inside your Application pages, you must ensure all **views & lists** your <ion-view> and <ion-modal-view> uses the new directive **sb-page-background**
+
+```php
+<ion-view sb-page-background>
+    <ion-content>
+        My Awesome Content!
+    </ion-content>
+</ion-view>
+```
+
+As the old directive **sb-background-image** is deprecated/empty it will not affect anymore your features.
+
 ## Package
 
 When you are done with your module, it's time to pack !
