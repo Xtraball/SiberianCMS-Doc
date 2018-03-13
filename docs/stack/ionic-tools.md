@@ -9,6 +9,7 @@
 The `Dialog` service is used to handle `Alert`, `Prompt` & `Confirm` popups taking care of the stack, and extended with nice features.
 This service also takes care of the translations, every `String` goes into `$translate.instant(text)`
 
+Dialog methods always return a promise
 
 ## Alert
 
@@ -49,6 +50,15 @@ Dialog.prompt(title, message, type, value);
 
 ```js
 Dialog.confirm(title, message, buttons_array, css_class);
+
+Dialog.confirm(title, message, buttons_array, css_class)
+    .then(function (result) {
+        if (result) {
+            // Confirmed
+        } else {
+            // Cancelled
+        }
+    });
 ```
 
 ![dialog-confirm](../img/stack/dialogconfirm.png)
@@ -74,10 +84,17 @@ This Modal service is using $ionicModal but will take cares of the stacking, the
 
 The service also takes care of removing the Modal when closing via `modal.hidden` subscribers.
 
+The Modal service returns a promise with the modal object
+
 ## fromTemplateUrl
 
 ```js
 Modal.fromTemplateUrl(templateUrl, config);
+
+Modal.fromTemplateUrl(templateUrl, config)
+    .then(function (modal) {
+        // Do Whatever you want with your modal!
+    });
 ```
 
 ## fromTemplate
