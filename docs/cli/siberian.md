@@ -9,7 +9,7 @@ Siberian ships with a CLI to help debugging & troubleshooting.
 ## CLI available methods
 
 |Method|Min. version|Params|Description|
-|-----|---------------|-----------|
+|------|------------|------|-----------|
 |export-db|4.13.9|-|Exports the current schema tables (only schemas) to `var/schema/CURRENT_VERSION/TABLE.php` this is useful to prepare db files for your custom modules|
 |version|4.13.9|version|Updates `lib/Siberian/Version.php` with the given version|
 |user:password|4.13.9|-|This action will ask for an e-mail and a password, usefull to change a lost backoffice password|
