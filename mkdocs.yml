@@ -13,6 +13,7 @@ pages:
     - 'Offline Mode': 'module/offline-mode.md'
     - 'Utils': 'module/utils.md'
     - 'Core inheritance': 'module/core-inheritance.md'
+    - 'Siberian CLI': 'cli/siberian.md'
   - Stack:
     - 'Ionic tools': 'stack/ionic-tools.md'
     - 'Utilities': 'stack/utilities.md'
