@@ -107,7 +107,7 @@ lastname|string|User lastname
 ```json
 {
     "success": 1,
-    "user_id": 1,
+    "user_id": 1
 }
 ```
 
@@ -143,7 +143,7 @@ $endpoint = "http://www.domain.com/admin/api_account/exist"
 
 ```json
 {
-    "email": "email@domain.com",
+    "email": "email@domain.com"
 }
 ```
 
@@ -198,7 +198,7 @@ $endpoint = "http://www.domain.com/admin/api_account/authenticate"
 ```json
 {
     "email": "email@domain.com",
-    "password": "mypassword",
+    "password": "mypassword"
 }
 ```
 
@@ -250,7 +250,7 @@ $endpoint = "http://www.domain.com/admin/api_account/forgotpassword"
 
 ```json
 {
-    "email": "email@domain.com",
+    "email": "email@domain.com"
 }
 ```
 
@@ -267,7 +267,7 @@ email *|string|User email
 
 ```json
 {
-    "success": 1,
+    "success": 1
 }
 ```
 

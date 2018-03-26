@@ -25,69 +25,71 @@ class Form_Test extends Siberian_Form_Abstract {
         $db = Zend_Db_Table::getDefaultAdapter();
 
         $this
-            ->setAction(__path("/form/test"))
-            ->setAttrib("id", "form-test")
-            ->addNav("form-test-nav")
-        ;
+            ->setAction(__path('/form/test'))
+            ->setAttrib('id', 'form-test')
+            ->addNav('form-test-nav');
 
         /** Bind as a create form */
-        self::addClass("create", $this);
+        self::addClass('create', $this);
 
         /** Hidden */
-        $this->addSimpleHidden("element_hidden");
+        $this->addSimpleHidden('element_hidden');
 
         /** Image upload with crop */
         $this->addSimpleImage(
-            "element_image", 
-            __("Image"), 
-            __("Import an image"), 
-            array("width" => 300, "height" => 300)
+            'element_image', 
+            __('Image'), 
+            __('Import an image'), 
+            [
+                'width' => 300, 
+                'height' => 300
+            ]
         );
 
         /** Input text */
-        $this->addSimpleText("element_text", __("Text"));
+        $this->addSimpleText('element_text', __('Text'));
 
         /** Textarea */
-        $this->addSimpleTextarea("element_textarea", __("Textarea"));
+        $this->addSimpleTextarea('element_textarea', __('Textarea'));
 
-        $full = $this->addSimpleTextarea("element_textarea_100", __("Textarea 100%"));
+        $full = $this->addSimpleTextarea('element_textarea_100', __('Textarea 100%'));
         $full->setNewDesignLarge();
 
         /** Textara with CKEditor */
         $richtext = $this->addSimpleTextarea(
-            "element_textarea_richtext", 
-            __("Textarea Richtext")
+            'element_textarea_richtext', 
+            __('Textarea Richtext')
         );
         $richtext->setRichtext();
 
 
         $this->addSimpleSelect(
-            "element_select", 
-            __("Select"), 
-            array("Option #1", "Option #2", "Option #3", "Option #4")
+            'element_select', 
+            __('Select'), 
+            ['Option #1', 'Option #2', 'Option #3', 'Option #4']
         );
 
         $this->addSimpleMultiSelect(
-            "element_multiselect", 
-            __("Multi Select"), 
-            array("Option #1", "Option #2", "Option #3", "Option #4")
+            'element_multiselect', 
+            __('Multi Select'), 
+            ['Option #1', 'Option #2', 'Option #3', 'Option #4']
         );
 
-        $this->addSimpleCheckbox("element_checbox", __("Checkbox"));
+        $this->addSimpleCheckbox('element_checbox', __('Checkbox'));
 
         $this->addSimpleMultiCheckbox(
-            "element_multichecbox", 
-            __("Multi Checkbox"), 
-            array("Option #1", "Option #2", "Option #3", "Option #4")
+            'element_multichecbox', 
+            __('Multi Checkbox'), 
+            ['Option #1', 'Option #2', 'Option #3', 'Option #4']
         );
 
         $this->addSimpleRadio(
-            "element_radio",
-            __("Radio"), 
-            array("Option #1", "Option #2", "Option #3", "Option #4")
+            'element_radio',
+            __('Radio'), 
+            ['Option #1', 'Option #2', 'Option #3', 'Option #4']
         );
 
-        $this->addNav("submit-repeat", "OK", false);
+        $this->addNav('submit-repeat', 'OK', false);
 
     }
 }
@@ -98,7 +100,7 @@ class Form_Test extends Siberian_Form_Abstract {
 The action to were the form submit its data is defined by `->setAction()`
 
 ```php
-$this->setAction(__path("/form/test"))
+$this->setAction(__path('/form/test'))
 ```
         
 ### Form default nav
@@ -106,13 +108,13 @@ $this->setAction(__path("/form/test"))
 This will add on your form a default navigation, with back arrow & a submit button
 
 ```php
-$this->addNav("form-test-nav")
+$this->addNav('form-test-nav')
 ```
 
 #### parameters
 
 ```php
-$this->addNav($name, $save_text = "OK", $display_back_button = true)
+$this->addNav($name, $save_text = 'OK', $display_back_button = true)
 ```
 
 |Parameter|Type|Description|
@@ -130,7 +132,7 @@ Form events like `submit` or `change` are binded with css classes like below:
 Binds a form to submit data `onSubmit` event, add the css class `create`
 
 ```php
-self::addClass("create", $this);
+self::addClass('create', $this);
 ```
 
 This form reloads the feature on success, or appends the form errors to the DOM.
@@ -140,7 +142,7 @@ This form reloads the feature on success, or appends the form errors to the DOM.
 Binds a form to submit data `onSubmit` event for single toggling forms, add the css class `toggle` see [#toggle-forms](module/forms#toggle-forms)
 
 ```php
-self::addClass("toggle", $this);
+self::addClass('toggle', $this);
 ```
 
 #### > onchange
@@ -148,7 +150,7 @@ self::addClass("toggle", $this);
 Binds a form to submit data `onChange` event for every single item in the form, add the css class `onchange` see [#toggle-forms](module/forms#onchange-forms)
 
 ```php
-self::addClass("onchange", $this);
+self::addClass('onchange', $this);
 ```
 
 
@@ -157,7 +159,7 @@ self::addClass("onchange", $this);
 Binds a form to submit data `onSubmit` event for single row forms, add the css class `delete` see [#toggle-forms](module/forms#delete-row)
 
 ```php
-self::addClass("delete", $this);
+self::addClass('delete', $this);
 ```
 
 This binder is used for small delete forms, to trigger various events
@@ -173,7 +175,7 @@ This binder is used for small delete forms, to trigger various events
 #### code
 
 ```php
-$this->addNav("form-test-nav")
+$this->addNav('form-test-nav')
 ```
 
 ![01-top-nav](../img/forms/01-top-nav.png)
@@ -185,10 +187,13 @@ $this->addNav("form-test-nav")
 ```php
 /** Image upload with crop */
 $this->addSimpleImage(
-    "element_image", 
-    __("Image"), 
-    __("Import an image"), 
-    array("width" => 300, "height" => 300)
+    'element_image', 
+    __('Image'), 
+    __('Import an image'), 
+    [
+        'width' => 300, 
+        'height' => 300
+    ]
 );
 ```
 
@@ -204,7 +209,7 @@ $this->addSimpleImage(
 
 ```php
 /** Input text */
-$this->addSimpleText("element_text", __("Text"));
+$this->addSimpleText('element_text', __('Text'));
 ```
 
 ![03-text](../img/forms/03-text.png)
@@ -215,7 +220,7 @@ $this->addSimpleText("element_text", __("Text"));
 
 ```php
 /** Input text */
-$this->addSimplePassword("element_password", __("Password"));
+$this->addSimplePassword('element_password', __('Password'));
 ```
 
 ![04-password](../img/forms/04-password.png)
@@ -226,7 +231,7 @@ $this->addSimplePassword("element_password", __("Password"));
 
 ```php
 /** Textarea */
-$this->addSimpleTextarea("element_textarea", __("Textarea"));
+$this->addSimpleTextarea('element_textarea', __('Textarea'));
 ```
 
 ![05-textarea](../img/forms/05-textarea.png)
@@ -236,7 +241,7 @@ $this->addSimpleTextarea("element_textarea", __("Textarea"));
 #### code
 
 ```php
-$textarea_100 = $this->addSimpleTextarea("element_textarea_100", __("Textarea 100%"));
+$textarea_100 = $this->addSimpleTextarea('element_textarea_100', __('Textarea 100%'));
 $textarea_100->setNewDesignLarge();
 ```
 
@@ -248,7 +253,7 @@ $textarea_100->setNewDesignLarge();
 
 ```php
 /** Textara with CKEditor */
-$richtext = $this->addSimpleTextarea("element_textarea_richtext", __("Textarea Richtext"));
+$richtext = $this->addSimpleTextarea('element_textarea_richtext', __('Textarea Richtext'));
 $richtext->setRichtext();
 ```
 
@@ -260,9 +265,9 @@ $richtext->setRichtext();
 
 ```php
 $this->addSimpleSelect(
-    "element_select", 
-    __("Select"), 
-    array("Option #1", "Option #2", "Option #3", "Option #4")
+    'element_select', 
+    __('Select'), 
+    array('Option #1', 'Option #2', 'Option #3', 'Option #4')
 );
 ```
 
@@ -274,9 +279,9 @@ $this->addSimpleSelect(
 
 ```php
 $this->addSimpleMultiSelect(
-    "element_multiselect", 
-    __("Multi Select"), 
-    array("Option #1", "Option #2", "Option #3", "Option #4")
+    'element_multiselect', 
+    __('Multi Select'), 
+    array('Option #1', 'Option #2', 'Option #3', 'Option #4')
 );
 ```
 
@@ -287,7 +292,7 @@ $this->addSimpleMultiSelect(
 #### code
 
 ```php
-$this->addSimpleCheckbox("element_checbox", __("Checkbox"));
+$this->addSimpleCheckbox('element_checbox', __('Checkbox'));
 ```
 
 ![10-checkbox](../img/forms/10-checkbox.png)
@@ -298,9 +303,9 @@ $this->addSimpleCheckbox("element_checbox", __("Checkbox"));
 
 ```php
 $this->addSimpleMultiCheckbox(
-    "element_multichecbox", 
-    __("Multi Checkbox"), 
-    array("Option #1", "Option #2", "Option #3", "Option #4")
+    'element_multichecbox', 
+    __('Multi Checkbox'), 
+    array('Option #1', 'Option #2', 'Option #3', 'Option #4')
 );
 ```
 
@@ -312,9 +317,9 @@ $this->addSimpleMultiCheckbox(
 
 ```php
 $this->addSimpleRadio(
-    "element_radio", 
-    __("Radio"), 
-    array("Option #1", "Option #2", "Option #3", "Option #4"));
+    'element_radio', 
+    __('Radio'), 
+    array('Option #1', 'Option #2', 'Option #3', 'Option #4'));
 ```
 
 ![12-radio](../img/forms/12-radio.png)
@@ -325,8 +330,8 @@ $this->addSimpleRadio(
 
 ```php
 $this->addSimpleDatetimepicker(
-    "date", 
-    __("Date Picker"), 
+    'date', 
+    __('Date Picker'), 
     false, 
     Siberian_Form_Abstract::DATEPICKER
 ); 
@@ -336,8 +341,8 @@ $this->addSimpleDatetimepicker(
 
 ```php
 $this->addSimpleDatetimepicker(
-    "datetimepicker", 
-    __("DateTime Picker"), 
+    'datetimepicker', 
+    __('DateTime Picker'), 
     false, 
     Siberian_Form_Abstract::DATETIMEPICKER
 ); 
@@ -347,8 +352,8 @@ $this->addSimpleDatetimepicker(
 
 ```php
 $this->addSimpleDatetimepicker(
-    "timepicker", 
-    __("Time Picker"), 
+    'timepicker', 
+    __('Time Picker'), 
     false, 
     Siberian_Form_Abstract::TIMEPICKER
 ); 
@@ -362,13 +367,13 @@ $this->addSimpleDatetimepicker(
 
 ```php
 $this->addSimpleSlider(
-    "element_slidero", 
-    __("Slider"), 
+    'element_slidero', 
+    __('Slider'), 
     array(
-        "min" => -100, 
-        "max" => 100, 
-        "step" => 5, 
-        "unit" => "%"
+        'min' => -100, 
+        'max' => 100, 
+        'step' => 5, 
+        'unit' => '%'
     ), true);
 ```
 
@@ -381,7 +386,7 @@ The option `unit` goes along with the last parameter `$with_indicator` to show o
 #### code
 
 ```php
-$this->addNav("submit-repeat", "OK", false);
+$this->addNav('submit-repeat', 'OK', false);
 ```
 
 ![13-repeat-submit](../img/forms/13-repeat-submit.png)

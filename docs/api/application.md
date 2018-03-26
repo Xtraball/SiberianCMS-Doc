@@ -148,7 +148,7 @@ $endpoint = "http://www.domain.com/application/api_admin/add"
 ```json
 {
     "app_id": "1",
-    "user_id": "1",
+    "user_id": "1"
 }
 ```
 
@@ -165,7 +165,7 @@ admin_id *|int|User identifier
 
 ```json
 {
-    "success": 1,
+    "success": 1
 }
 ```
 
@@ -201,7 +201,7 @@ $endpoint = "http://www.domain.com/application/api_admin/remove"
 ```json
 {
     "app_id": "1",
-    "user_id": "1",
+    "user_id": "1"
 }
 ```
 
@@ -218,7 +218,7 @@ admin_id *|int|User identifier
 
 ```json
 {
-    "success": 1,
+    "success": 1
 }
 ```
 

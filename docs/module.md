@@ -83,36 +83,36 @@ This file(s) reflects your database at it's latest version, each time you update
 /**
  * Schema definition for 'table_name'
  */
-$schemas = (!isset($schemas)) ? array() : $schemas;
-$schemas['table_name'] = array(
-    'mytable_id' => array(
+$schemas = (!isset($schemas)) ? [] : $schemas;
+$schemas['table_name'] = [
+    'mytable_id' => [
         'type' => 'int(11) unsigned',
         'auto_increment' => true,
         'primary' => true,
-    ),
-    'admin_id' => array(
+    ],
+    'admin_id' => [
         'type' => 'int(11) unsigned',
         'is_null' => true,
-        'foreign_key' => array(
+        'foreign_key' => [
             'table' => 'admin',
             'column' => 'admin_id',
             'name' => 'FK_MY_MODULE_ADMIN_ID_ADMIN_AMIN_ID',
             'on_update' => 'CASCADE',
             'on_delete' => 'CASCADE',
-        ),
-    ),
-    'name' => array(
+        ],   
+    ],
+    'name' => [
         'type' => 'varchar(50)',
         'default' => 'default_value',
         'index' => true,
-    ),
-    'created_at' => array(
+    ],
+    'created_at' => [
         'type' => 'datetime',
-    ),
-    'updated_at' => array(
+    ],
+    'updated_at' => [
         'type' => 'datetime',
-    ),
-);
+    ],
+];
 ```
 
 #### List of available options
@@ -435,7 +435,7 @@ Siberian_Feature::removeIcons($name);
 Siberian_Feature::removeIcons("{$name}-flat");
 
 # Clean-up Layouts
-$layout_data = array(1, 2);
+$layout_data = [1, 2];
 $slug = "job";
 
 Siberian_Feature::removeLayouts($option->getId(), $slug, $layout_data);
@@ -445,10 +445,10 @@ $code = "job";
 Siberian_Feature::uninstallFeature($code);
 
 # Clean-up DB be really carefull with this.
-$tables = array(
+$tables = [
     "job_company",
     "job_place",
-);
+];
 Siberian_Feature::dropTables($tables);
 
 # Clean-up module
