@@ -1,6 +1,6 @@
 # Siberian CLI Documentation
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/cli/siberian.md)
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/cli/siberian.md)
 
 ## Introduction
 
@@ -10,15 +10,15 @@ Siberian ships with a CLI to help debugging & troubleshooting.
 
 |Method|Min. version|Params|Description|
 |------|------------|------|-----------|
-|export-db|4.13.9|-|Exports the current schema tables (only schemas) to `var/schema/CURRENT_VERSION/TABLE.php` this is useful to prepare db files for your custom modules|
-|version|4.13.9|version|Updates `lib/Siberian/Version.php` with the given version|
-|user:password|4.13.9|-|This action will ask for an e-mail and a password, usefull to change a lost backoffice password|
-|dev / development|4.13.9|-|Fast switch in development mode|
-|prod / production|4.13.9|-|Fast switch in production mode|
+|export-db|4.13.10|-|Exports the current schema tables (only schemas) to `var/schema/CURRENT_VERSION/TABLE.php` this is useful to prepare db files for your custom modules|
+|version|4.13.10|version|Updates `lib/Siberian/Version.php` with the given version|
+|user:password|4.13.10|-|This action will ask for an e-mail and a password, usefull to change a lost backoffice password|
+|dev / development|4.13.10|-|Fast switch in development mode|
+|prod / production|4.13.10|-|Fast switch in production mode|
 
 ### Examples
 
-```raw
+```bash
 prompt $ ./cli export-db
 
 prompt $ ./cli version 4.13.7
