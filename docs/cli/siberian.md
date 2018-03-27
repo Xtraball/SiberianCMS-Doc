@@ -11,6 +11,7 @@ Siberian ships with a CLI to help debugging & troubleshooting.
 |Method|Min. version|Params|Description|
 |------|------------|------|-----------|
 |export-schemas|4.13.10|-|Exports the current schema tables (only schemas) to `var/schema/CURRENT_VERSION/TABLE.php` this is useful to prepare db files for your custom modules|
+|export-database|4.13.10|-|Exports the current mysql database|
 |version|4.13.10|version|Updates `lib/Siberian/Version.php` with the given version|
 |user:create|4.13.10|-|This action will ask for an e-mail and a password to create a new backoffice user|
 |user:update-password|4.13.10|-|This action will ask for an e-mail and a password, usefull to change a lost backoffice password|
@@ -21,6 +22,10 @@ Siberian ships with a CLI to help debugging & troubleshooting.
 
 ```bash
 prompt $ ./cli export-schemas
+
+prompt $ ./cli export-database
+Filename for the export: dump.sql
+Export done.
 
 prompt $ ./cli version 4.13.7
 
