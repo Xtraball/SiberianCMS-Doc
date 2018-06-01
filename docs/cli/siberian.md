@@ -17,6 +17,8 @@ Siberian ships with a CLI to help debugging & troubleshooting.
 |user:update-password|4.13.10|-|This action will ask for an e-mail and a password, usefull to change a lost backoffice password|
 |dev / development|4.13.10|-|Fast switch in development mode|
 |prod / production|4.13.10|-|Fast switch in production mode|
+|cache:design|4.14.0|-|Rebuilds SAE/MAE/PE cache for design files|
+|help|4.14.0|-|Display the command help manual|
 
 ### Examples
 
@@ -42,4 +44,6 @@ Password successfully changed.
 prompt $ ./cli dev
 
 prompt $ ./cli prod
+
+prompt $ ./cli cache:design <sae|mae|pe>
 ```
