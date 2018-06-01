@@ -75,6 +75,7 @@ send_to_all|int|Set to 1 to send to all applications|
 devices|string|`all`, `android`, `ios`|all
 open_url|int|If set to 1 url will be opened in app|
 url|string|Along with `open_url` set to 1, the url to open|
+cover|string|base64 encoded image to display as a cover, must be png or jpg|
 
 **\* Required fields**
 
