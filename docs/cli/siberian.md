@@ -18,6 +18,7 @@ Siberian ships with a CLI to help debugging & troubleshooting.
 |dev / development|4.13.10|-|Fast switch in development mode|
 |prod / production|4.13.10|-|Fast switch in production mode|
 |cache:design|4.14.0|-|Rebuilds SAE/MAE/PE cache for design files|
+|cache:clear|4.14.4|-|Clear `var/cache`, `var/log` & `var/tmp`|
 |help|4.14.0|-|Display the command help manual|
 
 ### Examples
@@ -46,4 +47,8 @@ prompt $ ./cli dev
 prompt $ ./cli prod
 
 prompt $ ./cli cache:design <sae|mae|pe>
+
+prompt $ ./cli cache:clear
+
+prompt $ ./cli help
 ```
