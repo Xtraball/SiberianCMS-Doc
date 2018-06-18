@@ -8,7 +8,8 @@ pages:
   - Modules:
     - 'Structure & Basics': 'module.md'
     - 'Basic usage': 'module/basic.md'
-    - 'Hooks': 'module/hooks.md'
+    - 'Hooks':
+      - 'Editor & Backoffice': 'module/hooks.md'
       - 'Customer': 'module/hooks/customer.md'
       - 'Loyalty Card': 'module/hooks/loyalty-card.md'
     - 'Forms': 'module/forms.md'
