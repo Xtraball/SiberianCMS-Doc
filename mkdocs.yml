@@ -9,6 +9,8 @@ pages:
     - 'Structure & Basics': 'module.md'
     - 'Basic usage': 'module/basic.md'
     - 'Hooks': 'module/hooks.md'
+      - 'Customer': 'module/hooks/customer.md'
+      - 'Loyalty Card': 'module/hooks/loyalty-card.md'
     - 'Forms': 'module/forms.md'
     - 'Offline Mode': 'module/offline-mode.md'
     - 'Utils': 'module/utils.md'
@@ -27,5 +29,5 @@ pages:
   - Contribute: contribute.md
 theme_dir: themes/xtraball
 site_dir: siberiancms
-repo_url: https://github.com/Xtraball/SiberianCMS/
+repo_url: https://github.com/Xtraball/Siberian
 google_analytics: ['UA-90544135-3', 'auto']

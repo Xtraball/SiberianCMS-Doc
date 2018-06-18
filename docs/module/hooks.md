@@ -85,4 +85,3 @@ Siberian_Module::addMenu('Faq', 'faq', 'FAQ', '/faq/backoffice/list', 'icofont i
 
 
 &nbsp;
-
