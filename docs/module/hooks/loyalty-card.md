@@ -1,4 +1,4 @@
-# Loaylty Card Hooks
+# Loyalty Card Hooks
 
 [Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/hooks/loyalty-card.md)
 
@@ -28,6 +28,7 @@ card|The validated card
 points|Number of points validated
 unlockType|`password` or `qrcode`
 
+---
 
 #### loyalty_card.complete
 
@@ -35,7 +36,7 @@ Called when a card is completed
 
 ```php
 \Siberian\Hook::listen(
-    'loyalty_card.validate',
+    'loyalty_card.complete',
     'Listening Loyalty Card card completion',
     function ($payload) {
         // Your stuff!

@@ -27,6 +27,8 @@ appId|The application id
 request|The current HTTP Request
 type|account or facebook
 
+---
+
 #### mobile.login.success
 
 Called when a user is successfully logged-in (account or facebook)
@@ -52,6 +54,8 @@ customer|The customer object
 token|Session token
 type|account or facebook
 
+---
+
 #### mobile.logout
 
 This action is called on the very start of a logout request (account or facebook)
@@ -73,6 +77,8 @@ key|details
 ---|---
 appId|The application id
 request|The current HTTP Request
+
+---
 
 #### mobile.logout.success
 
@@ -97,6 +103,8 @@ appId|The application id
 customerId|Current customer Id
 request|The current HTTP Request
 
+---
+
 #### mobile.login.error
 
 When a user fails to login
@@ -120,6 +128,8 @@ appId|The application id
 message|The error message
 type|account or facebook
 
+---
+
 #### mobile.register
 
 Calls at the very start of a registration
@@ -141,6 +151,8 @@ key|details
 ---|---
 appId|The application id
 request|The current HTTP Request
+
+---
 
 #### mobile.register.success
 
@@ -165,6 +177,8 @@ appId|The application id
 customerId|Current customer Id
 customer|The customer object
 token|Session token
+
+---
 
 #### mobile.register.error
 
