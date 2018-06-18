@@ -25,10 +25,10 @@ pages:
     - 'Backoffice': 'api/backoffice.md'
     - 'Push': 'api/push.md'
   - Contribute: contribute.md
-  - '_Hooks':
-    - '_Customer': 'module/hooks/customer.md'
-    - '_Loyaty Card': 'module/hooks/loyalty-card.md'
-    - '_Menus': 'module/hooks/menus.md'
+  - '_Hidden':
+    - 'Customer': 'module/hooks/customer.md'
+    - 'Loyaty Card': 'module/hooks/loyalty-card.md'
+    - 'Menus': 'module/hooks/menus.md'
 theme_dir: themes/xtraball
 site_dir: siberiancms
 repo_url: https://github.com/Xtraball/Siberian

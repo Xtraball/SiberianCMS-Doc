@@ -598,3 +598,7 @@ a[href*='https://github.com']:not(.btn):not(.github):hover {
 a[href*='https://github.com/Xtraball/SiberianCMS-Doc/edit/master']:not(.btn):not(.github) {
     float: right;
 }
+
+._Hidden {
+    display: none;
+}
