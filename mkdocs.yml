@@ -8,10 +8,7 @@ pages:
   - Modules:
     - 'Structure & Basics': 'module.md'
     - 'Basic usage': 'module/basic.md'
-    - 'Hooks':
-      - 'Editor & Backoffice': 'module/hooks.md'
-      - 'Customer': 'module/hooks/customer.md'
-      - 'Loyalty Card': 'module/hooks/loyalty-card.md'
+    - 'Hooks': 'module/hooks.md'
     - 'Forms': 'module/forms.md'
     - 'Offline Mode': 'module/offline-mode.md'
     - 'Utils': 'module/utils.md'

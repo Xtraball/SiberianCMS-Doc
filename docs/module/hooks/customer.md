@@ -1,5 +1,7 @@
 # Customer Hooks
 
+[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/hooks/customer.md)
+
 Available from 4.14.6
 
 #### mobile.login
