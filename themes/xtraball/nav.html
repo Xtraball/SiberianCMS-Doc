@@ -25,7 +25,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ nav_item.title }} <b class="caret"></b></a>
                     <ul class="dropdown-menu sb-radius">
                         {% for nav_item in nav_item.children %}
-                            {% if !nav_item.title.startsWith('_') %}
+                            {% if !nav_item.title[0] === '_' %}
                             <li {% if nav_item.active %}class="active"{% endif %}>
                                 <a href="{{ nav_item.url }}">{{ nav_item.title }}</a>
                             </li>
@@ -34,7 +34,7 @@
                     </ul>
                 </li>
                 {% else %}
-                    {% if !nav_item.title.startsWith('_') %}
+                {% if !nav_item.title[0] === '_' %}
                     <li class="{% if nav_item.active %}active{% endif %} sb-item">
                         <a href="{{ nav_item.url }}">{{ nav_item.title }}</a>
                     </li>
