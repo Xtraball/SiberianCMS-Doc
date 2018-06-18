@@ -25,7 +25,7 @@ pages:
     - 'Backoffice': 'api/backoffice.md'
     - 'Push': 'api/push.md'
   - Contribute: contribute.md
-  - '_Hooks':
+  - _Hooks:
     - '_Customer': 'module/hooks/customer.md'
     - '_Loyaty Card': 'module/hooks/loyalty-card.md'
     - '_Menus': 'module/hooks/menus.md'
