@@ -25,7 +25,7 @@ pages:
     - 'Backoffice': 'api/backoffice.md'
     - 'Push': 'api/push.md'
   - Contribute: contribute.md
-  - '_Hidden':
+  - 'HiddenNav':
     - 'Customer': 'module/hooks/customer.md'
     - 'Loyaty Card': 'module/hooks/loyalty-card.md'
     - 'Menus': 'module/hooks/menus.md'
