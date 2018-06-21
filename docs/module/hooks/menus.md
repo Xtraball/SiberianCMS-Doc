@@ -86,9 +86,9 @@ Siberian_Module::addMenu('Faq', 'faq', 'FAQ', '/faq/backoffice/list', 'icofont i
 
 &nbsp;
 
-#### Backoffice - Advanced
+## Backoffice - Advanced
 
-Available from 4.14.6
+**Available from 4.14.6**
 
 #### backoffice.menu.ready
 
@@ -96,7 +96,7 @@ When the backoffice menu hierarchy is built, this action is triggered, you can t
 
 This method is more complex than simply adding your menu, but it's way more powerful too.
 
-You callbackf function **must** return the given payload whether it's altered or not!
+You callback function **must** return the given payload whether it's altered or not!
 
 ```php
 \Siberian\Hook::listen(
