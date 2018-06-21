@@ -16,7 +16,7 @@ Siberian_Module::addEditorMenu($module, $code, $title, $link, $icon = '');
 
 The previous code will result in something like this.
 
-![hooks-sidebar-menu](../img/hooks/sidebar-menu.png)
+![hooks-sidebar-menu](../../img/hooks/sidebar-menu.png)
 
 #### Options
 
@@ -57,7 +57,7 @@ Siberian_Module::addMenu($module, $code, $title, $link, $icon = '');
 
 The previous code will result in something like this.
 
-![hooks-backoffice-menu](../img/hooks/backoffice-menu.png)
+![hooks-backoffice-menu](../../img/hooks/backoffice-menu.png)
 
 #### Options
 
@@ -85,3 +85,88 @@ Siberian_Module::addMenu('Faq', 'faq', 'FAQ', '/faq/backoffice/list', 'icofont i
 
 
 &nbsp;
+
+#### Backoffice - Advanced
+
+Available from 4.14.6
+
+#### backoffice.menu.ready
+
+When the backoffice menu hierarchy is built, this action is triggered, you can then alter the tree as you want.
+
+This method is more complex than simply adding your menu, but it's way more powerful too.
+
+You callbackf function **must** return the given payload whether it's altered or not!
+
+```php
+\Siberian\Hook::listen(
+    'backoffice.menu.ready',
+    'Listening Backoffice menu',
+    function ($payload) {
+        // Your stuff!
+        
+        return $payload;
+    },
+    0
+);
+```
+
+**Hook payload details**
+
+```php
+
+// Extract of the tree payload!
+
+$backofficeTree = [
+    'dashboard' => [
+        'hasChilds' => false,
+        'isVisible' => true,
+        'label' => __('Dashboard'),
+        'url' => $this->getUrl('backoffice'),
+        'icon' => 'fa fa-tachometer',
+    ],
+    'invoices' => [
+        'hasChilds' => false,
+        'isVisible' => $this->isPe(),
+        'label' => __('Invoices'),
+        'url' => $this->getUrl("sales/backoffice_invoice_list"),
+        'icon' => 'fa fa-ticket',
+    ],
+    'manage' => [
+        'hasChilds' => true,
+        'isVisible' => true,
+        'label' => __('Manage'),
+        'icon' => 'fa fa-users',
+        'childs' => [
+            'users' => [
+                'hasChilds' => true,
+                'isVisible' => true,
+                'label' => __('Users'),
+                'icon' => 'fa fa-users',
+                'childs' => [
+                    'users' => [
+                        'hasChilds' => false,
+                        'isVisible' => true,
+                        'label' => __('Users'),
+                        'url' => $this->getUrl("admin/backoffice_list"),
+                        'icon' => 'fa fa-users',
+                    ],
+                ],
+            ],        
+    [...]     
+    ],
+];
+```
+
+#### Payload details
+
+key|details
+---|---
+hasChilds|tells if the node is a parent or not
+isVisible|true, false or a condition to display the menu
+label|the translated title `__('Text to translate')`
+icon|same a previous with either `FontAwesome` or `IcoFont`
+url|the url to access the feature/module
+childs|if `hasChilds` is `true` then you must provide a childs array
+
+---

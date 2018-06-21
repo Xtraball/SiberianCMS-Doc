@@ -17,8 +17,9 @@ Siberian ships with a CLI to help debugging & troubleshooting.
 |user:update-password|4.13.10|-|This action will ask for an e-mail and a password, usefull to change a lost backoffice password|
 |dev / development|4.13.10|-|Fast switch in development mode|
 |prod / production|4.13.10|-|Fast switch in production mode|
-|cache:design|4.14.0|-|Rebuilds SAE/MAE/PE cache for design files|
+|cache:design|4.14.0|`sae`, `mae`, `pe`|Rebuilds SAE/MAE/PE cache for design files|
 |cache:clear|4.14.4|-|Clear `var/cache`, `var/log` & `var/tmp`|
+|app:manifest|4.14.6|-|Rebuilds the app manifest|
 |help|4.14.0|-|Display the command help manual|
 
 ### Examples
@@ -44,11 +45,15 @@ Password successfully changed.
 
 prompt $ ./cli dev
 
+
+prompt $ ./cli prod
 prompt $ ./cli prod
 
 prompt $ ./cli cache:design <sae|mae|pe>
 
 prompt $ ./cli cache:clear
+
+prompt $ ./cli app:manifest
 
 prompt $ ./cli help
 ```
