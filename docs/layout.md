@@ -51,13 +51,7 @@ MyAwesomeLayout.zip
 │  │     └─ my_awesome_layout.php
 │  ├─ design
 │  │  └─ desktop
-│  │     ├─ flat /** Flat design */
-│  │     │  └─ images
-│  │     │     └─ customization
-│  │     │        └─ layout
-│  │     │           └─ homepage
-│  │     │              └─ my_awesome_layout.png
-│  │     └─ siberian /** Siberian design */
+│  │     └─ flat /** Flat design */
 │  │        └─ images
 │  │           └─ customization
 │  │              └─ layout
@@ -111,56 +105,9 @@ The `package.json` is used by the Installer to know the requirements, and routin
 
 ** * version must be at least 4.5.0**
 
-### Bootstrap
-
-**Note: the `bootstrap.php` file is deprecated since Siberian 5.0 see the Init section below for the new flavor**
-
-We use `bootstrap.php` to hook & register the layout files into Siberian & update assets.
-
-```php
-<?php
-/**
- * @deprecated from Siberian 5.0, see Init.
- */
-class MyAwesomeLayout_Bootstrap {
-
-    public static function init($bootstrap) {
-        # Register assets
-        # This path must be "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
-        # Where "MyAwesomeLayout" is your layout package name #what-you-need
-        Siberian_Assets::registerAssets(
-            "MyAwesomeLayout", 
-            "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
-        );
-        
-        # Hook javascript to index.html
-        # These path are relative to the previously defined before:
-        # "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
-        Siberian_Assets::addJavascripts(array(
-            "modules/layout/home/my_awesome_layout/hooks.js",
-        ));
-        
-        # Hook stylesheets to index.html
-        # These path are relative to the previously defined before:
-        # "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
-        Siberian_Assets::addStylesheets(array(
-            "modules/layout/home/my_awesome_layout/style.css",
-        ));
-        
-        # Register a custom form for the Layout Options
-        Siberian_Feature::registerLayoutOptionsCallbacks("my_awesome_layout", "MyAwesomeLayout_Form_MyAwesomeLayout", function($datas) {
-            $options = array();
-            
-            return $options;
-        });
-    }
-}
-```
-
-
 ## Init
 
-**The new init syntax is available from Siberian 5.0, this new syntax avoids conflicts with already exisiting bootstrap classes**
+**The new init syntax is available from Siberian 4.13, this new syntax avoids conflicts with already exisiting bootstrap classes**
 
 The file `init.php` is used to hook & register the layout files into Siberian & update assets.
 
@@ -173,7 +120,7 @@ $init = function($bootstrap) {
     # Register assets
     # This path must be "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
     # Where "MyAwesomeLayout" is your layout package name #what-you-need
-    Siberian_Assets::registerAssets(
+    \Siberian_Assets::registerAssets(
         "MyAwesomeLayout", 
         "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
     );
@@ -181,19 +128,19 @@ $init = function($bootstrap) {
     # Hook javascript to index.html
     # These path are relative to the previously defined before:
     # "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
-    Siberian_Assets::addJavascripts(array(
+    \Siberian_Assets::addJavascripts(array(
         "modules/layout/home/my_awesome_layout/hooks.js",
     ));
     
     # Hook stylesheets to index.html
     # These path are relative to the previously defined before:
     # "/app/local/modules/MyAwesomeLayout/resources/var/apps/"
-    Siberian_Assets::addStylesheets(array(
+    \Siberian_Assets::addStylesheets(array(
         "modules/layout/home/my_awesome_layout/style.css",
     ));
     
     # Register a custom form for the Layout Options
-    Siberian_Feature::registerLayoutOptionsCallbacks("my_awesome_layout", "MyAwesomeLayout_Form_MyAwesomeLayout", function($datas) {
+    \Siberian_Feature::registerLayoutOptionsCallbacks("my_awesome_layout", "MyAwesomeLayout_Form_MyAwesomeLayout", function($datas) {
         $options = array();
         
         return $options;
@@ -211,7 +158,7 @@ $init = function($bootstrap) {
 If your layout requires custom ratio images to illustrate features, you can register a callback function in the `init.php` to be called like this.
 
 ```php
-Siberian_Feature::registerRatioCallback("my_awesome_layout", function($position) {
+\Siberian_Feature::registerRatioCallback("my_awesome_layout", function($position) {
     $sizes = array(
         "width" => 800,
         "height" => 400,
@@ -239,7 +186,7 @@ If you need to change options in your module while providing an update you must 
 ```php
 <?php
 /** Available in Siberian 4.8.6+ only */
-$default_options = Siberian_Json::encode(array(
+$default_options = \Siberian_Json::encode(array(
     "borders" => "border-right",
     "borders" => "border-left",
     "borders" => "border-top",
@@ -250,7 +197,7 @@ $default_options = Siberian_Json::encode(array(
 # MyAwesomeLayout
 $datas = array(
     'name'                       => 'MyAwesomeLayout',
-    'visibility'                 => Application_Model_Layout_Homepage::VISIBILITY_HOMEPAGE,
+    'visibility'                 => \Application_Model_Layout_Homepage::VISIBILITY_HOMEPAGE,
     'code'                       => 'my_awesome_layout',
     /** Preview is relative to [...]/resources/design/desktop/[flat|siberian]/images/  */
     'preview'                    => '/customization/layout/homepage/my_awesome_layout.png',
@@ -265,14 +212,14 @@ $datas = array(
     "options"                    => $default_options,
 );
 
-$layout = new Application_Model_Layout_Homepage();
+$layout = new \Application_Model_Layout_Homepage();
 $layout
     ->setData($datas)
     ->insertOrUpdate(array("code"));
 
 # Copying assets at installation time
 # same path as in `Siberian_Assets::registerAssets`
-Siberian_Assets::copyAssets("/app/local/modules/MyAwesomeLayout/resources/var/apps/");
+\Siberian_Assets::copyAssets("/app/local/modules/MyAwesomeLayout/resources/var/apps/");
 ```
 
 |Field|Required&nbsp;?|Description|
