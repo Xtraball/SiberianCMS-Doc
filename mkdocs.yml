@@ -12,6 +12,7 @@ pages:
     - 'Forms': 'module/forms.md'
     - 'Offline Mode': 'module/offline-mode.md'
     - 'Utils': 'module/utils.md'
+    - 'Security': 'module/security.md'
     - 'Core inheritance': 'module/core-inheritance.md'
     - 'Siberian CLI': 'cli/siberian.md'
   - Stack:
