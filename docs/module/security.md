@@ -10,7 +10,7 @@ Edit the file `config.php` add the following line `$_config['fw_slack_is_active'
 
 When done you will be see a new section in *Backoffice > Settings > Advanced > Firewall* 
 
-![slack-notifications](img/module/slack-notifications.png)
+![slack-notifications](../img/module/slack-notifications.png)
 
 Simply fill it with your Webhook URL, Channel & Username then save!
 
