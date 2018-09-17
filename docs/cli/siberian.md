@@ -10,8 +10,8 @@ Siberian ships with a CLI to help debugging & troubleshooting.
 
 |Method|Min. version|Params|Description|
 |------|------------|------|-----------|
-|export-schemas|4.13.10|-|Exports the current schema tables (only schemas) to `var/schema/CURRENT_VERSION/TABLE.php` this is useful to prepare db files for your custom modules|
-|export-database|4.13.10|-|Exports the current mysql database|
+|export:schemas|4.13.10|-|Exports the current schema tables (only schemas) to `var/schema/CURRENT_VERSION/TABLE.php` this is useful to prepare db files for your custom modules|
+|export:database|4.13.10|-|Exports the current mysql database|
 |version|4.13.10|version|Updates `lib/Siberian/Version.php` with the given version|
 |user:create|4.13.10|-|This action will ask for an e-mail and a password to create a new backoffice user|
 |user:update-password|4.13.10|-|This action will ask for an e-mail and a password, usefull to change a lost backoffice password|
@@ -19,7 +19,10 @@ Siberian ships with a CLI to help debugging & troubleshooting.
 |prod / production|4.13.10|-|Fast switch in production mode|
 |cache:design|4.14.0|`sae`, `mae`, `pe`|Rebuilds SAE/MAE/PE cache for design files|
 |cache:clear|4.14.4|-|Clear `var/cache`, `var/log` & `var/tmp`|
+|license:set|4.14.13|-|Set the product license from cli|
+|i18n:extract|4.15.0|-|Extracts all missing translations|
 |app:manifest|4.14.6|-|Rebuilds the app manifest|
+|app:keystore:restore|4.14.13|-|Extracts a keystore from the database|
 |help|4.14.0|-|Display the command help manual|
 
 ### Examples
