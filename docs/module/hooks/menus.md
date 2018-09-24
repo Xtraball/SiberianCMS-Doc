@@ -116,7 +116,6 @@ You callback function **must** return the given payload whether it's altered or 
 ```php
 
 // Extract of the tree payload!
-
 $backofficeTree = [
     'dashboard' => [
         'hasChilds' => false,
@@ -166,6 +165,101 @@ hasChilds|tells if the node is a parent or not
 isVisible|true, false or a condition to display the menu
 label|the translated title `__('Text to translate')`
 icon|same a previous with either `FontAwesome` or `IcoFont`
+url|the url to access the feature/module
+childs|if `hasChilds` is `true` then you must provide a childs array
+
+---
+
+**Available from 4.15.0**
+
+#### editor.header.menu.ready
+
+When the editor menu hierarchy is built, this action is triggered, you can then alter the tree as you want.
+
+This method is more complex than simply adding your menu, but it's way more powerful too.
+
+You callback function **must** return the given payload whether it's altered or not!
+
+```php
+\Siberian\Hook::listen(
+    'editor.header.menu.ready',
+    'Listening Editor header menu',
+    function ($payload) {
+        // Your stuff!
+        
+        return $payload;
+    },
+    0
+);
+```
+
+**Hook payload details**
+
+```php
+
+// Extract of the tree payload!
+$editorTree = [
+    'dashboard' => [
+        'hasChilds' => false,
+        'isVisible' => true,
+        'label' => __('Dashboard'),
+        'id' => 'sb-tour-dashboard',
+        'is_current' => 'app_list' === $current,
+        'url' => $this->getUrl('/'),
+        'icon' => 'fa fa-tachometer',
+    ],
+    [...]
+    'profile' => [
+        'hasChilds' => true,
+        'isVisible' => true,
+        'label' => __('Profile'),
+        'id' => 'sb-tour-profile',
+        'icon' => 'fa fa-user',
+        'childs' => [
+            'my_account' => [
+                'hasChilds' => false,
+                'isVisible' => true,
+                'label' => __('Account Settings'),
+                'url' => $this->getUrl('admin/account/edit'),
+                'is_current' => 'my_account' === $current,
+            ],
+            'access_management' => [
+                'hasChilds' => false,
+                'isVisible' => !$request->isWhiteLabelEditor() && $this->_canAccess('admin_access_management'),
+                'label' => __('Access Management'),
+                'url' => $this->getUrl('admin/access_management/list'),
+                'is_current' => 'access_management' === $current,
+            ],
+            [...]
+            'profile_divider' => [
+                'isVisible' => true,
+                'divider' => true,
+                'is_current' => false,
+            ],
+            'logout' => [
+                'hasChilds' => false,
+                'isVisible' => true,
+                'label' => __('Log-out'),
+                'url' => $this->getUrl('admin/account/logout'),
+                'is_current' => false,
+            ],
+        ],
+    ],
+    [...]
+];
+```
+
+#### Payload details
+
+key|details
+---|---
+hasChilds|tells if the node is a parent or not
+isVisible|true, false or a condition to display the menu
+label|the translated title `__('Text to translate')`
+icon|same a previous with either `FontAwesome` or `IcoFont`
+is_current|highlight or not the current active menu
+divider|special item divider, not a menu
+id|the node id
 url|the url to access the feature/module
 childs|if `hasChilds` is `true` then you must provide a childs array
 
