@@ -1,4 +1,4 @@
-# Icon
+# Template
 
 [Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/customization/template.md)
 
@@ -20,7 +20,7 @@ Templates are installed in the `app/local/modules` folder
 
 &nbsp;
 
-Below is the complete and minimal required structure for an icon pack
+Below is the complete and minimal required structure for a template pack
 
 ```raw
 TemplateAwesome.zip
