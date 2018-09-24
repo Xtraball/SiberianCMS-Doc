@@ -4,7 +4,7 @@ pages:
   - Getting started: documentation.md
   - Customization:
     - 'Layouts': 'layout.md'
-    - 'Templates': 'template.md'
+    - 'Templates': 'customization/template.md'
     - 'Icons': 'customization/icon.md'
   - Modules:
     - 'Structure & Basics': 'module.md'
