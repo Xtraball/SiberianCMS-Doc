@@ -4,7 +4,7 @@
 
 ** *Note: Template packages require Siberian 4.15.0 and above, otherwise they will not work* **
 
-Demo template can be found [here](../img/template/template-corporate-4.15.0.zip)! 
+Demo template can be found [here](../img/template/template-corporate.zip)! 
 
 ### What you need
 
