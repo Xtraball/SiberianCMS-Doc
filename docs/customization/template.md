@@ -4,6 +4,8 @@
 
 ** *Note: Template packages require Siberian 4.15.0 and above, otherwise they will not work* **
 
+Demo template can be found [here](../img/template/template-corporate-4.15.0.zip)! 
+
 ### What you need
 
 * A nice template idea !
@@ -30,11 +32,17 @@ TemplateAwesome.zip
 │     └─ templates
 │        └─ awesome
 │           └─ unified
-│              ├─ background.jpg
-│              ├─ icon.jpg
-│              └─ overview_new.jpg
+│              ├─ background.jpg // Must be square and 2732x2732px
+│              ├─ icon.jpg // Must be square and 512x512px
+│              └─ overview_new.jpg // Must be 640x568px
 └─ package.json
 ```
+
+#### overview_new.jpg
+
+Example
+
+![overview-image](../img/template/overview_new.jpg)
 
 ### package.json
 
