@@ -11,7 +11,7 @@ From Siberian 4.11.1 we added a hook to the Sidebar Left menu & Backoffice heade
 For utility reasons, and convenience, when creating your module you need a way to access its configuration page somewhere.
 
 ```php
-Siberian_Module::addEditorMenu($module, $code, $title, $link, $icon = '');
+Siberian_Module::addEditorMenu($module, $code, $title, $link, $icon = '', $aclCode = null);
 ```
 
 The previous code will result in something like this.
@@ -27,6 +27,7 @@ The previous code will result in something like this.
 |$title|yes|Your link text|
 |$link|yes|Path to your feature `/mymodule/mycontroller/myaction`|
 |$icon|no|Custom css class to display icon using fontawesome or icofont|
+|$aclCode|no|**from 4.15.7** ACL code to access this menu, if null or the code doesn't exists, menu item will be accessible|
 
 
 #### Examples
@@ -259,6 +260,113 @@ label|the translated title `__('Text to translate')`
 icon|same a previous with either `FontAwesome` or `IcoFont`
 is_current|highlight or not the current active menu
 divider|special item divider, not a menu
+id|the node id
+url|the url to access the feature/module
+childs|if `hasChilds` is `true` then you must provide a childs array
+
+---
+
+---
+
+**Available from 4.15.7**
+
+#### editor.left.menu.ready
+
+When the sidebar left menu hierarchy is built, this action is triggered, you can then alter the tree as you want.
+
+This method is more complex than simply adding your menu, but it's way more powerful too.
+
+You callback function **must** return the given payload whether it's altered or not!
+
+```php
+\Siberian\Hook::listen(
+    'editor.left.menu.ready',
+    'Listening Editor sidebar left menu',
+    function ($payload) {
+        // Your stuff!
+        
+        return $payload;
+    },
+    0
+);
+```
+
+**Hook payload details**
+
+```php
+
+// Extract of the tree payload!
+$editorSidebarLeftTree = [
+    'editor' => [
+        'hasChilds' => true,
+        'isVisible' => $this->_canAccessAnyOf($editorAccess),
+        'label' => __('Editor'),
+        'id' => 'sidebar-left-group-editor',
+        'is_current' => false,
+        'url' => $this->getUrl('/'),
+        'icon' => 'fa fa-pencil',
+        'childs' => [
+            'design' => [
+                'hasChilds' => false,
+                'isVisible' => $this->_canAccess("editor_design"),
+                'label' => __('Design'),
+                'icon' => 'icon ion-sb-layout1',
+                'url' => $this->getUrl('application/customization_design_style/edit'),
+                'is_current' => ('editor_design' === $currentLink),
+            ],
+            'colors' => [
+                'hasChilds' => false,
+                'isVisible' => $this->_canAccess("editor_colors"),
+                'label' => __('Colors'),
+                'icon' => 'icon ion-sb-palette',
+                'url' => $this->getUrl('application/customization_design_colors/edit'),
+                'is_current' => ('editor_colors' === $currentLink),
+            ],
+            [...]
+        ],
+    ],
+    'users' => [
+        'hasChilds' => false,
+        'isVisible' => $this->_canAccess("users"),
+        'label' => __('Users'),
+        'id' => 'sidebar-left-users',
+        'is_current' => false,
+        'url' => $this->getUrl('customer/application/list'),
+        'icon' => 'icon ion-sb-group',
+    ],
+    [...]
+    'settings' => [
+        'hasChilds' => true,
+        'isVisible' => $this->_canAccessAnyOf(['editor_settings_tc', 'editor_settings_apis', 'editor_settings_domain', 'editor_settings_advanced', 'editor_settings_messages']),
+        'label' => __('Settings'),
+        'id' => 'sidebar-left-group-settings',
+        'is_current' => false,
+        'url' => $this->getUrl('/'),
+        'icon' => 'icon ion-sb-cogs',
+        'childs' => [
+            'editor_settings_tc' => [
+                'hasChilds' => false,
+                'isVisible' => $this->_canAccess("editor_settings_tc"),
+                'label' => __('Terms & Conditions'),
+                'icon' => 'fa fa-file-text',
+                'url' => $this->getUrl('application/settings_tc'),
+                'is_current' => ('editor_settings_tc' === $currentLink),
+            ],
+            [...]
+        ],
+    ],
+];
+```
+
+#### Payload details
+
+key|details
+---|---
+hasChilds|tells if the node is a parent or not
+isVisible|true, false or a condition to display the menu
+label|the translated title `__('Text to translate')`
+icon|same a previous with either `FontAwesome` or `IcoFont`
+is_current|highlight or not the current active menu
 id|the node id
 url|the url to access the feature/module
 childs|if `hasChilds` is `true` then you must provide a childs array
