@@ -44,7 +44,7 @@ Api-Auth-Bearer: Bearer 965327d7caa3d748bb70630b8f1ec64b7f0882ec
 
 ```
 
-## Basic usage
+## Basic usage for the PHP API
 
 #### Init the API with Basic Auth or Bearer token
 
