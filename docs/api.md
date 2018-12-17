@@ -44,7 +44,7 @@ Api-Auth-Bearer: Bearer 965327d7caa3d748bb70630b8f1ec64b7f0882ec
 
 ```
 
-## Basic usage for the PHP API
+## Basic usage for the PHP library
 
 #### Init the API with Basic Auth or Bearer token
 
@@ -82,8 +82,6 @@ if($response->isSuccess()) {
     echo $response->getErrorMessage();
 }
 ```
-
-Other actions are documented here [API Documentation](http://developer.siberiancms.com/api/)
 
 
 #### Run test (on you development instance)
