@@ -70,7 +70,7 @@ Param|Type|Details|Default
 success/error|int|Indicate whether there was an error during the process|1
 user_id|int|User unique identifier|
 token|string|Use to log-in to this user account
-redirect_url|string|Pre-built autologin URL
+redirect_url|string|**Available from 4.15.11** Pre-built autologin URL
 
 ---
 
@@ -245,7 +245,7 @@ Param|Type|Details|Default
 -----|----|-------|-------
 success/error|int|Indicate whether there was an error during the process|1
 token|string|Use to log-in to this user account
-redirect_url|string|Pre-built autologin URL
+redirect_url|string|**Available from 4.15.11** Pre-built autologin URL
 
 ---
 
