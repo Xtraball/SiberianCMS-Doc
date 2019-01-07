@@ -45,7 +45,8 @@ lastname|string|User lastname
 {
     "success": 1,
     "user_id": 1,
-    "token": "aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee"
+    "token": "aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee",
+    "redirect_url": "http://www.domain.com/admin/api_account/authenticate?email=email@domain.com&token=aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee"
 }
 ```
 
@@ -69,6 +70,7 @@ Param|Type|Details|Default
 success/error|int|Indicate whether there was an error during the process|1
 user_id|int|User unique identifier|
 token|string|Use to log-in to this user account
+redirect_url|string|Pre-built autologin URL
 
 ---
 
@@ -191,7 +193,8 @@ exists|boolean|Indicate whether the given email already exist
 ### Description
 
 Check whether the email/password combination is correct.
-Return a token that should be used in a HTTP redirection allowing the user to automatically log-in.
+
+Check [#Autologin](#autologin) section to use the token or use the **redirect_url**.
 
 ```php
 $endpoint = "http://www.domain.com/admin/api_account/authenticate"
@@ -220,13 +223,12 @@ password *|string|User password
 ```json
 {
     "success": 1,
-    "token": "aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee"
+    "token": "aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee",
+    "redirect_url": "http://www.domain.com/admin/api_account/authenticate?email=email@domain.com&token=aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee"
 }
 ```
 
-Check [#Autologin](#autologin) section to use the token.
 
----
 
 #### Error - Example
 
@@ -242,6 +244,8 @@ Check [#Autologin](#autologin) section to use the token.
 Param|Type|Details|Default
 -----|----|-------|-------
 success/error|int|Indicate whether there was an error during the process|1
+token|string|Use to log-in to this user account
+redirect_url|string|Pre-built autologin URL
 
 ---
 
