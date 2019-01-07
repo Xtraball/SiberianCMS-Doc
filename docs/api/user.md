@@ -49,6 +49,8 @@ lastname|string|User lastname
 }
 ```
 
+Check [#Autologin](#Autologin) section to use the token.
+
 #### Error - Example
 
 ```json
@@ -178,7 +180,7 @@ email *|string|User email to test whether it already exists
 Param|Type|Details|Default
 -----|----|-------|-------
 success/error|int|Indicate whether there was an error during the process|1
-exists|boolean|Indicate whether the given email aleady exist
+exists|boolean|Indicate whether the given email already exist
 
 ---
 
@@ -216,8 +218,11 @@ password *|string|User password
 ```json
 {
     "success": 1,
+    "token": "aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee"
 }
 ```
+
+Check [#Autologin](#Autologin) section to use the token.
 
 #### Error - Example
 
@@ -286,3 +291,19 @@ Param|Type|Details|Default
 -----|----|-------|-------
 success/error|int|Indicate whether there was an error during the process|1
 message|string|In case of error, a message is sent back by the server to provide more information|1
+
+
+## Autologin
+
+After a new user is **created** or **authenticated** via the API, you can redirect him to the auto-login page.
+
+`https://yourdomain.com/admin/api_account/autologin?email=USER_EMAIL&token=USER_TOKEN`
+
+### Request
+
+Param|Type|Details
+-----|----|-------
+email *|string|User email
+token *|string|An existing token from a previous **create** or **authenticate** API call
+
+**\* Required fields**

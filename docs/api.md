@@ -83,6 +83,8 @@ if($response->isSuccess()) {
 }
 ```
 
+Other actions are documented here [API Documentation](http://developer.siberiancms.com/api/)
+
 
 #### Run test (on you development instance)
 
