@@ -49,7 +49,9 @@ lastname|string|User lastname
 }
 ```
 
-Check [#Autologin](#Autologin) section to use the token.
+Check [#Autologin](#autologin) section to use the token.
+
+---
 
 #### Error - Example
 
@@ -222,7 +224,9 @@ password *|string|User password
 }
 ```
 
-Check [#Autologin](#Autologin) section to use the token.
+Check [#Autologin](#autologin) section to use the token.
+
+---
 
 #### Error - Example
 
