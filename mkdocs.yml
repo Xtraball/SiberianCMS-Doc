@@ -29,6 +29,7 @@ pages:
   - Contribute: contribute.md
   - 'HiddenNav':
     - 'Customer': 'module/hooks/customer.md'
+    - 'App': 'module/hooks/app.md'
     - 'Loyaty Card': 'module/hooks/loyalty-card.md'
     - 'Menus': 'module/hooks/menus.md'
 theme_dir: themes/xtraball
