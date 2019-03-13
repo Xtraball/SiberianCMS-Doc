@@ -12,6 +12,8 @@
 
 ### Customer App
 
+* [App](hooks/app#app-init-read)
+
 * [Login](hooks/customer#mobile-login)
 
 * [Register](hooks/customer#mobile-register)
