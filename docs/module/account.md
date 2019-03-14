@@ -6,6 +6,17 @@
 
 With the 4.16.0 update, you are now allowed to extend `My account` with more fields for your modules.
 
+*Important* `Account::addFields` must be used within the following hook from `init.php`
+
+```php
+<?php
+
+use Siberian\Hook;
+
+Hook::listen("mobile.controller.init", "mymodule_extendedfields", "extendedFields");
+```
+
+
 ![account-extended](../img/module/my-account-extended.png)
 
 ```php
@@ -19,41 +30,44 @@ Account::addFields(string $moduleName, array $fields, function $populateCallback
 
 use Siberian\Account;
 
-Account::addFields(
-    "MyModule",
-    [
+function extendedFields ($payload) {
+    Account::addFields(
+        "MyModule",
         [
-            "type" => "spacer",
-            "key" => "mymodule_spacer",
+            [
+                "type" => "spacer",
+                "key" => "mymodule_spacer",
+            ],
+            [
+                "type" => "divider",
+                "key" => "mymodule_divider",
+                "label" => __("Divider #1"),
+            ],
+            [
+                "type" => "text",
+                "key" => "mobile_number",
+                "label" => __("Mobile number"),
+            ],
+            [
+                "type" => "textarea",
+                "key" => "address",
+                "rows" => "3",
+                "label" => __("Address"),
+            ],
+            [
+                "type" => "number",
+                "key" => "age",
+                "min" => "1",
+                "max" => "100",
+                "step" => "1",
+                "label" => __("Age"),
+            ]
         ],
-        [
-            "type" => "divider",
-            "key" => "mymodule_divider",
-            "label" => __("Divider #1"),
-        ],
-        [
-            "type" => "text",
-            "key" => "mobile_number",
-            "label" => __("Mobile number"),
-        ],
-        [
-            "type" => "textarea",
-            "key" => "address",
-            "rows" => "3",
-            "label" => __("Address"),
-        ],
-        [
-            "type" => "number",
-            "key" => "age",
-            "min" => "1",
-            "max" => "100",
-            "step" => "1",
-            "label" => __("Age"),
-        ]
-    ],
-    "populateMyFields",
-    "saveMyFields"
-);
+        "populateMyFields",
+        "saveMyFields"
+    );
+    return $payload;
+}
 ```
 
 
