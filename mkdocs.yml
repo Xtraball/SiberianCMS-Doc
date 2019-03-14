@@ -10,6 +10,7 @@ pages:
     - 'Structure & Basics': 'module.md'
     - 'Basic usage': 'module/basic.md'
     - 'Hooks': 'module/hooks.md'
+    - 'My account': 'module/account.md'
     - 'Forms': 'module/forms.md'
     - 'Offline Mode': 'module/offline-mode.md'
     - 'Utils': 'module/utils.md'
