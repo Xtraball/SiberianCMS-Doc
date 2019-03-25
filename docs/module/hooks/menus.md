@@ -11,6 +11,7 @@ From Siberian 4.11.1 we added a hook to the Sidebar Left menu & Backoffice heade
 For utility reasons, and convenience, when creating your module you need a way to access its configuration page somewhere.
 
 ```php
+<?php
 Siberian_Module::addEditorMenu($module, $code, $title, $link, $icon = '', $aclCode = null);
 ```
 
@@ -35,12 +36,14 @@ The previous code will result in something like this.
 **FontAwesome 4.7.0**
 
 ```php
+<?php
 Siberian_Module::addEditorMenu('Faq', 'faq', 'FAQ', '/faq/application/list', 'fa fa-line-chart');
 ```
 
 **IcoFont**
 
 ```php
+<?php
 Siberian_Module::addEditorMenu('Faq', 'faq', 'FAQ', '/faq/application/list', 'icofont icofont-bird-wings');
 ```
 
@@ -53,6 +56,7 @@ Siberian_Module::addEditorMenu('Faq', 'faq', 'FAQ', '/faq/application/list', 'ic
 Backoffice hook works almost the same as Editor hooks.
 
 ```php
+<?php
 Siberian_Module::addMenu($module, $code, $title, $link, $icon = '');
 ```
 
@@ -75,12 +79,14 @@ The previous code will result in something like this.
 **FontAwesome 4.2.0**
 
 ```php
+<?php
 Siberian_Module::addMenu('Faq', 'faq', 'FAQ', '/faq/backoffice/list', 'fa fa-ticket');
 ```
 
 **IcoFont**
 
 ```php
+<?php
 Siberian_Module::addMenu('Faq', 'faq', 'FAQ', '/faq/backoffice/list', 'icofont icofont-bird-wings');
 ```
 
@@ -100,6 +106,7 @@ This method is more complex than simply adding your menu, but it's way more powe
 You callback function **must** return the given payload whether it's altered or not!
 
 ```php
+<?php
 \Siberian\Hook::listen(
     'backoffice.menu.ready',
     'Listening Backoffice menu',
@@ -115,7 +122,7 @@ You callback function **must** return the given payload whether it's altered or 
 **Hook payload details**
 
 ```php
-
+<?php
 // Extract of the tree payload!
 $backofficeTree = [
     'dashboard' => [
@@ -153,8 +160,7 @@ $backofficeTree = [
                     ],
                 ],
             ],        
-    [...]     
-    ],
+    [...],
 ];
 ```
 
@@ -182,6 +188,7 @@ This method is more complex than simply adding your menu, but it's way more powe
 You callback function **must** return the given payload whether it's altered or not!
 
 ```php
+<?php
 \Siberian\Hook::listen(
     'editor.header.menu.ready',
     'Listening Editor header menu',
@@ -197,7 +204,7 @@ You callback function **must** return the given payload whether it's altered or 
 **Hook payload details**
 
 ```php
-
+<?php
 // Extract of the tree payload!
 $editorTree = [
     'dashboard' => [
@@ -209,7 +216,7 @@ $editorTree = [
         'url' => $this->getUrl('/'),
         'icon' => 'fa fa-tachometer',
     ],
-    [...]
+    [...],
     'profile' => [
         'hasChilds' => true,
         'isVisible' => true,
@@ -279,6 +286,7 @@ This method is more complex than simply adding your menu, but it's way more powe
 You callback function **must** return the given payload whether it's altered or not!
 
 ```php
+<?php
 \Siberian\Hook::listen(
     'editor.left.menu.ready',
     'Listening Editor sidebar left menu',
@@ -289,12 +297,46 @@ You callback function **must** return the given payload whether it's altered or 
     },
     0
 );
+
+// Working example
+\Siberian\Hook::listen(
+    "editor.left.menu.ready",
+    "Listening editor ok",
+    function ($payload) {
+        // Internal function, the callback must be a PURE function!
+        
+        // This is a short alias to check ACL from anywhere.
+        $canAccess = function($acl) {
+            $aclList = \Admin_Controller_Default::_getAcl();
+            if ($aclList) {
+                return $aclList->isAllowed($acl);
+            }
+
+            return true;
+        };
+
+        // Fetch the current path
+        $currentUrl = str_replace(\Core\Model\Base::getBaseUrl(), "", \Core\Model\Base::getCurrentUrl());
+
+        $payload["analytics"]["childs"]["customanalytics"] = [
+            "hasChilds" => false,
+            "isVisible" => $canAccess("customer_analytics_acl"), // Ensure your are either FULL ADMIN, or have the Correct ACL!!!
+            "label" => __("My custom analytics page"),
+            "icon" => "fa fa-bar-chart",
+            "url" => __path("/customanalytics/application/view"), // Generates a simple path to the feature
+            "is_current" => (preg_match("#^/migastats/application/view#", $currentUrl)), // Check against what path should be to highlight or not
+        ];
+
+        return $payload;
+    },
+    0
+);
 ```
 
 **Hook payload details**
 
 ```php
-
+<?php
 // Extract of the tree payload!
 $editorSidebarLeftTree = [
     'editor' => [
