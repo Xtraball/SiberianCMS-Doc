@@ -6,18 +6,18 @@
 
 ### Navigation Hooks
 
-* [Editor](hooks/menus#editor-side-menu)
+* [Editor](./menus#editor-side-menu)
 
-* [Backoffice](hooks/menus#backoffice-side-menu)
+* [Backoffice](./menus#backoffice-side-menu)
 
 ### Customer App
 
-* [App](hooks/app#app-init-read)
+* [App](./app#app-init-read)
 
-* [Login](hooks/customer#mobile-login)
+* [Login](./customer#mobile-login)
 
-* [Register](hooks/customer#mobile-register)
+* [Register](./customer#mobile-register)
 
 ### Modules
 
-* [Loyalty Card](hooks/loyalty-card)
+* [Loyalty Card](./loyalty-card)

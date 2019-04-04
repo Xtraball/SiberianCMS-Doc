@@ -44,12 +44,14 @@ Api-Auth-Bearer: Bearer 965327d7caa3d748bb70630b8f1ec64b7f0882ec
 
 ```
 
+
 ## Basic usage for the PHP library
 
 #### Init the API with Basic Auth or Bearer token
 
-```php
 
+```php
+<?php 
 // Init with Basic Auth username/password
 \Siberian\Api::init($domain, $username, $password);
 
@@ -61,7 +63,8 @@ Api-Auth-Bearer: Bearer 965327d7caa3d748bb70630b8f1ec64b7f0882ec
 
 #### Create a new user
 
-```
+```php
+<?php 
 $response = \Siberian\User::create($email, $password, $firstname, $lastname, $role_id);
 if($response->isSuccess()) {
     $user_id = $response->getResponse("user_id");
@@ -73,7 +76,8 @@ if($response->isSuccess()) {
 
 #### Create an application
 
-```
+```php
+   <?php 
 $response = \Siberian\Application::create($name, $user_id);
 if($response->isSuccess()) {
     $app_id = $response->getResponse("app_id");
@@ -90,13 +94,13 @@ Other actions are documented here [API Documentation](http://developer.siberianc
 
 Basic Auth
 
-```
+```bash
 ./run-test.sh siberianurl basic username password
 ```
 
 Bearer token
 
-```
+```bash
 ./run-test.sh siberianurl bearer token
 ```
 
@@ -106,38 +110,38 @@ Here is the list of the available APIs:
 
 ### Application
 
-* [Create an application](api/application#create)
+* [Create an application](./application#create)
 
-* [Update an existing application](api/application#update)
+* [Update an existing application](./application#update)
 
-* [Grant access to an application.](api/application#grant-user)
+* [Grant access to an application.](./application#grant-user)
 
-* [Revoke access to an application.](api/application#revoke-user)
+* [Revoke access to an application.](./application#revoke-user)
 
 ### User
 
-* [Create a user](api/user#create)
+* [Create a user](./user#create)
 
-* [Update an existing user](api/user#update)
+* [Update an existing user](./user#update)
 
-* [Check whether a user exists](api/user#exists)
+* [Check whether a user exists](./user#exists)
 
-* [Authenticate a user](api/user#authentication)
+* [Authenticate a user](./user#authentication)
 
-* [Send a new password to a user](api/user#forgot-password)
+* [Send a new password to a user](./user#forgot-password)
 
 ### Backoffice
 
-* [Rebuild manifest](api/backoffice#manifest)
+* [Rebuild manifest](./backoffice#manifest)
 
-* [Clear tmp](api/backoffice#clear-tmp)
+* [Clear tmp](./backoffice#clear-tmp)
 
-* [Clear cache](api/backoffice#clear-cache)
+* [Clear cache](./backoffice#clear-cache)
 
-* [Clear logs](api/backoffice#clear-logs)
+* [Clear logs](./backoffice#clear-logs)
 
 ### Push notifications
 
-* [List available applications](api/push#list)
+* [List available applications](./push#list)
 
-* [Send global push notification](api/push#send)
+* [Send global push notification](./push#send)

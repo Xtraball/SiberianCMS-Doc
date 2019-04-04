@@ -24,9 +24,11 @@ ModuleName
 │  └─ Default.php   /** If you need to override the default controller Classes */
 ├─ controllers
 │  ├─ Backoffice
-│  │  └─ ModuleName.php
+│  │  └─ ModuleNameController.php
 │  └─ Mobile
-│     └─ ModuleName.php
+│     └─ ModuleNameController.php
+├─ features
+│  └─ [...] // Core feature related files
 ├─ Form
 ├─ Model
 ├─ View
@@ -38,11 +40,10 @@ ModuleName
 │  │  └─ library
 │  ├─ translations
 │  │  ├─ default
-│  │  │  └─ mymodule.csv
+│  │  │  └─ mymodule.po
 │  │  ├─ en
 │  │  └─ [...]
-│  ├─ design
-│  └─ var           /** Everything related to native apps. */
+│  └─ design
 └─ package.json
 ```
 
@@ -61,10 +62,10 @@ The `package.json` is used by the Installer to know the requirements, and routin
   "dependencies": {
     "system": {
       "type": "SAE",
-      "version": "4.1.0"
+      "version": "4.16.0"
     },
     "modules": {
-      "OtherModule": "4.1.0"
+      "OtherModule": "2.1.0"
     }
   }
 }
@@ -81,36 +82,36 @@ This file(s) reflects your database at it's latest version, each time you update
 ```php
 <?php
 /**
- * Schema definition for 'table_name'
+ * Schema definition for "table_name"
  */
 $schemas = (!isset($schemas)) ? [] : $schemas;
-$schemas['table_name'] = [
-    'mytable_id' => [
-        'type' => 'int(11) unsigned',
-        'auto_increment' => true,
-        'primary' => true,
+$schemas["table_name"] = [
+    "mytable_id" => [
+        "type" => "int(11) unsigned",
+        "auto_increment" => true,
+        "primary" => true,
     ],
-    'admin_id' => [
-        'type' => 'int(11) unsigned',
-        'is_null' => true,
-        'foreign_key' => [
-            'table' => 'admin',
-            'column' => 'admin_id',
-            'name' => 'FK_MY_MODULE_ADMIN_ID_ADMIN_AMIN_ID',
-            'on_update' => 'CASCADE',
-            'on_delete' => 'CASCADE',
+    "admin_id" => [
+        "type" => "int(11) unsigned",
+        "is_null" => true,
+        "foreign_key" => [
+            "table" => "admin",
+            "column" => "admin_id",
+            "name" => "FK_MY_MODULE_ADMIN_ID_ADMIN_AMIN_ID", // Must be unique!
+            "on_update" => "CASCADE",
+            "on_delete" => "CASCADE",
         ],   
     ],
-    'name' => [
-        'type' => 'varchar(50)',
-        'default' => 'default_value',
-        'index' => true,
+    "name" => [
+        "type" => "varchar(50)",
+        "default" => "default_value",
+        "index" => true,
     ],
-    'created_at' => [
-        'type' => 'datetime',
+    "created_at" => [
+        "type" => "datetime",
     ],
-    'updated_at' => [
-        'type' => 'datetime',
+    "updated_at" => [
+        "type" => "datetime",
     ],
 ];
 ```
@@ -152,7 +153,7 @@ This folder is used to insert default values when installing, or updating a Modu
 
 Every php file in this folder will be executed when installing and/or updating the module, they should reflect the required data as the latest version.
 
-**Protected names are `install.php` & `%VERSION%.php` where %VERSION% is a semver string, you must never use them.**
+**Protected names are `install.php` & `%VERSION%.php` where %VERSION% is a semver string, you must NEVER use them.**
 
 Best practice:
     
@@ -160,126 +161,183 @@ Best practice:
     
     * ex: `feature1.php`, `feature2.php`, etc...
 
-Here is an example file `job.php`
 
-```php
-<?php
-# Job module, data.
-$name = "Job";
-$category = "social";
+### features/modulename/feature.json
 
-# Icons, the first icon is set as default for the Feature, 
-# then all the icons are inserted in a library
-$icons = array(
-    "/app/local/modules/Job/resources/media/library/job1.png",
-    "/app/local/modules/Job/resources/media/library/job2.png",
-);
+This file is the key for every **In app** features
 
-$result = Siberian_Feature::installIcons($name, $icons);
-
-# Install the Feature
-$data = array(
-    "library_id"                    => $result["library_id"],
-    "icon_id"                       => $result["icon_id"],
-    "code"                          => "job",
-    "name"                          => $name,                   
-    "model"                         => "Job_Model_Company",
-    "desktop_uri"                   => "job/application_job/",
-    "mobile_uri"                    => "job/mobile_list/",
-    "mobile_view_uri"               => "job/mobile_view/",
-    "mobile_view_uri_parameter"     => "company_id",
-    "only_once"                     => 0,
-    "is_ajax"                       => 1,           
-    "position"                      => 1000,
-    "social_sharing_is_available"   => 1
-);
-
-$option = Siberian_Feature::install($category, $data, array("code"));
-
-# Multiple layouts
-#
-# If your feature have multiple layouts, use the following section, otherwise skip it
-# Layouts
-$layout_data = array(1, 2);
-$slug = "job";
-
-Siberian_Feature::installLayouts($option->getId(), $slug, $layout_data);
-# !Multiple layouts
-
-# This section duplicates the icons for the Flat design, you can have different icons, 
-# or use the same, however since 4.2 you must write this section
-# Icons
-$icons = array(
-    "/app/local/modules/Job/resources/media/library/job1.png",
-    "/app/local/modules/Job/resources/media/library/job2.png",
-);
-
-$result = Siberian_Feature::installIcons("{$name}-flat", $icons);
+```json
+{
+    "name": "ModuleName",
+    "code": "modulename",
+    "version": "1.0.0",
+    "category": "contact",
+    "model": "ModuleName_Model_MainClass",
+    "desktop_uri": "modulename/application/",
+    "routes": [
+        {
+            "root": true,
+            "state": "modulename-home",
+            "controller": "ModuleNameHome",
+            "url": "modulename/mobile_home/index/value_id/:value_id",
+            "template": "l1/home.html",
+            "cache": false
+        },
+        {
+            "state": "modulename-view",
+            "controller": "ModuleNameView",
+            "url": "modulename/mobile_view/index/value_id/:value_id/item_id/:item_id",
+            "template": "l1/view.html",
+            "cache": false
+        }
+    ],
+    "layouts": [
+        1
+    ],
+    "icons": [
+        "icons/modulename1-flat.png",
+        "icons/modulename2-flat.png",
+        "icons/modulename3-flat.png"
+    ],
+    "files": [
+        "js/services/modulename.js",
+        "js/factory/modulename.js",
+        "js/controllers/modulename.js",
+        "scss/modulename.scss"
+    ],
+    "compile": true,
+    "use_account": true,
+    "only_once": true,
+    "load_on_start": false,
+    "on_start_factory": null
+}
 ```
+
  
 #### List of options
 
 Key|Type|Usage, values, comment
 ---|----|--------------
-$name|String|Your feature name
-$category|String|`social`, `media`, `contact`, `monetization`, `customization`, `integration`, `events`, `misc`
- 
-#### List of options for $data
-
-Key|Type|Usage, values, comment
----|----|--------------
-code|String|This code is unique to your Feature, Module
 name|String|Your feature name
+code|String|This code is unique to your Feature, Module
+category|String|`social`, `media`, `contact`, `monetization`, `customization`, `integration`, `events`, `misc`
+version|String|Not used here see **package.json** for the version
 model|String|Default model class used in the editor
 desktop_uri|String|Default controller class uri used in the editor
-mobile_uri|String|
-mobile_view_uri|String|
-mobile_view_uri_parameter|String|
-only_once|Boolean| Whether an app may have this feature only once, or more 
-is_ajax|Boolean|
-position|Integer|The position in the feature list, leave empty for automatic
-social_sharing_is_available|Boolean| nable the social sharing on your feature (experimental)
+compile|Boolean|Leave **true** by default
+use_account|Boolean|If the feature requires user to login set **true** 
+only_once|Boolean|Whether an app may have this feature only once, or more 
+load_on_start|Boolean|If the feature must be loaded right after the Application starts
+on_start_factory|String|When **load_on_start** is set to **true**, Factory.onStart function will be executed, where **Factory** is the factory class name
  
 
 ## Translations
 
-First create a new file named `mymodule.csv` then place this file in the `translations/default` folder
+Since version 4.16.5, siberian uses **.po** files, which are Gettext source files.
 
-If you want to ship your module with translations, place files in directories named with the locale code, example: english will be in `translations/en/mymodule.csv`
+First create a new file named `mymodule.po` then place this file in the `translations/default` folder
 
-Below as an example the `contact.csv` file.
+If you want to ship your module with translations, place files in directories named with the locale code, example: english will be in `translations/en/mymodule.po`
 
-*Be sure to not use existing filename which are located in `SIBERIANCMS_ROOT/languages/default` otherwise your translations won't work.*
+Below as an example the `contact.po` file.
 
-```csv
-"An error occurred while saving your contact informations."
-"An error occurred while sending your request. Please try again later."
-"And his phone number:"
-"Are you sure you want to remove the picture?"
-"City"
-"Contact information"
-"Here is his email:"
-"Here is his message:"
-"Please enter properly the following fields: <br />"
-"Twitter"
-"Website"
-"You have received a message from a contact:"
-"Your email"
-"Your message has been sent"
-"Your request"
-"Zip code"
+*Be sure to not use existing filename which are located in `SIBERIANCMS_ROOT/languages/base` otherwise your translations won't work.*
+
+```raw
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-03-28T15:24:21+01:00\n"
+"PO-Revision-Date: 2019-03-28T15:24:21+01:00\n"
+"Language: \n"
+
+msgctxt "contact"
+msgid "Cover image"
+msgstr "Illustration"
+
+msgctxt "contact"
+msgid "Name"
+msgstr "Nom"
+
+#, mobile
+msgctxt "contact"
+msgid "Facebook"
+msgstr "Facebook"
+
+#, mobile
+msgctxt "contact"
+msgid "Twitter"
+msgstr "Twitter"
+
+#, mobile
+msgctxt "contact"
+msgid "Website"
+msgstr "Site web"
+
+msgctxt "contact"
+msgid "String to translate"
+msgstr "Phrase à traduire"
+
+msgctxt "contact"
+msgid "Hello, I'm %s"
+msgstr "Bonjour je suis %s"
 ```
 
-Here is an example of what a translated file should like
 
-```csv
-[...]
-"City";"Ville"
-"Contact information";"Informations de contact"
-"Here is his email:";"Voici son e-mail"
-"Here is his message:";"Voici son message"
-[...]
+#### List of options
+
+Key|Type|Usage, values, comment
+---|----|--------------
+#, mobile|String|Add this line if the string is translated inside the Mobile app
+msgctxt|String|This is you context key, generally it's the module code
+msgid|String|The original string, used as a key
+msgstr|String|In **default** folder, **msgstr = msgid**, in translation files, msgstr is the translated sentence
+
+
+#### How to translate
+
+Inside editor & backoffice
+
+```php
+<?php
+
+// Simple translation
+echo p__("context_key", "String to translate");
+
+// Will render [en]"String to translate" , [fr]"Phrase à traduire", as per the .po file below
+
+// sprintf translation
+$userName = "John";
+echo p__("context_key", "Hello, I'm %s", $userName);
+
+// Will render [en]"Hello, I'm John", [fr]"Bonjour je suis John", as per the .po file below
+
 ```
+
+
+---
+
+
+Inside mobile apps, note key & context are swapped compared to the php function
+
+```js
+// From the controllers, include $translate factory
+$translate.instant("Hello, I'm %s", "context_key");
+```
+
+```html
+// From any template
+<div class="item">
+    {{ "Hello, I'm %s" | translate:"context_key" }}
+</div>
+```
+
 
 ## Design
 
@@ -291,50 +349,49 @@ ModuleName
 ├─ resources
 │  └─ design
 │     ├─ desktop
-│     │  ├─ siberian
-│     │  │  ├─ css
-│     │  │  │  └─ job.css
-│     │  │  ├─ js
-│     │  │  │  └─ job.js
-│     │  │  ├─ images
-│     │  │  │  └─ customization
-│     │  │  │     └─ layout
-│     │  │  │        └─ job
-│     │  │  │           ├─ layout-1.png
-│     │  │  │           └─ layout-2.png
-│     │  │  ├─ layout
-│     │  │  │  ├─ job.xml
-│     │  │  │  └─ company.xml
-│     │  │  └─ template
-│     │  │     ├─ company
-│     │  │     │  └─ [...]
-│     │  │     └─ job
-│     │  │        ├─ index.phtml
-│     │  │        └─ application
-│     │  │           ├─ edit.css
-│     │  │           ├─ edit.js
-│     │  │           └─ edit.phtml
 │     │  └─ flat
-│     │     └─ [...] # Same as siberian, flat is the code for the Flat design from 4.2.0
+│     │     ├─ css
+│     │     │  └─ modulename.css
+│     │     ├─ js
+│     │     │  └─ modulename.js
+│     │     ├─ images
+│     │     │  └─ customization
+│     │     │     └─ layout
+│     │     │        └─ modulename
+│     │     │           ├─ layout-1.png
+│     │     │           └─ layout-2.png
+│     │     ├─ layout
+│     │     │  └─ modulename.xml
+│     │     └─ template
+│     │        ├─ company
+│     │        │  └─ [...]
+│     │        └─ modulename
+│     │           ├─ index.phtml
+│     │           └─ application
+│     │              ├─ edit.css
+│     │              ├─ edit.js
+│     │              └─ edit.phtml
 │     └─ email
 │        ├─ layout
 │        └─ template
 └─ [...]
 ```
 
-### job.xml example
+### modulename.xml example
 
 This is the minimum required information in the default `layout.xml`, the file should be named as the module itself, lower-cased so `job.xml` in our case.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <layout>
-    <job_application_job_edit>
+    <modulename_application_modulename_edit>
         <views>
-            <content class="application_view_customization_features_edit_tabbareditor" template="application/customization/features/edit/tabbar_editor.phtml" />
-            <content_editor class="core_view_default" template="job/application/edit.phtml" />
+            <content class="application_view_customization_features_edit_tabbareditor" 
+                     template="application/customization/features/edit/tabbar_editor.phtml" />
+            <content_editor class="core_view_default" 
+                            template="job/application/edit.phtml" />
         </views>
-    </job_application_job_edit>
+    </modulename_application_modulename_edit>
 </layout>
 ```
 
@@ -342,13 +399,15 @@ The section `content` is the default for the feature editor tab, you should not 
 
 The section `content_editor` should point to the feature editor template
 
-here: the short path `job/application/edit.phtml` referring to `ModuleName/resources/design/template/job/application/edit.phtml` 
+here: the short path `modulename/application/edit.phtml` referring to `ModuleName/resources/design/template/modulename/application/edit.phtml` 
 
 * Use only the short path.
 
 ## Cache
 
-Module inheritance is cached, so each time you add or remove a file in your module, you must delete the file `var/cache/design.cache`
+While developing a module you will have to manually rebuild what we call **design cache**
+
+You can do so with the Siberian **cli** by running **./cli cache:design sae** (replace sae with your edition, sae|mae|pe)
 
 *Note: when installing and/or updating a module with the regular zip package, the cache is automatically cleared for the users.*
 
@@ -357,19 +416,7 @@ Module inheritance is cached, so each time you add or remove a file in your modu
 
 ### Editor side
 
-In order to be able to use **portrait & landscape** background for your Features, you will need to replace the old code like this one
-
-```php
-<?php
-    echo $this->getLayout()
-        ->addPartial('background_image', 'core_view_default', 'application/customization/features/edit/background_image.phtml')
-        ->setValueId($option_value->getId())
-        ->toHtml()
-    ;
-?>
-```
-
-With the new code like
+In the file **edit.phtml** which handles the Editor UI for your module, you must add a background section like below.
 
 ```html
 <div class="background-images-import">
@@ -390,10 +437,10 @@ This is as easy as the code below, as everything is linked to the feature, and c
 
 Then to be sure your background images inside your Application pages, you must ensure all **views & lists** your <ion-view> and <ion-modal-view> uses the new directive **sb-page-background**
 
-```php
+```html
 <ion-view sb-page-background>
     <ion-content>
-        My Awesome Content!
+        {{ "My Awesome Content!" |translate:"module_name" }}
     </ion-content>
 </ion-view>
 ```
@@ -411,6 +458,7 @@ ModuleName.zip
 ├─ Controller
 ├─ controllers
 │  └─[...]
+├─ features
 ├─ Model
 ├─ View
 ├─ resources
@@ -418,39 +466,6 @@ ModuleName.zip
 └─ package.json
 ```
 
-## Uninstall a Module
+## Disable a Module
 
-Each module must come with it's own un-installer, which is a single file named `uninstall.php` at the root of the package.
-
-Everything installed by the files located in `resources/db/data` & every table created in `resources/db/schema`
-
-```php
-<?php
-# Job module un-installer.
-
-$name = "Job";
-
-# Clean-up library icons
-Siberian_Feature::removeIcons($name);
-Siberian_Feature::removeIcons("{$name}-flat");
-
-# Clean-up Layouts
-$layout_data = [1, 2];
-$slug = "job";
-
-Siberian_Feature::removeLayouts($option->getId(), $slug, $layout_data);
-
-# Clean-up Option(s)/Feature(s)
-$code = "job";
-Siberian_Feature::uninstallFeature($code);
-
-# Clean-up DB be really carefull with this.
-$tables = [
-    "job_company",
-    "job_place",
-];
-Siberian_Feature::dropTables($tables);
-
-# Clean-up module
-Siberian_Feature::uninstallModule($name);
-```
+While in production modules can't be uninstalled, but can be disabled in **Backoffice > Settings > Advanced > Modules**

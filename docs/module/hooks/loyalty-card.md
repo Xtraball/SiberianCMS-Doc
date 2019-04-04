@@ -9,7 +9,11 @@ Available from 4.14.6
 Called when one ore more points are validated
 
 ```php
-\Siberian\Hook::listen(
+<?php
+
+use Siberian\Hook;
+
+Hook::listen(
     'loyalty_card.validate',
     'Listening Loyalty Card point validation',
     function ($payload) {
@@ -35,7 +39,11 @@ unlockType|`password` or `qrcode`
 Called when a card is completed
 
 ```php
-\Siberian\Hook::listen(
+<?php
+
+use Siberian\Hook;
+
+Hook::listen(
     'loyalty_card.complete',
     'Listening Loyalty Card card completion',
     function ($payload) {

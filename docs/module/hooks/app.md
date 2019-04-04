@@ -13,6 +13,10 @@ Notes:
  - Altering this payload can completely break the Application start!
 
 ```php
+<?php
+
+use Siberian\Hook;
+
 /**
  * Payload
  */
@@ -27,7 +31,7 @@ $data = [
 /**
  * Listener (generally in your init.php)
  */
-\Siberian\Hook::listen(
+Hook::listen(
     'app.init.read',
     'Listening app init ready',
     function ($payload) {
@@ -56,7 +60,11 @@ manifestBlock|webapp json manifest values, icon, name, start url
 Called when the mobile app controller is ready, and have Application, Session & Request elements!
 
 ```php
-\Siberian\Hook::listen(
+<?php
+
+use Siberian\Hook;
+
+Hook::listen(
     'mobile.controller.init',
     'Listening Mobile controller ready',
     function ($payload) {

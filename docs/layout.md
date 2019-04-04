@@ -599,7 +599,7 @@ class MyAwesomeLayout_Form_MyAwesomeLayout extends Siberian_Form_Options_Abstrac
 }
 ```
 
-Your form `MUST` inherit `Siberian_Form_Options_Abstract` class.
+Your form `MUST` extend `Siberian_Form_Options_Abstract` class.
 
 Then you can add your options.
 
@@ -633,15 +633,22 @@ And then in the view.html
 
 ```html
 <div class="layout layout_siberian_18">
-	<ion-scroll direction="y" scrollbar-y="false" class="scroll-view ionic-scroll">
+	<ion-content direction="y" 
+	             scrollbar-y="false" 
+	             class="scroll-view ionic-scroll">
 		<div ng-repeat="feature in features.options">
-			<a tabbar-items class="item item-avatar item-avatar-square homepage-custom border-custom {{ features.layoutOptions.borders.join(' ') }}" option="feature" go-to-url="goTo(feature)" ng-class="{ 'no-border': tabbar_is_transparent }">
+			<a tabbar-items 
+			   class="item item-avatar item-avatar-square homepage-custom border-custom {{ features.layoutOptions.borders.join(' ') }}" 
+			   option="feature" 
+			   go-to-url="goTo(feature)" 
+			   ng-class="{ 'no-border': tabbar_is_transparent }">
 				<img ng-src="{{ feature.icon_url }}" />
 				<h2 class="{{ features.layoutOptions.label+' '+features.layoutOptions.textTransform }}">{{ feature.name }}</h2>
-				<span ng-if="feature.code == 'push_notification' && push_badge" class="badge badge-assertive">{{ push_badge }}</span>
+				<span ng-if="feature.code == 'push_notification' && push_badge" 
+				      class="badge badge-assertive">{{ push_badge }}</span>
 			</a>
 		</div>
-	</ion-scroll>
+	</ion-content>
 </div>
 ```
 

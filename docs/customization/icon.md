@@ -80,12 +80,12 @@ If you need to change options in your module while providing an update you must 
 
 ```php
 <?php
-$icons = array(
+$icons = [
     "app/local/modules/MyIconPack/resources/media/library/icon1.png",
     "app/local/modules/MyIconPack/resources/media/library/icon2.png",
     "app/local/modules/MyIconPack/resources/media/library/icon3.png",
     "app/local/modules/MyIconPack/resources/media/library/icon4.png",
-);
+];
 $result = Siberian_Feature::installIcons("MyIconPack", $icons, true);
 
 ```

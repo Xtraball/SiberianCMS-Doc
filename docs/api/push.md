@@ -11,6 +11,8 @@
 Fetch all the applications available for sending Push notifications.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/push/api_global/list"
 ```
 
@@ -61,6 +63,8 @@ applications|array|The complete list of available applications|
 Sends a global push notification.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/push/api_global/send"
 ```
 

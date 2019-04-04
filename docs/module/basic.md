@@ -97,7 +97,7 @@ $init = function($bootstrap) {
 ### Register assets
 
 ```php
-
+<?php
 /** Register the Assets path, to be copied in native apps/overview */
 Siberian_Assets::registerAssets("Job");
 

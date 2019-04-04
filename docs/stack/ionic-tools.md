@@ -2,19 +2,19 @@
 
 [Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/stack/ionic-tools.md)
 
-**Note: The documentation below will apply only after the Siberian 4.12.0 release.**
-
 # Dialog
 
 The `Dialog` service is used to handle `Alert`, `Prompt` & `Confirm` popups taking care of the stack, and extended with nice features.
 This service also takes care of the translations, every `String` goes into `$translate.instant(text)`
+
+And if `context` is defined, strings goes into `$translate.instant(text, context)`.
 
 Dialog methods always return a promise
 
 ## Alert
 
 ```js
-Dialog.alert(title, message, button, dismiss);
+Dialog.alert(title, message, button, dismiss, context);
 ```
 
 ![dialog-alert](../img/stack/dialogalert.png)
@@ -27,11 +27,12 @@ Dialog.alert(title, message, button, dismiss);
 |message|String|---|Dialog message `text`|
 |button|String|---|Dialog button text, dismiss or ok|
 |dismiss|Integer|undefined|When defined, the Dialog will automatically dismiss after the given time in ms, if set to `-1` the dismiss time will be calculated automatically|
+|context|String|undefined|When defined, the context will be used to translate strings|
 
 ## Prompt
 
 ```js
-Dialog.prompt(title, message, type, value);
+Dialog.prompt(title, message, type, value, context);
 ```
 
 ![dialog-prompt](../img/stack/dialogprompt.png)
@@ -44,14 +45,15 @@ Dialog.prompt(title, message, type, value);
 |message|String|---|Prompt message `text`|
 |type|String|text|`text` or `password`, defaults to `text` if undefined|
 |value|String|undefined|Placeholder if type is set to `text`|
+|context|String|undefined|When defined, the context will be used to translate strings|
 
 
 ## Confirm
 
 ```js
-Dialog.confirm(title, message, buttons_array, css_class);
+Dialog.confirm(title, message, buttons_array, css_class, context);
 
-Dialog.confirm(title, message, buttons_array, css_class)
+Dialog.confirm(title, message, buttons_array, css_class, context)
     .then(function (result) {
         if (result) {
             // Confirmed
@@ -71,6 +73,7 @@ Dialog.confirm(title, message, buttons_array, css_class)
 |message|String|---|Confirm message `text`|
 |buttons_array|Array|---|`["YES","NO"]`|
 |css_class|String|undefined|CSS class used to customize render|
+|context|String|undefined|When defined, the context will be used to translate strings|
 
 &nbsp;
 
@@ -159,7 +162,7 @@ Loader.hide();
 
 # Location
 
-The location services is used to get the current position, with freshness rules to avoid GPS Spam.
+The location services is used to get the current position, with refresh rules to avoid GPS spam & abuse.
 
 ## getLocation
 
@@ -197,9 +200,9 @@ it will return the latest saved position within the promise then refresh it in b
 
 ```js
 {
-    enableHighAccuracy  : true,
-    timeout             : 10000,
-    maximumAge          : 0
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 0
 }
 ```
 

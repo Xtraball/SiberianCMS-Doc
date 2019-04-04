@@ -11,6 +11,8 @@
 Will trigger a complete application manifest rebuild.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/backoffice/api_options/manifest"
 ```
 
@@ -29,6 +31,8 @@ success/error|int|Indicate whether there was an error during the process|1
 Clear var/tmp cache.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/backoffice/api_options/cleartmp"
 ```
 
@@ -55,6 +59,8 @@ success/error|int|Indicate whether there was an error during the process|1
 Clear var/cache files.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/backoffice/api_options/clearcache"
 ```
 
@@ -81,6 +87,8 @@ success/error|int|Indicate whether there was an error during the process|1
 Clear var/logs files.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/backoffice/api_options/clearlogs"
 ```
 

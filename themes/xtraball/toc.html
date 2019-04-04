@@ -1,6 +1,6 @@
 <div class="bs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
     <ul class="nav">
-        {% for toc_item in toc %}
+        {% for toc_item in page.toc %}
             <li class="level-1"><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
             {% for toc_item in toc_item.children %}
                 <li class="level-2"><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>

@@ -16,7 +16,7 @@
 
 * PHP
 
-    * version: >=5.6
+    * version: >=7.0
     
     * extensions: `gd`, `pdo_mysql`, `SimpleXML`, `curl`, `dom`, `SQLite3`.
     
@@ -88,6 +88,17 @@ server {
 	
 	location ~ ^/app/configs {
         deny all;
+    }
+    
+    # Let's Encrypt configuration
+    location = /.well-known/check {
+        default_type "text/plain";
+        try_files $uri =404;
+    }
+
+    location ^~ /.well-known/acme-challenge/ {
+        default_type "text/plain";
+        try_files $uri =404;
     }
 
 	location / {

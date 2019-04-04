@@ -11,6 +11,8 @@
 Create a new user by providing at least an email address.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/admin/api_account/create"
 ```
 
@@ -81,6 +83,8 @@ redirect_url|string|**Available from 4.15.11** Pre-built autologin URL
 Update an existing user.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/admin/api_account/update"
 ```
 
@@ -142,6 +146,8 @@ user_id|int|User unique identifier|
 Check whether a user exists.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/admin/api_account/exist"
 ```
 
@@ -197,6 +203,8 @@ Check whether the email/password combination is correct.
 Check [#Autologin](#autologin) section to use the token or use the **redirect_url**.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/admin/api_account/authenticate"
 ```
 
@@ -256,6 +264,8 @@ redirect_url|string|**Available from 4.15.11** Pre-built autologin URL
 Reset the password of a given email address and send it by email.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/admin/api_account/forgotpassword"
 ```
 

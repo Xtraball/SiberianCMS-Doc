@@ -1,5 +1,5 @@
 site_name: SiberianCMS Documentation
-pages:
+nav:
   - Home: index.md
   - Getting started: documentation.md
   - Customization:
@@ -33,7 +33,12 @@ pages:
     - 'App': 'module/hooks/app.md'
     - 'Loyaty Card': 'module/hooks/loyalty-card.md'
     - 'Menus': 'module/hooks/menus.md'
-theme_dir: themes/xtraball
+theme:
+  name: null
+  custom_dir: 'themes/xtraball/'
+plugins:
+  - 'search'
 site_dir: siberiancms
 repo_url: https://github.com/Xtraball/Siberian
+repo_name: GitHub
 google_analytics: ['UA-90544135-3', 'auto']

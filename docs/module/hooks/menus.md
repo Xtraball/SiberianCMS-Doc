@@ -12,7 +12,10 @@ For utility reasons, and convenience, when creating your module you need a way t
 
 ```php
 <?php
-Siberian_Module::addEditorMenu($module, $code, $title, $link, $icon = '', $aclCode = null);
+
+use Siberian\Module;
+
+Module::addEditorMenu($module, $code, $title, $link, $icon = '', $aclCode = null);
 ```
 
 The previous code will result in something like this.
@@ -37,14 +40,20 @@ The previous code will result in something like this.
 
 ```php
 <?php
-Siberian_Module::addEditorMenu('Faq', 'faq', 'FAQ', '/faq/application/list', 'fa fa-line-chart');
+
+use Siberian\Module;
+
+Module::addEditorMenu('Faq', 'faq', 'FAQ', '/faq/application/list', 'fa fa-line-chart');
 ```
 
 **IcoFont**
 
 ```php
 <?php
-Siberian_Module::addEditorMenu('Faq', 'faq', 'FAQ', '/faq/application/list', 'icofont icofont-bird-wings');
+
+use Siberian\Module;
+
+Module::addEditorMenu('Faq', 'faq', 'FAQ', '/faq/application/list', 'icofont icofont-bird-wings');
 ```
 
 
@@ -57,7 +66,10 @@ Backoffice hook works almost the same as Editor hooks.
 
 ```php
 <?php
-Siberian_Module::addMenu($module, $code, $title, $link, $icon = '');
+
+use Siberian\Module;
+
+Module::addMenu($module, $code, $title, $link, $icon = '');
 ```
 
 The previous code will result in something like this.
@@ -80,14 +92,20 @@ The previous code will result in something like this.
 
 ```php
 <?php
-Siberian_Module::addMenu('Faq', 'faq', 'FAQ', '/faq/backoffice/list', 'fa fa-ticket');
+
+use Siberian\Module;
+
+Module::addMenu('Faq', 'faq', 'FAQ', '/faq/backoffice/list', 'fa fa-ticket');
 ```
 
 **IcoFont**
 
 ```php
 <?php
-Siberian_Module::addMenu('Faq', 'faq', 'FAQ', '/faq/backoffice/list', 'icofont icofont-bird-wings');
+
+use Siberian\Module;
+
+Module::addMenu('Faq', 'faq', 'FAQ', '/faq/backoffice/list', 'icofont icofont-bird-wings');
 ```
 
 
@@ -107,7 +125,10 @@ You callback function **must** return the given payload whether it's altered or 
 
 ```php
 <?php
-\Siberian\Hook::listen(
+
+use Siberian\Hook;
+
+Hook::listen(
     'backoffice.menu.ready',
     'Listening Backoffice menu',
     function ($payload) {
@@ -189,7 +210,10 @@ You callback function **must** return the given payload whether it's altered or 
 
 ```php
 <?php
-\Siberian\Hook::listen(
+
+use Siberian\Hook;
+
+Hook::listen(
     'editor.header.menu.ready',
     'Listening Editor header menu',
     function ($payload) {
@@ -287,7 +311,10 @@ You callback function **must** return the given payload whether it's altered or 
 
 ```php
 <?php
-\Siberian\Hook::listen(
+
+use Siberian\Hook;
+
+Hook::listen(
     'editor.left.menu.ready',
     'Listening Editor sidebar left menu',
     function ($payload) {
@@ -299,7 +326,8 @@ You callback function **must** return the given payload whether it's altered or 
 );
 
 // Working example
-\Siberian\Hook::listen(
+
+Hook::listen(
     "editor.left.menu.ready",
     "Listening editor ok",
     function ($payload) {

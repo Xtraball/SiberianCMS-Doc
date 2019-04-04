@@ -17,9 +17,11 @@ Below is the code for a form using every single elements available, then each on
 /**
  * Class Form_Test
  */
-class Form_Test extends Siberian_Form_Abstract {
+class Form_Test extends Siberian_Form_Abstract 
+{
 
-    public function init() {
+    public function init() 
+    {
         parent::init();
 
         $db = Zend_Db_Table::getDefaultAdapter();
@@ -100,6 +102,7 @@ class Form_Test extends Siberian_Form_Abstract {
 The action to were the form submit its data is defined by `->setAction()`
 
 ```php
+<?php
 $this->setAction(__path('/form/test'))
 ```
         
@@ -108,12 +111,14 @@ $this->setAction(__path('/form/test'))
 This will add on your form a default navigation, with back arrow & a submit button
 
 ```php
+<?php
 $this->addNav('form-test-nav')
 ```
 
 #### parameters
 
 ```php
+<?php
 $this->addNav($name, $save_text = 'OK', $display_back_button = true)
 ```
 
@@ -132,6 +137,7 @@ Form events like `submit` or `change` are binded with css classes like below:
 Binds a form to submit data `onSubmit` event, add the css class `create`
 
 ```php
+<?php
 self::addClass('create', $this);
 ```
 
@@ -142,6 +148,7 @@ This form reloads the feature on success, or appends the form errors to the DOM.
 Binds a form to submit data `onSubmit` event for single toggling forms, add the css class `toggle` see [#toggle-forms](module/forms#toggle-forms)
 
 ```php
+<?php
 self::addClass('toggle', $this);
 ```
 
@@ -150,6 +157,7 @@ self::addClass('toggle', $this);
 Binds a form to submit data `onChange` event for every single item in the form, add the css class `onchange` see [#toggle-forms](module/forms#onchange-forms)
 
 ```php
+<?php
 self::addClass('onchange', $this);
 ```
 
@@ -159,6 +167,7 @@ self::addClass('onchange', $this);
 Binds a form to submit data `onSubmit` event for single row forms, add the css class `delete` see [#toggle-forms](module/forms#delete-row)
 
 ```php
+<?php
 self::addClass('delete', $this);
 ```
 
@@ -175,6 +184,7 @@ This binder is used for small delete forms, to trigger various events
 #### code
 
 ```php
+<?php
 $this->addNav('form-test-nav')
 ```
 
@@ -185,6 +195,7 @@ $this->addNav('form-test-nav')
 #### code
 
 ```php
+<?php
 /** Image upload with crop */
 $this->addSimpleImage(
     'element_image', 
@@ -208,6 +219,7 @@ $this->addSimpleImage(
 #### code
 
 ```php
+<?php
 /** Input text */
 $this->addSimpleText('element_text', __('Text'));
 ```
@@ -219,6 +231,7 @@ $this->addSimpleText('element_text', __('Text'));
 #### code
 
 ```php
+<?php
 /** Input text */
 $this->addSimplePassword('element_password', __('Password'));
 ```
@@ -230,6 +243,7 @@ $this->addSimplePassword('element_password', __('Password'));
 #### code
 
 ```php
+<?php
 /** Textarea */
 $this->addSimpleTextarea('element_textarea', __('Textarea'));
 ```
@@ -241,6 +255,7 @@ $this->addSimpleTextarea('element_textarea', __('Textarea'));
 #### code
 
 ```php
+<?php
 $textarea_100 = $this->addSimpleTextarea('element_textarea_100', __('Textarea 100%'));
 $textarea_100->setNewDesignLarge();
 ```
@@ -252,6 +267,7 @@ $textarea_100->setNewDesignLarge();
 #### code
 
 ```php
+<?php
 /** Textara with CKEditor */
 $richtext = $this->addSimpleTextarea('element_textarea_richtext', __('Textarea Richtext'));
 $richtext->setRichtext();
@@ -264,6 +280,7 @@ $richtext->setRichtext();
 #### code
 
 ```php
+<?php
 $this->addSimpleSelect(
     'element_select', 
     __('Select'), 
@@ -278,6 +295,7 @@ $this->addSimpleSelect(
 #### code
 
 ```php
+<?php
 $this->addSimpleMultiSelect(
     'element_multiselect', 
     __('Multi Select'), 
@@ -292,6 +310,7 @@ $this->addSimpleMultiSelect(
 #### code
 
 ```php
+<?php
 $this->addSimpleCheckbox('element_checbox', __('Checkbox'));
 ```
 
@@ -302,6 +321,7 @@ $this->addSimpleCheckbox('element_checbox', __('Checkbox'));
 #### code
 
 ```php
+<?php
 $this->addSimpleMultiCheckbox(
     'element_multichecbox', 
     __('Multi Checkbox'), 
@@ -316,6 +336,7 @@ $this->addSimpleMultiCheckbox(
 #### code
 
 ```php
+<?php
 $this->addSimpleRadio(
     'element_radio', 
     __('Radio'), 
@@ -329,6 +350,7 @@ $this->addSimpleRadio(
 #### code
 
 ```php
+<?php
 $this->addSimpleDatetimepicker(
     'date', 
     __('Date Picker'), 
@@ -340,6 +362,7 @@ $this->addSimpleDatetimepicker(
 ![datepicker](../img/forms/datepicker.png)
 
 ```php
+<?php
 $this->addSimpleDatetimepicker(
     'datetimepicker', 
     __('DateTime Picker'), 
@@ -351,6 +374,7 @@ $this->addSimpleDatetimepicker(
 ![datetimepicker](../img/forms/datetimepicker.png)
 
 ```php
+<?php
 $this->addSimpleDatetimepicker(
     'timepicker', 
     __('Time Picker'), 
@@ -366,6 +390,7 @@ $this->addSimpleDatetimepicker(
 #### code
 
 ```php
+<?php
 $this->addSimpleSlider(
     'element_slidero', 
     __('Slider'), 
@@ -386,6 +411,7 @@ The option `unit` goes along with the last parameter `$with_indicator` to show o
 #### code
 
 ```php
+<?php
 $this->addNav('submit-repeat', 'OK', false);
 ```
 
@@ -396,12 +422,14 @@ $this->addNav('submit-repeat', 'OK', false);
 Creating the form object
 
 ```php
+<?php
 $form_test = new Form_Test();
 ```
 
 Populating with a Siberian object/model:
 
 ```php
+<?php
 $siberian_object = new Job_Model_Place();
 
 $form_test->populate($siberian_object->getData());
@@ -414,6 +442,7 @@ $form_test->populate($siberian_object->getData());
 Manually filled with default values:
 
 ```php
+<?php
 $form_test->getElement('element_textarea')->setValue('My textarea default value');
 ```
 
@@ -422,6 +451,7 @@ $form_test->getElement('element_textarea')->setValue('My textarea default value'
 Displaying the form:
 
 ```php
+<?php
 echo $form_test;
 ```
 
@@ -432,6 +462,7 @@ echo $form_test;
 here the edit action is used for both creating & editing the corresponding object
 
 ```php
+<?php
 public function editAction() {
     /** Retrive the form submit values */
     $values = $this->getRequest()->getPost(); 
@@ -511,6 +542,7 @@ public function editAction() {
 ### Form toggle
 
 ```php
+<?php
 class Job_Form_Place_Toggle extends Siberian_Form_Abstract {
 
     public function init() {
@@ -544,6 +576,7 @@ class Job_Form_Place_Toggle extends Siberian_Form_Abstract {
 Toggle form requires validators, and a "mini submit" like this:
 
 ```php
+<?php
 $this->addMiniSubmit(
     null, 
     "<i class='fa fa-power-off icon icon-power-off'></i>", 
@@ -554,6 +587,7 @@ $this->addMiniSubmit(
 And if you need a tooltip message to indicate the action:
 
 ```php
+<?php
 $this->defaultToggle(
     $this->mini_submit, 
     "Enable place", 
@@ -565,6 +599,7 @@ $this->defaultToggle(
 ---
 
 ```php
+<?php
 public function toggleAction() {
     $values = $this->getRequest()->getPost();
 
@@ -600,6 +635,7 @@ public function toggleAction() {
 ### Form delete
 
 ```php
+<?php
 class Job_Form_Place_Delete extends Siberian_Form_Abstract {
 
     public function init() {
@@ -632,6 +668,7 @@ class Job_Form_Place_Delete extends Siberian_Form_Abstract {
 ### Delete action
 
 ```php
+<?php
 public function deleteAction() {
     $values = $this->getRequest()->getPost();
 

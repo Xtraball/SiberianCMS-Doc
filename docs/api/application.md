@@ -11,6 +11,8 @@
 Create a new application by providing at least a name and a user identifier.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/application/api/create"
 ```
 
@@ -74,6 +76,8 @@ app_url|string|URL of the application
 Update an existing user.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/application/api/update"
 ```
 
@@ -140,6 +144,8 @@ app_url|string|URL of the application
 Allows an existing user to manage an application.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/application/api_admin/add"
 ```
 
@@ -193,6 +199,8 @@ success/error|int|Indicate whether there was an error during the process|1
 Denies an existing user to manage an application.
 
 ```php
+<?php
+
 $endpoint = "http://www.domain.com/application/api_admin/remove"
 ```
 

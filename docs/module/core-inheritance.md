@@ -27,6 +27,7 @@ However you can also wipe various cache levels manually in the Backoffice dashbo
 **If your module needs to override an actual Siberian design you must explicitely declare it in `bootstrap.php`**
 
 ```php
+<?php
 Siberian_Cache_Design::overrideCoreDesign("ModuleName");
 ```
 
@@ -63,6 +64,7 @@ Then apply your modification into this module file/files.
 Everything is declared in the `bootstrap.php` file this way:
 
 ```php
+<?php
 /** Get the base path to your module */
 $base = Core_Model_Directory::getBasePathTo("/app/local/modules/ModuleName/");
 
@@ -90,8 +92,9 @@ ModuleName
 Then require it in your `bootstrap.php`
 
 ```php
+<?php
 /** Get the base path to your module */
-$base = Core_Model_Directory::getBasePathTo("/app/local/modules/ModuleName/");
+$base = path("/app/local/modules/ModuleName/");
 
 /** Require the classes */
 require_once "{$base}/Admin/Model/Key.php";

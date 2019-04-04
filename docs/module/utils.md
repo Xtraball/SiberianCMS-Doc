@@ -2,21 +2,23 @@
 
 [Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/utils.md)
 
-In this section you'll find a description of the tools & libraries shipped with Siberian, some are usefull other are almost mandatory.
+In this section you'll find a description of the tools & libraries shipped with Siberian, some are useful other are almost mandatory.
 
 **Note: utils are global functions and can be used everywhere in Siberian.**
 
 ## Translations
 
-`__($format [, mixed $args [, mixed $... ]])`
+`p__($context, $format [, mixed $args [, mixed $... ]])`
 
 To translate anything you must use this function 
 
 Behind the scene we use a sprintf to format the strings, so this functions works the same
 
 ```php
-echo __("Hello %s !", "World");
+echo p__("context_key", "Hello %s !", "World");
 ```
+
+The context is here to prevent mixup between modules & features.
 
 Default text is used as a key to be used in the translation system, and must be in english, however when building your module you can ship it with any translations you want, and we encourage you to do so !
 

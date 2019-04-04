@@ -38,30 +38,31 @@
             ga('send', 'pageview');
         </script>
         {% endif %}
+        <script>var base_url = '{{ base_url }}';</script>
     </head>
 
     <body>
-
         {% include "nav.html" %}
 
-        {% if page_title %}
+        {% if page.title != "Home" %}
         {% else %}
             {% include "home-header.html" %}
         {% endif %}
 
         <div style="clear:both;"></div>
 
-        <div class="container sb-main {% if page_title %}{{ page_title }}{% else %}Index{% endif %}">
+        <div class="container sb-main {% if page.title != 'Home' %}{{ page.title }}{% else %}Index{% endif %}">
             <div class="col-md-3 col-lg-2">
                 <div id="aside-dock">
-                    {% if page_title %}
+                    {% if page.title != "Home" %}
                         {% include "toc.html" %}
                     {% else %}
                     {% include "home-toc.html" %}
                     {% endif %}
                 </div>
             </div>
-            <div class="col-md-9 col-lg-10" role="main">{% include "content.html" %}</div>
+            <div class="col-md-9 col-lg-10"
+                 role="main">{% include "content.html" %}</div>
         </div>
 
         <div class="container-fluid footer">
@@ -130,5 +131,13 @@
         {%- for path in extra_javascript %}
         <script src="{{ path }}"></script>
         {%- endfor %}
+
+        {% if 'search' in config['plugins'] %}{%- include "search-modal.html" %}{% endif %}
     </body>
 </html>
+{% if page and page.is_homepage %}
+<!--
+MkDocs version : {{ mkdocs_version }}
+Build Date UTC : {{ build_date_utc }}
+-->
+{% endif %}
