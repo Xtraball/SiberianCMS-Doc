@@ -4,6 +4,8 @@
 
 Below you'll find a complete list of the various frameworks we use both in Editor, Backoffice & Applications.
 
+Most of our Cordova & Ionic libraries are customized for Siberian.
+
 ## Editor
 
 The main codebase inside the editor is powered with `jQuery` and `bootstrap`.
@@ -115,204 +117,184 @@ All our backend is running under Zend Framework with a complete custom stack on 
 
 ### PHP
 
-- Version: `>= 5.6`
+- Version: from `7.0` up to `7.2` 
 
 - [See on Github](https://github.com/php)
 
 ### Zend Framework
 
-- Version: `1.12.3`
+- Based on ZF1, customized for Siberian & topped with Siberian library
 
 - [See on Github](https://github.com/zendframework/zf1)
 
 
 ## Applications
 
-### Ionic
+### Based on Ionic / AngularJS
 
-- Version: `1.3.2`
+#### Highly customized with
 
-- [See on Github](https://github.com/driftyco/ionic-v1)
+- Lazy & Modular loading
+- Dynamic caching
+- Extended SCSS
 
-### AngularJS
-
-- Version: `1.5.3`
-
-- [See on Github](https://github.com/angular/angular)
+&nbsp;
 
 ### Cordova
 
+#### All our cordova platforms are forked and customized.
+
 #### Android
 
-- Version: `6.2.1`
-
-- [See on Github](https://github.com/apache/cordova-android)
+- [See on Github](https://github.com/Xtraball/cordova-android)
 
 #### iOS
 
-- Version: `4.4.0`
-
-- [See on Github](https://github.com/apache/cordova-ios)
+- [See on Github](https://github.com/Xtraball/cordova-ios)
 
 #### Browser
 
-- Version: `4.0.0`
+- [See on Github](https://github.com/Xtraball/cordova-browser)
 
-- [See on Github](https://github.com/apache/cordova-browser)
+&nbsp;
 
 ### Cordova Plugins
 
-#### Insomnia
+#### All our cordova plugins are forked and customized.
 
-- Version: `4.2.0`
+#### Insomnia
 
 - Prevents sleep for continuous app usage like GPS navigation.
 
-- [See on Github](https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-insomnia)
 
 &nbsp;
 
 #### MusicControls
 
-- Version: `1.4.1`
-
 - Display music controls in Notification center.
 
-- [See on Github](https://github.com/homerours/cordova-music-controls-plugin)
+- [See on Github](https://github.com/Xtraball/cordova-music-controls-plugin)
 
 &nbsp;
 
 #### AdMob Pro
 
-- Version: `2.14.0`
-
 - Google AdMob ads Banner & Interstitial.
 
-- [See on Github](https://github.com/floatinghotpot/cordova-admob-pro)
+- [See on Github](https://github.com/Xtraball/cordova-admob-pro)
 
 &nbsp;
 
 #### AppEvent
 
-- Version: `1.2.0`
-
-- [See on Github](https://github.com/katzer/cordova-plugin-app-event)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-app-event)
 
 &nbsp;
 
 #### App Version
 
-- Version: `0.1.8`
-
-- [See on Github](https://github.com/whiteoctober/cordova-plugin-app-version)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-app-version)
 
 &nbsp;
 
 #### BarcodeScanner
 
-- Version: `6.0.6`
-
 - QRCode scanner.
 
-- [See on Github](https://github.com/phonegap/phonegap-plugin-barcodescanner)
+- [See on Github](https://github.com/Xtraball/phonegap-plugin-barcodescanner)
 
 &nbsp;
 
 #### Camera
 
-- Version: `2.3.1`
-
 - Camera & Library manager.
 
-- [See on Github](https://github.com/apache/cordova-plugin-camera)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-camera)
 
 &nbsp;
 
 #### Hot Code Push
 
-- Version: `1.5.2`
-
 - Manages assets codebase live updates.
 
-- [See on Github](https://github.com/nordnet/cordova-hot-code-push)
+- [See on Github](https://github.com/Xtraball/cordova-hot-code-push)
 
 &nbsp;
 
 #### Device 
 
-- Version: `1.1.6`
-
-- [See on Github](https://github.com/apache/cordova-plugin-device)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-device)
 
 &nbsp;
 
 #### File
 
-- Version: `4.3.3`
-
-- [See on Github](https://github.com/apache/cordova-plugin-file)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-file)
 
 &nbsp;
 
 #### Geolocation
 
-- Version: `2.1.0`
-
-- [See on Github](https://github.com/apache/cordova-plugin-geolocation)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-geolocation)
 
 &nbsp;
 
 #### InAppBrowser
 
-- Version: `1.7.1`
-
-- [See on Github](https://github.com/apache/cordova-plugin-inappbrowser)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-inappbrowser)
 
 &nbsp;
 
 #### Local Notification
 
-- Version: `0.8.4`
-
-- [See on Github](https://github.com/katzer/cordova-plugin-local-notifications)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-local-notifications)
 
 &nbsp;
 
 #### Media
 
-- Version: `2.4.1`
+- [See on Github](https://github.com/Xtraball/cordova-plugin-media)
 
-- [See on Github](https://github.com/apache/cordova-plugin-media)
+&nbsp;
+
+#### Navigator
+
+- [See on Github](https://github.com/Xtraball/cordova-navigator)
+
+&nbsp;
+
+#### Permissions
+
+- [See on Github](https://github.com/Xtraball/Permissions)
+
+&nbsp;
+
+#### SecondWebview
+
+- [See on Github](https://github.com/Xtraball/cordova-second-webview)
 
 &nbsp;
 
 #### SocialSharing
 
-- Version: `5.0.12`
-
-- [See on Github](https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-socialsharing)
 
 &nbsp;
 
 #### SplashScreen
 
-- Version: `4.0.0`
-
-- [See on Github](https://github.com/apache/cordova-plugin-splashscreen)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-splashscreen)
 
 &nbsp;
 
 #### StatusBar
 
-- Version: `2.2.0`
-
-- [See on Github](https://github.com/apache/cordova-plugin-statusbar)
+- [See on Github](https://github.com/Xtraball/cordova-plugin-statusbar)
 
 &nbsp;
 
 #### Push
-
-- Version: `1.10.0`
 
 - [See on Github](https://github.com/Xtraball/siberian-plugin-push)
 
@@ -344,9 +326,7 @@ All our backend is running under Zend Framework with a complete custom stack on 
 
 &nbsp;
 
-#### Angular Queue
-
-- Version: `1.0.0`
+#### Siberian NqQueue
 
 - [See on Github](https://github.com/Xtraball/angular-queue)
 

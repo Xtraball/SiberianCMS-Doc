@@ -1,9 +1,9 @@
-# Start building mobile Apps with SiberianCMS !
+# Start building mobile Apps with Siberian!
 
 
-Get into our documentation where you'll find everything needed to setup, use & contribute to SiberianCMS
+Get into our documentation where you'll find everything needed to setup, use & contribute to Siberian
 
-#### [Installation](./documentation#installation) *Easy steps on how to install your first SiberianCMS*
+#### [Installation](./documentation#installation) *Easy steps on how to install your first Siberian*
 
 #### [Make your Module](./module) *Learn everything about creating a module*
 
@@ -15,7 +15,7 @@ Get into our documentation where you'll find everything needed to setup, use & c
 
 #### [Icons](./customization/icon) *Create your own icon packs for awesome features*
 
-#### [API](./api) *Our API documentation will help you to integrate SiberianCMS into your Workflows*
+#### [API](./api) *Our API documentation will help you to integrate Siberian into your workflows*
 
 #### [Stack](./stack/frameworks) *An exhaustive list of the tools that make up the heart of Siberian*
 

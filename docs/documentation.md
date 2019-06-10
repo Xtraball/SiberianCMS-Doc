@@ -4,19 +4,25 @@
 
 ## Software
 
-* Recommended Server OS: `Linux`
+* Production server OS: `Linux`
 
-    * **For local development only**: Works on `OSX` with [homebrew](http://brew.sh/), and on `Windows` with [cygwin](https://www.cygwin.com/)
+* Local development **only**:
+    
+    * `OSX` with [homebrew](http://brew.sh/)
+    
+    * `Windows` with [bash](https://docs.microsoft.com/fr-fr/windows/wsl/install-win10)
     
 * OpenSSL >=1.0.1
 
     * with TLS v1.2 support
+    
+* CURL with HTTP/2 support
 
 * [Apache](#apache) or [Nginx](#nginx)
 
 * PHP
 
-    * version: >=7.0
+    * version: `7.0 -> 7.2`
     
     * extensions: `gd`, `pdo_mysql`, `SimpleXML`, `curl`, `dom`, `SQLite3`.
     
@@ -36,9 +42,9 @@
 
 ## Configuration
 
-1. First you will need to either checkout the project `git clone https://github.com/Xtraball/SiberianCMS.git`
+1. First you will need to either checkout the project `git clone https://github.com/Xtraball/Siberian.git`
 
-    or download the [zip archive](https://github.com/Xtraball/SiberianCMS/archive/master.zip) then extract it on your webserver.
+    or download the [zip archive](https://github.com/Xtraball/Siberian/archive/master.zip) then extract it on your webserver.
 
 2. Setup your empty database and user
 

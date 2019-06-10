@@ -2,6 +2,8 @@
 
 [Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/stack/ionic-tools.md)
 
+We've build our own services on top of Ionic to be more resilient when updating frameworks.
+
 # Dialog
 
 The `Dialog` service is used to handle `Alert`, `Prompt` & `Confirm` popups taking care of the stack, and extended with nice features.
