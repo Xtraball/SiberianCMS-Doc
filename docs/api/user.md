@@ -109,7 +109,7 @@ email|string|User email|
 password|string|User password - At least 6 characters|
 firstname|string|User firstname|
 lastname|string|User lastname|
-is_active|int|User status, 0: inactive, 1: active|*since 4.19.0
+is_active|int|User status, 0: inactive, 1: active|*since 4.18.25
 
 **\* Required fields**
 
@@ -173,7 +173,7 @@ email *|string|User email to test whether it already exists
 ```json
 {
     "success": 1,
-    "user_id": 42, /** Since 4.19.0+ */
+    "user_id": 42, /** Since 4.18.25+ */
     "exists": "true",
 }
 ```
