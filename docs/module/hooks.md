@@ -10,6 +10,10 @@
 
 * [Backoffice](./menus#backoffice-side-menu)
 
+### Editor admin
+
+* [Admin](./admin#register)
+
 ### Customer App
 
 * [App](./app#app-init-read)
