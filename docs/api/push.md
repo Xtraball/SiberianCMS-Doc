@@ -71,7 +71,7 @@ $endpoint = "http://www.domain.com/push/api_global/send"
 ### Request
 
 Param|Version|Type|Details|Default
------|----|-------|-------
+-----|-------|----|-------|-------
 title *|4.13+|string|Push title|
 message *|4.13+|string|Push message|
 checked|4.13+|array|array of the applications to send push to|
