@@ -5,12 +5,6 @@
 ## Software
 
 * Production server OS: `Linux`
-
-* Local development **only**:
-    
-    * `OSX` with [homebrew](http://brew.sh/)
-    
-    * `Windows` with [bash](https://docs.microsoft.com/fr-fr/windows/wsl/install-win10)
     
 * OpenSSL >=1.0.1
 
@@ -22,7 +16,7 @@
 
 * PHP
 
-    * version: `7.0 -> 7.2`
+    * version: `7.3`
     
     * extensions: `gd`, `pdo_mysql`, `SimpleXML`, `curl`, `dom`, `SQLite3`.
     
