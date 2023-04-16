@@ -4,6 +4,8 @@
 
 ---
 
+# [DEPRECATED] 5.0.0 removed the global push features.
+
 ## List
 
 ### Description
