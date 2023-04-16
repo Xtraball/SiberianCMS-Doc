@@ -52,4 +52,4 @@ With the Individual push module, you can send a push to a single customer, this 
     $scheduler = new Scheduler($application);
     $scheduler->buildMessageFromValues($values);
     $scheduler->sendToCustomer($customerId); // This part will automatically sets the player_id and is_individual to true
-``
+```
