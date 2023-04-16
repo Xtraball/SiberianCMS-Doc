@@ -12,6 +12,7 @@ nav:
     - 'Hooks': 'module/hooks.md'
     - 'My account': 'module/account.md'
     - 'Forms': 'module/forms.md'
+    - 'Push notifications': 'module/push.md'
     - 'Offline Mode': 'module/offline-mode.md'
     - 'Utils': 'module/utils.md'
     - 'Security': 'module/security.md'
