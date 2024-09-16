@@ -12,7 +12,7 @@ A module can be a single front page with new features or settings, or a complete
 
 Here you can find a module skeleton to start with [Siberian module Skeleton, Job](https://github.com/Xtraball/siberian-module-skeleton)
 
-Modules are installed in the `app/local/modules` folder, for more information about the inheritance see this page [module/core-inheritance](module/core-inheritance)
+Modules are installed in the `app/local/modules` folder, for more information about the inheritance see this page [module/core-inheritance](core-inheritance)
 
 ## Structure
 
