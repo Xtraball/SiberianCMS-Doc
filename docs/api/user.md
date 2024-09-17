@@ -13,7 +13,7 @@ Create a new user by providing at least an email address.
 ```php
 <?php
 
-$endpoint = "http://www.domain.com/admin/api_account/create"
+$endpoint = "http://make.app4iranian.ir/admin/api_account/create"
 ```
 
 #### Example
@@ -21,10 +21,10 @@ $endpoint = "http://www.domain.com/admin/api_account/create"
 ```json
 {
     "role_id": 2,
-    "email": "email@domain.com",
-    "password": "mypassword",
-    "firstname": "Firstname",
-    "lastname": "Lastname"
+    "email": "hasabras@gmail.com",
+    "password": "h55s61aisan80",
+    "firstname": "Amir",
+    "lastname": "kamali"
 }
 ```
 
