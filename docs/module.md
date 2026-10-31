@@ -79,6 +79,8 @@ This file(s) reflects your database at it's latest version, each time you update
 
 *Note: the schema only add fields if they are new or missing, fields are never removed.*
 
+**Only files named `table_name.php` are read from this folder** (the file name, without `.php`, is the table name). Any other file, such as an `install.sql`, a `.DS_Store`, a backup copy or a sub folder, is ignored; files named `*.ec.php` (encrypted modules) are skipped as well. Older versions created such a stray file as a table of that name, and the install failed with `Unable to create table 'install.sql'`.
+
 ```php
 <?php
 /**
@@ -105,7 +107,12 @@ $schemas["table_name"] = [
     "name" => [
         "type" => "varchar(50)",
         "default" => "default_value",
-        "index" => true,
+        "index" => [
+            "key_name" => "IDX_MYTABLE_NAME",
+            "index_type" => "BTREE",
+            "is_null" => false,
+            "is_unique" => false,
+        ],
     ],
     "created_at" => [
         "type" => "datetime",
@@ -120,13 +127,15 @@ $schemas["table_name"] = [
 
 Key|Type|Usage, values, comment
 ---|----|--------------
-type|String| int(11) unsigned, varchar(50), datetime, etc ...| xoxo
-auto_increment|Boolean|
-primary|Boolean||If multiple columns are defined as `primary` they will be part of a composite primary key
-is_null|Boolean|
-default|mixed|
+type|String|`int(11) unsigned`, `varchar(50)`, `datetime`, etc ...
+auto_increment|Boolean|The column is `AUTO_INCREMENT`. Only the presence of the key is checked, so leave it out instead of setting it to `false`
+primary|Boolean|If multiple columns are defined as `primary` they will be part of a composite primary key. Only the presence of the key is checked
+is_null|Boolean|The column accepts `NULL` (`DEFAULT NULL` when there is no `default`). Only the presence of the key is checked, so leave it out instead of setting it to `false`
+unique|Boolean|The column is `UNIQUE`
+default|mixed|Default value of the column
+collation|String|Collation of the column, ex: `utf8mb4_unicode_ci`
 foreign_key|Array()|See the [Foreign key options below](#foreign-key-options)
-index|Array()|See the [Index options below](#index-options)
+index|Array()|See the [Index options below](#index-options). It must be an array: `true` is not valid (PHP 8 throws a `TypeError` when the column is added to an existing table)
 
 
 #### Foreign Key options
@@ -151,15 +160,24 @@ is_unique|Boolean|
 
 This folder is used to insert default values when installing, or updating a Module.
 
-Every php file in this folder will be executed when installing and/or updating the module, they should reflect the required data as the latest version.
+The php files of this folder are executed when installing and/or updating the module, they should reflect the required data as the latest version. Installing or updating the same version again must be safe: write the data as upserts (`insertOrUpdate()`, a lookup before an insert), never as a blind insert.
 
-**Protected names are `install.php` & `%VERSION%.php` where %VERSION% is a semver string, you must NEVER use them.**
+Which files run:
+
+File name|Behaviour
+---------|---------
+`anything.php`|Executed on every install and update
+`*install.php`|Backward compatibility for old modules: executed only the first time the module is installed
+`*.ec.php`|Never executed (encrypted modules)
+A name whose last character before `.php` is a digit or a dot|**Never executed.** This is the old `1.2.3.php` version style, and it is detected with a pattern (`/.*([0-9\.]+)\.php$/`), so `feature1.php` or `step2.php` are skipped as well
+
+**Never name a file `install.php`, `*install.php` or `%VERSION%.php` (`%VERSION%` is a version string), and do not end a file name with a digit.**
 
 Best practice:
     
-* If your module is about to install multiple features, split them into multiple files, 
+* If your module is about to install multiple features, split them into multiple files named with letters only, 
     
-    * ex: `feature1.php`, `feature2.php`, etc...
+    * ex: `features_core.php`, `features_extra.php`, etc... (not `feature1.php`, `feature2.php`)
 
 
 ### features/modulename/feature.json

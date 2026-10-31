@@ -6,11 +6,25 @@ In SiberianCMS we have designed an inheritance system to allow for custom modifi
 
 ## How it works ?
 
-In the SAE Edition, you'll find two modules subtree in app, `sae` & `local` the local folder override sae, any file named the same as in sae will take precedency on it.
+Siberian ships as three editions, SAE, MAE & PE, and each one is a stack of folders in `app`:
+
+```raw
+local  >  pe  >  mae  >  sae           app/<layer>/<same relative path>
+```
+
+| Edition | Layers loaded (lowest to highest) |
+|---------|-----------------------------------|
+| SAE | `sae`, `local` |
+| MAE | `sae`, `mae`, `local` |
+| PE  | `sae`, `mae`, `pe`, `local` |
+
+A file with the same relative path in two layers is **replaced** by the upper one, it is not merged: any file named the same as in a lower layer takes precedence on it. `local` always wins, this is where your modules live.
+
+Be aware that the file you override may itself already be an override: on MAE and PE the file in `app/sae` can be hidden by a file of `app/mae` or `app/pe`, and then a copy of the `sae` one in `local` replaces the edition's version as well. Start from the file of the highest layer your edition has, not from the one in `app/sae`.
 
 ## Cache
 
-The core inheritance is cached, so each time you add or remove a file in local, you must delete the file `var/cache/design.cache`
+The core inheritance is cached: every design file of a layer is listed in `app/<layer>/design/design-cache.json` (`app/local/design/design-cache.json` for your modules), and the layout only sends the files that are listed. So each time you add or remove a design file in local, the cache must be rebuilt, see [Module > Cache](../module.md#cache) (`./cli cache:design sae`, replace `sae` with your edition).
 
 **Note: when installing and/or updating a module with the regular zip package, the cache is automatically cleared for the users.**
 
@@ -24,11 +38,13 @@ However you can also wipe various cache levels manually in the Backoffice dashbo
 
 ### Design files
 
-**If your module needs to override an actual Siberian design you must explicitely declare it in `bootstrap.php`**
+**If your module needs to override an actual Siberian design you must explicitely declare it in your module `init.php` (or the deprecated `bootstrap.php`)**
 
 ```php
 <?php
-Siberian_Cache_Design::overrideCoreDesign("ModuleName");
+$init = function ($bootstrap) {
+    Siberian_Cache_Design::overrideCoreDesign("ModuleName");
+};
 ```
 
 The recommended way to override a template is to create a minimal module package, this way everything is self-contained and you can easily maintain code.
@@ -61,15 +77,17 @@ Then apply your modification into this module file/files.
 **Overriding core classes is different, as they explicitely need the module to require classes**
 *the autoloader will not find them as they will not be PSR compliant.*
 
-Everything is declared in the `bootstrap.php` file this way:
+Everything is declared in the `init.php` file (or the deprecated `bootstrap.php`) this way:
 
 ```php
 <?php
-/** Get the base path to your module */
-$base = Core_Model_Directory::getBasePathTo("/app/local/modules/ModuleName/");
+$init = function ($bootstrap) {
+    /** Get the base path to your module */
+    $base = path("/app/local/modules/ModuleName/");
 
-/** Require the classes */
-require_once "{$base}/controllers/IndexController.php";
+    /** Require the classes */
+    require_once "{$base}/controllers/IndexController.php";
+};
 ```
 
 #### Example
@@ -89,15 +107,17 @@ ModuleName
 └─ [...]
 ```
 
-Then require it in your `bootstrap.php`
+Then require it in your `init.php`
 
 ```php
 <?php
-/** Get the base path to your module */
-$base = path("/app/local/modules/ModuleName/");
+$init = function ($bootstrap) {
+    /** Get the base path to your module */
+    $base = path("/app/local/modules/ModuleName/");
 
-/** Require the classes */
-require_once "{$base}/Admin/Model/Key.php";
+    /** Require the classes */
+    require_once "{$base}/Admin/Model/Key.php";
+};
 ```
 
 
