@@ -51,11 +51,11 @@ App.config(function($stateProvider) {
 }).controller('JobController', function($rootScope[...]
 ```
 
-The part `templateUrl: "templates/job/l1/view.html"` concerns our template `app/local/modules/Job/resources/var/apps/templates/job/l1/view.html`, we only keep the relative part of the path. 
+The part `templateUrl: "modules/job/templates/l1/view.html"` concerns our template `app/local/modules/Job/resources/var/apps/modules/job/templates/l1/view.html`, we only keep the part of the path after `resources/var/apps/`. 
 
 ## Bootstrap
 
-**Note: the `bootstrap.php` file is deprecated since Siberian 4.12.0 see the Init section below for the new flavor**
+**Note: the `bootstrap.php` file is deprecated, see the Init section below for the new flavor. It is still loaded, but only when the module has no `init.php`: if both exist, `init.php` wins and `bootstrap.php` is not run.**
 
 Basically it's a file named `bootstrap.php` at the root of your package, below an example:
 
@@ -82,6 +82,8 @@ class ModuleName_Bootstrap {
 
 The file `init.php` is used to hook & register the layout files into Siberian & update assets.
 
+It must define a `$init` closure: a file that does not define one runs nothing (and never runs the closure of another module). Exceptions thrown in it are caught and logged as a warning, they do not stop Siberian.
+
 However the syntax & methods used inside **Init** remains the same as with the older bootstrap files.
 
 ```php
@@ -98,8 +100,11 @@ $init = function($bootstrap) {
 
 ```php
 <?php
-/** Register the Assets path, to be copied in native apps/overview */
-Siberian_Assets::registerAssets("Job");
+/**
+ * Register the Assets path, to be copied in native apps/overview
+ * The second argument is required: it is the "var/apps" folder of your module.
+ */
+Siberian_Assets::registerAssets("Job", "/app/local/modules/Job/resources/var/apps/");
 
 /** Register javascripts to be loaded by the ionic apps */
 Siberian_Assets::addJavascripts(array(
