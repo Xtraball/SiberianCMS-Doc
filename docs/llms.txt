@@ -1,0 +1,55 @@
+# Siberian developer documentation
+
+> Siberian is a self-hosted platform to build, manage and publish mobile apps (iOS, Android, web). This site documents how to install it and how to build modules, layouts, templates and icon packs, and how to use its API and CLI. When these docs and the code on the `trunk` branch of https://github.com/Xtraball/Siberian disagree, the code is right.
+
+Start with the agents page, then the module pages. Every page is also available as raw Markdown at https://raw.githubusercontent.com/Xtraball/SiberianCMS-Doc/master/docs/<page>.md and the whole documentation as one text file at https://developers.siberiancms.com/llms-full.txt.
+
+## Start here
+
+- [For AI agents](https://developers.siberiancms.com/agents/): reference modules, where each part of a feature lives, rules, packaging
+- [Getting started](https://developers.siberiancms.com/documentation/): what Siberian is, how it is built, requirements, installation
+- [Modules](https://developers.siberiancms.com/module/): structure, package.json, database schema, feature.json, translations, design files, packaging
+
+## Reference code
+
+- [module-skeleton](https://github.com/Xtraball/module-skeleton): the smallest complete module (table, editor form, mobile page, pack script). Start from it
+- [Job module in the core](https://github.com/Xtraball/Siberian/tree/trunk/siberian/app/sae/modules/Job): a full-sized module, current layout
+- [siberian-module-skeleton](https://github.com/Xtraball/siberian-module-skeleton): the Job module as a standalone package, older layout (bootstrap.php, csv translations)
+
+## Modules
+
+- [Basic usage](https://developers.siberiancms.com/module/basic/): the first steps of a module
+- [Hooks](https://developers.siberiancms.com/module/hooks/): listen to events (app init, translations, login, menus)
+- [Forms](https://developers.siberiancms.com/module/forms/): build editor forms and bind them
+- [My account](https://developers.siberiancms.com/module/account/): add fields to the customer account
+- [Push notifications](https://developers.siberiancms.com/module/push/): send push through OneSignal
+- [Offline mode](https://developers.siberiancms.com/module/offline-mode/): make a feature work without a connection
+- [Utils](https://developers.siberiancms.com/module/utils/): helper functions available everywhere
+- [Security](https://developers.siberiancms.com/module/security/): receive firewall (WAF) alerts in Slack
+- [Core inheritance](https://developers.siberiancms.com/module/core-inheritance/): override and extend core files without editing them
+- [Testing a module](https://developers.siberiancms.com/module/testing/): run the regression tests of the Siberian repository
+- [System hooks](https://developers.siberiancms.com/module/hooks/system/): push message parsed, ssl certificate update, cache clear
+- [Menus hooks](https://developers.siberiancms.com/module/hooks/menus/): add items to the editor and backoffice menus
+- [App hooks](https://developers.siberiancms.com/module/hooks/app/), [customer hooks](https://developers.siberiancms.com/module/hooks/customer/), [admin hooks](https://developers.siberiancms.com/module/hooks/admin/), [loyalty card hooks](https://developers.siberiancms.com/module/hooks/loyalty-card/)
+
+## Customization
+
+- [Layouts](https://developers.siberiancms.com/layout/): create homepage layouts
+- [Templates](https://developers.siberiancms.com/customization/template/): create template packs
+- [Icons](https://developers.siberiancms.com/customization/icon/): create icon packs
+
+## Stack and tools
+
+- [Ionic tools](https://developers.siberiancms.com/stack/ionic-tools/): services for the app (Dialog, Modal, Loader, Location, Picture, SocialSharing, Customer, $session)
+- [Utilities](https://developers.siberiancms.com/stack/utilities/): app helpers (offline and overview checks, native detection)
+- [Frameworks](https://developers.siberiancms.com/stack/frameworks/): every framework, library and native plugin with its version
+- [Siberian CLI](https://developers.siberiancms.com/cli/siberian/): the `cli` commands
+
+## API
+
+- [Introduction](https://developers.siberiancms.com/api/): the REST API, how to call it
+- [Application](https://developers.siberiancms.com/api/application/), [User](https://developers.siberiancms.com/api/user/), [Backoffice](https://developers.siberiancms.com/api/backoffice/), [Push](https://developers.siberiancms.com/api/push/) (removed in 5.0.0), [Preview](https://developers.siberiancms.com/api/preview/), [Job](https://developers.siberiancms.com/api/job/) (admin account endpoints of the Job module)
+
+## Optional
+
+- [Contribute](https://developers.siberiancms.com/contribute/): report an issue (pull requests are not accepted)

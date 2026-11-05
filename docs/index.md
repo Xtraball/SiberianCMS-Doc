@@ -19,4 +19,8 @@ Get into our documentation where you'll find everything needed to setup, use & c
 
 #### [Stack](./stack/frameworks) *An exhaustive list of the tools that make up the heart of Siberian*
 
-#### [Contribute](./contribute) *If you want to share any improvement or feature, you're welcome !*
+#### [For AI agents](./agents) *Building with a coding agent? Start here: reference modules, rules, machine readable index*
+
+#### [Contribute](./contribute) *Found a problem? Open an issue*
+
+<!-- For AI agents and automation: read /agents/ first, then /llms.txt (index) or /llms-full.txt (all pages). Reference module: https://github.com/Xtraball/module-skeleton -->

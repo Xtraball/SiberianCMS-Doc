@@ -141,3 +141,27 @@ Here is the list of the available APIs:
 ### Push notifications
 
 The global push API was removed in 5.0.0, see [Push](./push).
+
+### Local API access
+
+!!! warning
+    When enabled, **every request made from the server itself skips the API authentication**, no user, password or token is needed and all API privileges are granted. Leave it disabled unless you really need it.
+
+The setting `allow_local_api` is read in the API base controller (`Api_Controller_Default::init()`). It is **off by default** (a missing setting counts as disabled), and only the exact value `true` enables it.
+
+When it is enabled, a request skips the Basic and Bearer authentication and the ACL check if the client address equals the server address (`$_SERVER['REMOTE_ADDR'] === $_SERVER['SERVER_ADDR']`), that is a call made from the same machine, typically a script or cron job running `curl` against the instance's own address.
+
+To enable it, add this line to `config.user.php` (next to `config.php`, in the `siberian` folder; `config.php` loads it):
+
+```php
+<?php
+$_config['allow_local_api'] = true;
+```
+
+To disable it, remove the line or set it to `false`.
+
+Security implications:
+
+ - Anything running on the server, or able to send requests that reach the application from the server address (a reverse proxy on the same machine, a proxied request that appears to come from it, or another site hosted on the box), is fully trusted.
+ - Behind a proxy, check what `REMOTE_ADDR` and `SERVER_ADDR` hold for your setup before enabling it.
+ - Never enable it on shared hosting.

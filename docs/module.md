@@ -4,6 +4,8 @@ Here you'll find everything needed to start developing your first module, from s
 
 ## What is a module ?
 
+> **Quick start:** copy [module-skeleton](https://github.com/Xtraball/module-skeleton), a small working module (one table, one editor form, one mobile page, and `tools/pack.sh` to build the zip), then rename it. The [Job module](https://github.com/Xtraball/Siberian/tree/trunk/siberian/app/sae/modules/Job) in the core is a full-sized example.
+
 Modules are the core of SiberianCMS, they run frontend, backend, features & even more.
 
 A module can be a single front page with new features or settings, or a complete feature for SiberianCMS to be used in your Mobile apps and managed in your App editor.

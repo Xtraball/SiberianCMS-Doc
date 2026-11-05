@@ -17,6 +17,7 @@ nav:
     - 'Utils': 'module/utils.md'
     - 'Security': 'module/security.md'
     - 'Core inheritance': 'module/core-inheritance.md'
+    - 'Testing a module': 'module/testing.md'
     - 'Siberian CLI': 'cli/siberian.md'
   - Stack:
     - 'Ionic tools': 'stack/ionic-tools.md'
@@ -28,12 +29,15 @@ nav:
     - 'User': 'api/user.md'
     - 'Backoffice': 'api/backoffice.md'
     - 'Push': 'api/push.md'
+    - 'Preview': 'api/preview.md'
+    - 'Job': 'api/job.md'
   - Contribute: contribute.md
   - 'HiddenNav':
     - 'Customer': 'module/hooks/customer.md'
     - 'App': 'module/hooks/app.md'
     - 'Loyaty Card': 'module/hooks/loyalty-card.md'
     - 'Menus': 'module/hooks/menus.md'
+    - 'System': 'module/hooks/system.md'
 theme:
   name: null
   custom_dir: 'themes/xtraball/'
