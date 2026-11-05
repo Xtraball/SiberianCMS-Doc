@@ -34,7 +34,12 @@ Dialog.alert(title, message, button, dismiss, context);
 ## Prompt
 
 ```js
-Dialog.prompt(title, message, type, value, context);
+Dialog.prompt(title, message, type, value, buttons_array, css_class, context);
+
+Dialog.prompt(title, message, type, value, buttons_array, css_class, context)
+    .then(function (result) {
+        // the text typed by the user
+    });
 ```
 
 ![dialog-prompt](../img/stack/dialogprompt.png)
@@ -47,7 +52,9 @@ Dialog.prompt(title, message, type, value, context);
 |message|String|---|Prompt message `text`|
 |type|String|text|`text` or `password`, defaults to `text` if undefined|
 |value|String|undefined|Placeholder if type is set to `text`|
-|context|String|undefined|When defined, the context will be used to translate strings|
+|buttons_array|Array|`["OK", "CANCEL"]`|The two buttons: validate, then cancel|
+|css_class|String|undefined|CSS class used to customize render|
+|context|String|undefined|When defined, the context will be used to translate strings. It is the seventh argument: pass `undefined` for the ones you skip|
 
 
 ## Confirm
@@ -193,8 +200,12 @@ Location.getLocation(config, force)
 
 Returns a promise
 
-If `force` is set to true the GPS request will be immediate, otherwise if the latest fetch is less than 10 seconds, 
-it will return the latest saved position within the promise then refresh it in background.
+If `force` is defined, whatever its value (`true` as well as `false`), the GPS request will be immediate. Leave it
+`undefined` to let the service decide: if the latest fetch is less than 42 seconds old, it returns the latest saved
+position within the promise then refreshes it in background.
+
+If the position cannot be found (permission denied, timeout, position unavailable), the promise is rejected and the
+service stops asking for the next calls, to avoid asking again and again.
 
 &nbsp;
 
@@ -353,7 +364,7 @@ The customer service, is the only entry point you should use when dealing with u
 
 
 ```js
-Customer.loginModal(scope, login_callback, logout_callback)
+Customer.loginModal(scope, login_callback, logout_callback, register_callback)
 ```
 
 &nbsp;
@@ -365,6 +376,7 @@ Customer.loginModal(scope, login_callback, logout_callback)
 |scope|Object|undefined|If undefined, the scope will be $rootScope|
 |login_callback|Function|undefined|A function to be called on a sucessfull login|
 |logout_callback|Function|undefined|A function to be called on a sucessfull logout|
+|register_callback|Function|undefined|A function to be called on a sucessful registration|
 
 &nbsp;
 
@@ -398,7 +410,8 @@ $session.getDeviceScreen()
 /**
 {
     width,
-    height
+    height,
+    orientation
 }
 */
 ```
