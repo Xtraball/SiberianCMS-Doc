@@ -28,7 +28,14 @@ ModuleName
 │  └─ Mobile
 │     └─ ModuleNameController.php
 ├─ features
-│  └─ [...] // Core feature related files
+│  └─ modulename
+│     ├─ feature.json
+│     ├─ assets
+│     │  └─ templates   // Ionic templates, copied to the apps
+│     ├─ icons
+│     ├─ js
+│     └─ scss
+├─ init.php        // see "Init" in Basic usage
 ├─ Form
 ├─ Model
 ├─ View
@@ -52,6 +59,8 @@ ModuleName
 ### package.json
 
 The `package.json` is used by the Installer to know the requirements, and routines to run during the installation/update process
+
+`type` is one of `module`, `layout`, `icons` or `template`; `dependencies.system.type` is `SAE`, `MAE` or `PE`, and the install is refused if the running edition or version is lower than required.
 
 ```json
 {
@@ -182,7 +191,7 @@ Best practice:
 
 ### features/modulename/feature.json
 
-This file is the key for every **In app** features
+This file is the key for every **In app** features. Every `features/*/feature.json` of a module is read by the Installer, the `js`/`scss`/`css` listed in `files` are minified into one lazy-loaded bundle (`features/<code>/<code>.bundle.min.js`) and the `assets` folder is copied to the apps.
 
 ```json
 {
@@ -231,6 +240,8 @@ This file is the key for every **In app** features
 }
 ```
 
+All paths in `icons` and `files` are relative to the folder of the `feature.json`. A route `template` is relative to `features/modulename/assets/templates/` (here `assets/templates/l1/home.html`).
+
  
 #### List of options
 
@@ -238,15 +249,40 @@ Key|Type|Usage, values, comment
 ---|----|--------------
 name|String|Your feature name
 code|String|This code is unique to your Feature, Module
-category|String|`social`, `media`, `contact`, `monetization`, `customization`, `integration`, `events`, `misc`
+category|String|`social`, `media`, `contact`, `monetization`, `customization`, `integration`, `events`, `misc`, or `_service` for a service module (no option is created in the editor)
 version|String|Not used here see **package.json** for the version
 model|String|Default model class used in the editor
 desktop_uri|String|Default controller class uri used in the editor
+routes|Array|Ionic states of the feature, see [Route options](#route-options). The route with `"root": true` is the entry point of the feature
+icons|Array|Icons of the feature, relative to the `feature.json` folder
+files|Array|`js`, `scss` and `css` files bundled with the feature (a file path containing `..` is ignored)
+layouts|Array|Layouts offered for the feature in the editor
 compile|Boolean|Leave **true** by default
 use_account|Boolean|If the feature requires user to login set **true** 
 only_once|Boolean|Whether an app may have this feature only once, or more 
+is_ajax|Boolean|Defaults to `true`
 load_on_start|Boolean|If the feature must be loaded right after the Application starts
 on_start_factory|String|When **load_on_start** is set to **true**, Factory.onStart function will be executed, where **Factory** is the factory class name
+open_callback_class, lazy_load|String|Angular factory whose `openCallback(feature)` is called when the feature is opened instead of a route, and the comma separated bundles to load before
+social_sharing, use_nickname, use_ranking, use_civility, use_mobile, use_birthdate, use_critical_push|Boolean|Feature capabilities, all default to `false`
+position, custom_fields|Integer, Array|Optional, position of the feature in its category, extra option fields
+
+`name`, `code`, `model`, `desktop_uri`, `routes` and `icons` are mandatory: a `feature.json` missing one of them is silently ignored.
+
+#### Route options
+
+Key|Type|Usage, values, comment
+---|----|--------------
+state|String|Ionic state name
+url|String|Appended to `BASE_PATH`
+controller|String|Angular controller
+template|String|Template path, relative to `assets/templates/`
+templateHTML|String|Inline template, used instead of `template`
+layouts|Object|Template folder per layout id (plus a `default`), used with `template`
+externalTemplate|Boolean|`template` is a full path, not relative to `assets/templates/`
+root|Boolean|Entry point of the feature
+cache|Boolean|View cache, enabled unless set to `false`
+autoregister|Boolean|Set to `false` to not register the state automatically
  
 
 ## Translations
@@ -318,6 +354,17 @@ msgid|String|The original string, used as a key
 msgstr|String|In **default** folder, **msgstr = msgid**, in translation files, msgstr is the translated sentence
 
 
+To have the strings of your module extracted into your `default` file, register it in your `init.php` and set `$_config["extract"] = true;` in `config.php` while developing (see `Job/init.php`).
+
+```php
+<?php
+use Siberian\Translation;
+
+$init = function ($bootstrap) {
+    Translation::registerExtractor("mymodule", "MyModule", path("/app/local/modules/MyModule/resources/translations/default/mymodule.po"));
+};
+```
+
 #### How to translate
 
 Inside editor & backoffice
@@ -358,6 +405,8 @@ $translate.instant("Hello, I'm %s", "context_key");
 
 
 ## Design
+
+Only the `flat` design is shipped today (`design_code()` always returns `flat`).
 
 Everything you need to organize, style & interact with your Feature is located in the `design` folder
 
@@ -402,16 +451,18 @@ This is the minimum required information in the default `layout.xml`, the file s
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <layout>
-    <modulename_application_modulename_edit>
+    <modulename_application_edit>
         <views>
             <content class="application_view_customization_features_edit_tabbareditor" 
                      template="application/customization/features/edit/tabbar_editor.phtml" />
             <content_editor class="core_view_default" 
-                            template="job/application/edit.phtml" />
+                            template="modulename/application/edit.phtml" />
         </views>
-    </modulename_application_modulename_edit>
+    </modulename_application_edit>
 </layout>
 ```
+
+The tag name is the request path with underscores: `modulename_application_edit` is the action `edit` of the `application` controller of the `modulename` module (see `Job/resources/design/desktop/flat/layout/job.xml`).
 
 The section `content` is the default for the feature editor tab, you should not need to change it.
 
@@ -476,6 +527,7 @@ ModuleName.zip
 ├─ Controller
 ├─ controllers
 │  └─[...]
+├─ init.php
 ├─ features
 ├─ Model
 ├─ View

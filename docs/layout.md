@@ -173,6 +173,8 @@ If your layout requires custom ratio images to illustrate features, you can regi
 
 `$position` is the position of the current feature, this way you can have different sizes for different positions in your layout.
 
+The callback also receives the layout options as an optional second argument (`function ($position, $options = null)`), the core `layout_siberian_swipe` and `layout_17` use it to change the size according to the chosen `icons` option.
+
 the function must return an array with `width` and `height` keys. 
 
 ### Data
@@ -212,10 +214,8 @@ $datas = array(
     "options"                    => $default_options,
 );
 
-$layout = new \Application_Model_Layout_Homepage();
-$layout
-    ->setData($datas)
-    ->insertOrUpdate(array("code"));
+# Same as the core layouts do: creates or updates the layout by its code, and its ACL resource
+\Siberian_Feature::installApplicationLayout($datas, "custom");
 
 # Copying assets at installation time
 # same path as in `Siberian_Assets::registerAssets`
@@ -225,7 +225,7 @@ $layout
 |Field|Required&nbsp;?|Description|
 |-----|---------------|-----------|
 |name|yes|This is your layout name, this can be `My Awesome Layout`|
-|visibility|yes|VISIBILITY_HOMEPAGE, VISIBILITY_ALWAYS, VISIBILITY_TOGGLE|
+|visibility|yes|VISIBILITY_HOMEPAGE, VISIBILITY_ALWAYS, VISIBILITY_TOGGLE, VISIBILITY_FULLSCREEN|
 |code|yes|must be your layout_code, here `my_awesome_layout`|
 |preview|yes|This is the image used in Design > CHOOSE YOUR LAYOUT section|
 |use_more_button|yes|Does your layout works with a modal and so requires the more_button|
@@ -237,6 +237,8 @@ $layout
 |use_subtitle|yes|Whether your layout uses subtitles. **/!\ Only available in flat design**|
 |use_homepage_slider|no|Whether your layout is designed to work with the homepageslider.|
 |options|no|Default options for your layout Siberian 4.8.6+ only|
+|category_id|no|Layout category, `Siberian_Feature::installApplicationLayout($datas, "custom")` fills it from the category code (the core layouts use `default`)|
+|preview_new|no|Image of the layout in the modal (the core layouts set it, e.g. `/customization/layout/homepage/layout_swipe_modal.png`)|
 
 
 #### Visibility
@@ -246,6 +248,7 @@ $layout
 |VISIBILITY_HOMEPAGE|The layout is displayed only on the homepage|![homepage](img/layout/homepage-1.png)|
 |VISIBILITY_ALWAYS|The layout is displayed everywhere and must take in consideration audio player controls & features UI|![always-1](img/layout/always-1.png)|
 |VISIBILITY_TOGGLE|Toggle layout side-menu|![toggle-1](img/layout/toggle-1.png)|
+|VISIBILITY_FULLSCREEN|The layout is displayed fullscreen||
 
 
 ## Layout Structure
@@ -288,7 +291,7 @@ Each feature is an item and needs some directives:
 |-------|---------------|-----------|
 |tabbar-items|yes|This directive binds the on-click of your element|
 |option="feature"|yes|Sets the option to the current feature|
-|go-to-url="goTo(feature);"|yes|**This option is deprecated in Siberian 5.0**|
+|go-to-url="goTo(feature);"|no|**Deprecated**, the `tabbar-items` directive opens the feature itself on click (`HomepageLayout.openFeature`), the attribute is still present in the core layouts|
 |ng-show="tabbar_is_visible"|yes|Condition used when the layout is always displayed|
 |ng-class="[...]"|yes|Used by the option in Editor > Colors > Homepage > Transparent to remove border & background|
 
@@ -355,7 +358,7 @@ The hooks.js file is an Angular service, lazy loaded when using a custom Layout,
  *
  * All the following functions are required in order for the Layout to work
  */
-App.service('my_awesome_layout', function ($rootScope, HomepageLayout) {
+angular.module("starter").service('my_awesome_layout', function ($rootScope, $timeout, HomepageLayout) {
 
     var service = {};
     
@@ -470,7 +473,8 @@ Example of an option/feature for information
   "use_nickname": "0",
   "use_ranking": "0",
   "custom_fields": [],
-  "position": "5"
+  "position": "5",
+  "is_visible": true
 }
 ```
 
@@ -484,7 +488,7 @@ In the example below, we are placing the `more_button` at the third place in the
      * Example with a layout containing 5 features (more_button include) & a modal
      */
     service.features = function(features, more_button) {
-        if(features.overview.options >= 4) {
+        if(features.overview.options.length >= 4) {
   
             var third_option = features.overview.options[2];
             var fourth_option = features.overview.options[3];

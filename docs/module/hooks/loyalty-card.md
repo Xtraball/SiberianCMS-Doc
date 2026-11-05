@@ -27,10 +27,15 @@ Hook::listen(
 
 key|details
 ---|---
+appId|The application id
 customerId|The customerId who validated the points
-card|The validated card
+employeeName|The name of the employee password used
+card|The validated card (array of the card data)
+customerCardId|The customer card id
 points|Number of points validated
 unlockType|`password` or `qrcode`
+
+The same payload is also sent to `loyalty_card.validate_point`.
 
 ---
 
@@ -57,6 +62,11 @@ Hook::listen(
 
 key|details
 ---|---
+appId|The application id
 customerId|The customerId who validated the points
-card|The validated card
+employeeName|The name of the employee password used
+card|The validated card (array of the card data)
+customerCardId|The customer card id
 unlockType|`password` or `qrcode`
+
+The same payload is also sent to `loyalty_card.use_coupon`.

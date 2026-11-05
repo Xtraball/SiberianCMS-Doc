@@ -4,7 +4,9 @@
 
 ---
 
-# [DEPRECATED] 5.0.0 removed the global push features.
+# [REMOVED] 5.0.0 removed the global push features.
+
+The endpoints below (`push/api_global/list` and `push/api_global/send`) no longer exist in current Siberian versions (no such controller on trunk). This page is kept for installations older than 5.0.0 only.
 
 ## List
 

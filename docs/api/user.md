@@ -8,7 +8,7 @@
 
 ### Description
 
-Create a new user by providing at least an email address.
+Create a new user by providing at least an email address and a password.
 
 ```php
 <?php
@@ -35,9 +35,9 @@ Param|Type|Details|Default
 -----|----|-------|-------
 role_id|int|ACL role identifier set to the user|1
 email *|string|User email|
-password|string|User password - At least 6 characters|
+password *|string|User password - Min. 9 characters, with at least one upper case letter, one number and one special character|
 firstname|string|User firstname|
-lastname|string|User lastname
+lastname|string|User lastname|
 
 **\* Required fields**
 
@@ -48,7 +48,7 @@ lastname|string|User lastname
     "success": 1,
     "user_id": 1,
     "token": "aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee",
-    "redirect_url": "http://www.domain.com/admin/api_account/authenticate?email=email@domain.com&token=aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee"
+    "redirect_url": "http://www.domain.com/admin/api_account/autologin?email=email@domain.com&token=aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee"
 }
 ```
 
@@ -106,7 +106,7 @@ Param|Type|Details|Default
 user_id *|int|Unique identifier received when creating a new user|
 role_id|int|ACL role identifier set to the user|1
 email|string|User email|
-password|string|User password - At least 6 characters|
+password|string|User password - Same rules as create (min. 9 characters, upper case, number, special character)|
 firstname|string|User firstname|
 lastname|string|User lastname|
 is_active|int|User status, 0: inactive, 1: active|*since 4.18.25
@@ -118,7 +118,8 @@ is_active|int|User status, 0: inactive, 1: active|*since 4.18.25
 ```json
 {
     "success": 1,
-    "user_id": 1
+    "user_id": 1,
+    "token": "aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee"
 }
 ```
 
@@ -137,6 +138,7 @@ Param|Type|Details|Default
 -----|----|-------|-------
 success/error|int|Indicate whether there was an error during the process|1
 user_id|int|User unique identifier|
+token|string|Login token of the user|
 
 ---
 
@@ -173,8 +175,8 @@ email *|string|User email to test whether it already exists
 ```json
 {
     "success": 1,
-    "user_id": 42, /** Since 4.18.25+ */
-    "exists": "true",
+    "id": 42,
+    "exists": true
 }
 ```
 
@@ -192,6 +194,7 @@ email *|string|User email to test whether it already exists
 Param|Type|Details|Default
 -----|----|-------|-------
 success/error|int|Indicate whether there was an error during the process|1
+id|int|User unique identifier (0/empty when the user does not exist)|
 exists|boolean|Indicate whether the given email already exist
 
 ---
@@ -234,7 +237,7 @@ password *|string|User password
 {
     "success": 1,
     "token": "aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee",
-    "redirect_url": "http://www.domain.com/admin/api_account/authenticate?email=email@domain.com&token=aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee"
+    "redirect_url": "http://www.domain.com/admin/api_account/autologin?email=email@domain.com&token=aFef235fygd3dz3kLo98hKHfdxFguGf753f654ee"
 }
 ```
 
@@ -301,7 +304,7 @@ email *|string|User email
 ```json
 {
     "error": 1,
-    "message": "This email address does not exist."
+    "message": "This email address does not exist"
 }
 ```
 

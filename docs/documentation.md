@@ -16,9 +16,9 @@
 
 * PHP
 
-    * version: `7.3`
+    * version: `8.2` minimum, `8.5` recommended (`>=8.2 <8.6`)
     
-    * extensions: `gd`, `pdo_mysql`, `SimpleXML`, `curl`, `dom`, `SQLite3`.
+    * extensions: `SimpleXML`, `pdo_mysql`, `gd`, `mbstring`, `iconv`, `curl`, `openssl`.
     
     * functions: `exec()`
     
@@ -38,7 +38,7 @@
 
 1. First you will need to either checkout the project `git clone https://github.com/Xtraball/Siberian.git`
 
-    or download the [zip archive](https://github.com/Xtraball/Siberian/archive/master.zip) then extract it on your webserver.
+    or download the [zip archive](https://github.com/Xtraball/Siberian/archive/trunk.zip) then extract it on your webserver.
 
 2. Setup your empty database and user
 

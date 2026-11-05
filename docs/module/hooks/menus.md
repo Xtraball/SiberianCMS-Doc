@@ -15,7 +15,7 @@ For utility reasons, and convenience, when creating your module you need a way t
 
 use Siberian\Module;
 
-Module::addEditorMenu($module, $code, $title, $link, $icon = '', $aclCode = null);
+Module::addEditorMenu($module, $code, $title, $link, $icon = '', $aclCode = null, $context = null);
 ```
 
 The previous code will result in something like this.
@@ -32,6 +32,7 @@ The previous code will result in something like this.
 |$link|yes|Path to your feature `/mymodule/mycontroller/myaction`|
 |$icon|no|Custom css class to display icon using fontawesome or icofont|
 |$aclCode|no|**from 4.15.7** ACL code to access this menu, if null or the code doesn't exists, menu item will be accessible|
+|$context|no|Translation context: when set, $title is translated with `p__($context, $title)` instead of `__($title)`|
 
 
 #### Examples
@@ -69,7 +70,7 @@ Backoffice hook works almost the same as Editor hooks.
 
 use Siberian\Module;
 
-Module::addMenu($module, $code, $title, $link, $icon = '');
+Module::addMenu($module, $code, $title, $link, $icon = '', $context = null);
 ```
 
 The previous code will result in something like this.
@@ -85,6 +86,7 @@ The previous code will result in something like this.
 |$title|yes|Your link text|
 |$link|yes|Path to your feature `/mymodule/mycontroller/myaction`|
 |$icon|no|Custom css class to display icon using fontawesome or icofont|
+|$context|no|Translation context for $title, same as the Editor menu|
 
 #### Examples
 
@@ -335,7 +337,7 @@ Hook::listen(
         
         // This is a short alias to check ACL from anywhere.
         $canAccess = function($acl) {
-            $aclList = \Admin_Controller_Default::_getAcl();
+            $aclList = \Admin_Controller_Default::_sGetAcl();
             if ($aclList) {
                 return $aclList->isAllowed($acl);
             }
@@ -344,7 +346,8 @@ Hook::listen(
         };
 
         // Fetch the current path
-        $currentUrl = str_replace(\Core\Model\Base::getBaseUrl(), "", \Core\Model\Base::getCurrentUrl());
+        $base = new \Core\Model\Base();
+        $currentUrl = str_replace($base->getBaseUrl(), "", $base->getCurrentUrl());
 
         $payload["analytics"]["childs"]["customanalytics"] = [
             "hasChilds" => false,
@@ -352,7 +355,7 @@ Hook::listen(
             "label" => __("My custom analytics page"),
             "icon" => "fa fa-bar-chart",
             "url" => __path("/customanalytics/application/view"), // Generates a simple path to the feature
-            "is_current" => (preg_match("#^/migastats/application/view#", $currentUrl)), // Check against what path should be to highlight or not
+            "is_current" => (preg_match("#^/customanalytics/application/view#", $currentUrl)), // Check against what path should be to highlight or not
         ];
 
         return $payload;

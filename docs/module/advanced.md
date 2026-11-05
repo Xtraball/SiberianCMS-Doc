@@ -4,6 +4,8 @@
 
 ## Ionic code
 
+**Note: this page is not in the navigation and duplicates [Basic usage](basic.md). The current way to ship Ionic code is a `features/<code>/feature.json` with `assets/templates`, see [Module > feature.json](../module.md#featuresmodulenamefeaturejson).**
+
 Everything you need to organize, style & interact with your Feature in the native apps is located in the `var` folder
 
 Files are merged at install/update `var/apps/browser` for the Overview & HTML5 App.

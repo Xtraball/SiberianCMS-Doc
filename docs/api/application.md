@@ -73,7 +73,7 @@ app_url|string|URL of the application
 
 #### Description
 
-Update an existing user.
+Update an existing application.
 
 ```php
 <?php
@@ -141,7 +141,7 @@ app_url|string|URL of the application
 
 #### Description
 
-Allows an existing user to manage an application.
+Allows an existing user (admin_id) to manage an application.
 
 ```php
 <?php
@@ -153,8 +153,8 @@ $endpoint = "http://www.domain.com/application/api_admin/add"
 
 ```json
 {
-    "app_id": "1",
-    "user_id": "1"
+    "app_id": 1,
+    "admin_id": 1
 }
 ```
 
@@ -163,7 +163,7 @@ $endpoint = "http://www.domain.com/application/api_admin/add"
 Param|Type|Details
 -----|----|-------
 app_id *|int|Unique identifier
-admin_id *|int|User identifier
+admin_id *|int|User identifier (the id returned by the user API)
 
 **\* Required fields**
 
@@ -180,7 +180,7 @@ admin_id *|int|User identifier
 ```json
 {
     "error": 1,
-    "message": "This user can already manage this application."
+    "message": "This admin does not exist"
 }
 ```
 
@@ -196,7 +196,7 @@ success/error|int|Indicate whether there was an error during the process|1
 
 #### Description
 
-Denies an existing user to manage an application.
+Denies an existing user (admin_id) to manage an application.
 
 ```php
 <?php
@@ -208,8 +208,8 @@ $endpoint = "http://www.domain.com/application/api_admin/remove"
 
 ```json
 {
-    "app_id": "1",
-    "user_id": "1"
+    "app_id": 1,
+    "admin_id": 1
 }
 ```
 
@@ -218,7 +218,7 @@ $endpoint = "http://www.domain.com/application/api_admin/remove"
 Param|Type|Details
 -----|----|-------
 app_id *|int|Unique identifier
-admin_id *|int|User identifier
+admin_id *|int|User identifier (the id returned by the user API)
 
 **\* Required fields**
 
@@ -235,7 +235,7 @@ admin_id *|int|User identifier
 ```json
 {
     "error": 1,
-    "message": "This user can't manage this application."
+    "message": "This application does not exist"
 }
 ```
 

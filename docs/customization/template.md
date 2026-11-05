@@ -245,3 +245,17 @@ Template::installOrUpdate(
     $features
 );
 ```
+
+|Argument|Description|
+|--------|-----------|
+|1|Module (package) name, here `TemplateAwesome`|
+|2|Template name|
+|3|Template `code`, unique, also used in the image path `resources/images/templates/<code>/unified/`, **never change it** as it is the key used to update the template|
+|4|Layout code the template uses, if missing it falls back on `layout_6`|
+|5|Categories, an array of names, e.g. `['Design']`|
+|6|Ionic colors, see above|
+|7|Features, see above|
+|8|Position in the template list (optional, default `1000`)|
+
+Each feature accepts `code` (required, the feature must exist, otherwise it is skipped), `name`, `icon_id`, or `icon` (a path, when there is no `icon_id`), `background_image` and `colorized` (default `true`).
+

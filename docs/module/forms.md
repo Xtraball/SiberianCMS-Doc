@@ -134,7 +134,7 @@ Form events like `submit` or `change` are binded with css classes like below:
 
 #### > create
 
-Binds a form to submit data `onSubmit` event, add the css class `create`
+Binds a form to submit data `onSubmit` event, add the css class `create` (or `edit`, which is bound the same way)
 
 ```php
 <?php
@@ -485,8 +485,7 @@ public function editAction() {
         /** Moving the uploaded file to the app folder */
         $path_banner = Siberian_Feature::moveUploadedFile(
             $this->getCurrentOptionValue(), 
-            Core_Model_Directory::getTmpDirectory()."/".$values['banner'], 
-            $values['banner']
+            Core_Model_Directory::getTmpDirectory()."/".$values['banner']
         );
         
         /** Replacing the tmp path, with the file path */
@@ -501,8 +500,7 @@ public function editAction() {
         } else {
             $path_icon = Siberian_Feature::moveUploadedFile(
                 $this->getCurrentOptionValue(), 
-                Core_Model_Directory::getTmpDirectory()."/".$values["icon"],
-                $values["icon"]
+                Core_Model_Directory::getTmpDirectory()."/".$values["icon"]
             );
             $place->setData("icon", $path_icon);
         }
@@ -511,7 +509,7 @@ public function editAction() {
         if(!empty($values["location"])) {
             $coordinates = Siberian_Google_Geocoding::getLatLng(array(
                 "address" => $values["location"]
-            ));
+            )); // Google requires an API key: pass it as 2nd argument ($apiKey)
             $place->setData("latitude", $coordinates[0]);
             $place->setData("longitude", $coordinates[1]);
         }
@@ -562,7 +560,7 @@ class Job_Form_Place_Toggle extends Siberian_Form_Abstract {
             ->where('job_place.place_id = :value')
         ;
 
-        $place_id = $this->addSimpleHidden("place_id", __("Place"));
+        $place_id = $this->addSimpleHidden("place_id");
         $place_id->addValidator("Db_RecordExists", true, $select);
         $place_id->setMinimalDecorator();
 
@@ -656,7 +654,7 @@ class Job_Form_Place_Delete extends Siberian_Form_Abstract {
             ->where('job_place.place_id = :value')
         ;
 
-        $place_id = $this->addSimpleHidden("place_id", __("Place"));
+        $place_id = $this->addSimpleHidden("place_id");
         $place_id->addValidator("Db_RecordExists", true, $select);
         $place_id->setMinimalDecorator();
 
