@@ -1,7 +1,5 @@
 # Push notifications
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/push.md)
-
 Push notifications are sent through OneSignal, with the `Push2\Model\Onesignal\Scheduler` class (module `Push2`).
 
 ## Scheduler

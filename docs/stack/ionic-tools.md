@@ -1,7 +1,5 @@
 # Ionic Tools
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/stack/ionic-tools.md)
-
 We've build our own services on top of Ionic to be more resilient when updating frameworks.
 
 # Dialog

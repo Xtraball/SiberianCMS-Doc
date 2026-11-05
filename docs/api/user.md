@@ -1,7 +1,5 @@
 # User
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/api/user.md)
-
 ---
 
 ## Create
@@ -72,7 +70,7 @@ Param|Type|Details|Default
 success/error|int|Indicate whether there was an error during the process|1
 user_id|int|User unique identifier|
 token|string|Use to log-in to this user account
-redirect_url|string|**Available from 4.15.11** Pre-built autologin URL
+redirect_url|string|Pre-built autologin URL
 
 ---
 
@@ -109,7 +107,7 @@ email|string|User email|
 password|string|User password - Same rules as create (min. 9 characters, upper case, number, special character)|
 firstname|string|User firstname|
 lastname|string|User lastname|
-is_active|int|User status, 0: inactive, 1: active|*since 4.18.25
+is_active|int|User status, 0: inactive, 1: active|
 
 **\* Required fields**
 
@@ -258,7 +256,7 @@ Param|Type|Details|Default
 -----|----|-------|-------
 success/error|int|Indicate whether there was an error during the process|1
 token|string|Use to log-in to this user account
-redirect_url|string|**Available from 4.15.11** Pre-built autologin URL
+redirect_url|string|Pre-built autologin URL
 
 ---
 

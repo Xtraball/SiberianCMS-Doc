@@ -1,9 +1,5 @@
 # Loyalty Card Hooks
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/hooks/loyalty-card.md)
-
-Available from 4.14.6
-
 #### loyalty_card.validate
 
 Called when one ore more points are validated

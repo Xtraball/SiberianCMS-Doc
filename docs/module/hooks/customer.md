@@ -1,9 +1,5 @@
 # Customer Hooks
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/hooks/customer.md)
-
-Available from 4.14.6
-
 #### mobile.login
 
 This action is called on the very start of a login request (account or facebook)

@@ -1,8 +1,6 @@
 # Layout
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/layout.md)
-
-** *Note: layout packages require Siberian 4.5.0 and above, otherwise they will not work* **
+** *Note: layout packages require Siberian 5.1.0 and above, otherwise they will not work* **
 
 Here you'll find everything needed to start developing your first layout, from structure to update routine & packaging.
 
@@ -88,7 +86,7 @@ The `package.json` is used by the Installer to know the requirements, and routin
   "dependencies": {
     "system": {
       "type": "SAE",
-      "version": "4.5.0"
+      "version": "5.1.0"
     }
   }
 }
@@ -101,9 +99,9 @@ The `package.json` is used by the Installer to know the requirements, and routin
 |type|yes|must be `layout`|
 |version|yes|Your layout version, for updates|
 |release_note|no|**url:** link to a valid HTML description to be shown in the modal when installing, **show:** (true/false) to force display|
-|dependencies|yes|**version*:** 4.5.0 minimum, **type:** SAE/MAE/PE minimum installation type required|
+|dependencies|yes|**version*:** 5.1.0 minimum, **type:** SAE/MAE/PE minimum installation type required|
 
-** * version must be at least 4.5.0**
+** * version must be at least 5.1.0**
 
 ## Init
 
@@ -153,8 +151,6 @@ $init = function($bootstrap) {
 
 #### Icon & Image sizing
 
-**Available from version 4.7.10**
-
 If your layout requires custom ratio images to illustrate features, you can register a callback function in the `init.php` to be called like this.
 
 ```php
@@ -187,7 +183,6 @@ If you need to change options in your module while providing an update you must 
 
 ```php
 <?php
-/** Available in Siberian 4.8.6+ only */
 $default_options = \Siberian_Json::encode(array(
     "borders" => "border-right",
     "borders" => "border-left",
@@ -236,7 +231,7 @@ $datas = array(
 |is_active|yes|must be 1|
 |use_subtitle|yes|Whether your layout uses subtitles. **/!\ Only available in flat design**|
 |use_homepage_slider|no|Whether your layout is designed to work with the homepageslider.|
-|options|no|Default options for your layout Siberian 4.8.6+ only|
+|options|no|Default options for your layout|
 |category_id|no|Layout category, `Siberian_Feature::installApplicationLayout($datas, "custom")` fills it from the category code (the core layouts use `default`)|
 |preview_new|no|Image of the layout in the modal (the core layouts set it, e.g. `/customization/layout/homepage/layout_swipe_modal.png`)|
 
@@ -535,7 +530,7 @@ The second example is used by the `Apartments` layout to create chunks of featur
 
 ## Layout Options
 
-In the version 4.8.6 we introduced new Layout options, you can offer easy customization of your layouts to the final user with a simple form.
+Layout options let you offer easy customization of your layouts to the final user with a simple form.
 
 If you want to add custom options to your layout you must create a Form and register it in your init.
 

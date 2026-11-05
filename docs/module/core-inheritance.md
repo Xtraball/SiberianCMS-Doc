@@ -1,7 +1,5 @@
 # Core inheritance & customization
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/core-inheritance.md)
-
 In SiberianCMS we have designed an inheritance system to allow for custom modification & improvements.
 
 ## How it works ?

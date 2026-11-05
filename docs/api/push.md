@@ -1,7 +1,5 @@
 # Push
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/api/push.md)
-
 ---
 
 # [REMOVED] 5.0.0 removed the global push features.

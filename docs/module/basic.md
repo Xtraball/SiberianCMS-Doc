@@ -1,7 +1,5 @@
 # Basic usage 
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/basic.md)
-
 ## Ionic code
 
 **Note: the current way is a `features/<code>/` folder declared by a `feature.json`, with its `js`, `scss`, `icons` and `assets/templates` (see [Module > feature.json](../module.md#featuresmodulenamefeaturejson), and `app/sae/modules/Job` for a real one). In the apps the templates are served from `features/<code>/assets/templates/`. The `var` folder described below is the legacy way, still supported through `init.php`.**

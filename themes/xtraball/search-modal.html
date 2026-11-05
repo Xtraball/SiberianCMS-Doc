@@ -1,24 +1,19 @@
 <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+        <div class="modal-content sb-search">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="searchModalLabel"><i class="fa fa-search"></i> Search the documentation</h4>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
+                <form onsubmit="return false;">
+                    <input type="text" class="form-control" placeholder="Search: push, hooks, Dialog, feature.json..." id="sb-search-query" title="Type search term here" autocomplete="off">
                 </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
+                <p class="sb-search-keys"><kbd>&uarr;</kbd> <kbd>&darr;</kbd> to move, <kbd>Enter</kbd> to open, <kbd>Esc</kbd> to close, <kbd>/</kbd> to search from any page</p>
+                <div id="sb-search-results"><p class="sb-search-hint">Type at least two letters. Try <code>push</code>, <code>hook</code>, <code>Dialog</code> or <code>feature.json</code>.</p></div>
             </div>
         </div>
     </div>
 </div>
+<script src="{{ base_url }}/search/lunr.js"></script>
+<script src="{{ base_url }}/js/search.js"></script>

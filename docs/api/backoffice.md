@@ -1,7 +1,5 @@
 # Backoffice
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/api/backoffice.md)
-
 ---
 
 ## Manifest

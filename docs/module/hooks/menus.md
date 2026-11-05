@@ -1,10 +1,6 @@
 # Editor & Backoffice
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/hooks/menus.md)
-
-From Siberian 4.11.1 we added a hook to the Sidebar Left menu & Backoffice header menu (more will come in next updates)
-
-**Icons are available from Siberian 4.12.10 only**
+Hooks to add items to the Sidebar Left menu and the Backoffice header menu.
 
 ## Editor side menu
 
@@ -31,7 +27,7 @@ The previous code will result in something like this.
 |$title|yes|Your link text|
 |$link|yes|Path to your feature `/mymodule/mycontroller/myaction`|
 |$icon|no|Custom css class to display icon using fontawesome or icofont|
-|$aclCode|no|**from 4.15.7** ACL code to access this menu, if null or the code doesn't exists, menu item will be accessible|
+|$aclCode|no|ACL code to access this menu, if null or the code doesn't exists, menu item will be accessible|
 |$context|no|Translation context: when set, $title is translated with `p__($context, $title)` instead of `__($title)`|
 
 
@@ -115,8 +111,6 @@ Module::addMenu('Faq', 'faq', 'FAQ', '/faq/backoffice/list', 'icofont icofont-bi
 
 ## Backoffice - Advanced
 
-**Available from 4.14.6**
-
 #### backoffice.menu.ready
 
 When the backoffice menu hierarchy is built, this action is triggered, you can then alter the tree as you want.
@@ -199,8 +193,6 @@ url|the url to access the feature/module
 childs|if `hasChilds` is `true` then you must provide a childs array
 
 ---
-
-**Available from 4.15.0**
 
 #### editor.header.menu.ready
 
@@ -300,8 +292,6 @@ childs|if `hasChilds` is `true` then you must provide a childs array
 ---
 
 ---
-
-**Available from 4.15.7**
 
 #### editor.left.menu.ready
 

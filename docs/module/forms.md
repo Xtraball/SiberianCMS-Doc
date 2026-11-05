@@ -1,7 +1,5 @@
 # Siberian Forms
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/forms.md)
-
 In Siberian we have implemented our own Forms & Elements to control design and javascript events
 
 Here is listed all these elements, how to use them from the  `View` to the `Controller`

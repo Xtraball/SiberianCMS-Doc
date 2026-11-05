@@ -1,7 +1,5 @@
 # Security
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/security.md)
-
 ## Slack notifications
 
 If you want to receive the WAF alerts in Slack.
