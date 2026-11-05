@@ -1354,3 +1354,14 @@ h1[id]:before, h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before, h6[id
 h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
     scroll-margin-top: 20px;
 }
+
+/* Home tile: For AI agents */
+.Index h4[id^="for-ai"] a {
+    background-image: url("/img/agents.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #404040;
+    filter: grayscale(100%) brightness(60%);
+    transition: all .2s ease-in-out;
+}
