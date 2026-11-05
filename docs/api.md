@@ -30,10 +30,10 @@ You can find our PHP Library:
 
 * For the HTTP Basic Auth, simply uses your username & password.
 
-* For the Bearer Token, get the generated Token and send it to the API withe the header below
+* For the Bearer Token, get the generated Token and send it to the API with the header below
 
 ```raw
-// user this custom header, we do not use the regular Authorization HTTP header due to some restrictions.
+// use this custom header, we do not use the regular Authorization HTTP header due to some restrictions.
 
 Api-Auth-Bearer: Bearer YOURTOKEN
 
@@ -114,9 +114,9 @@ Here is the list of the available APIs:
 
 * [Update an existing application](./application#update)
 
-* [Grant access to an application.](./application#grant-user)
+* [Grant access to an application](./application#grant-user)
 
-* [Revoke access to an application.](./application#revoke-user)
+* [Revoke access to an application](./application#revoke-user)
 
 ### User
 
@@ -142,6 +142,4 @@ Here is the list of the available APIs:
 
 ### Push notifications
 
-* [List available applications](./push#list)
-
-* [Send global push notification](./push#send)
+The global push API was removed in 5.0.0, see [Push](./push).

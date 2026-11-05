@@ -36,7 +36,7 @@ In this example our main model is `MyModule_Model_MyModule`. We need to override
 ```php
 <?php
 
-class Rss_Model_Feed extends Core_Model_Default {
+class MyModule_Model_MyModule extends Core_Model_Default {
 
      // ...
 
@@ -100,24 +100,29 @@ class Rss_Model_Feed extends Core_Model_Default {
 }
 ```
 
+Paths are only collected for features whose model returns `true` from `isCacheable()` (the `$_is_cacheable` property of `Core_Model_Default`, `false` by default), so set `protected $_is_cacheable = true;` in your model. Relative paths are prefixed with the application base URL. The default `availableOffline()` returns "full" if the model is cacheable, "none" otherwise.
+
 All paths returned by these two functions can contains tokens which will be replaced as the following :
 
 `%DEVICE_UID%` : the current device UID
 
 `%CUSTOMER_ID%` : the currently logged in customer ID
 
+Note: in trunk, only the Topic module uses the `%DEVICE_UID%` token and no server-side replacement was found in the repository, so check that the token is replaced for your case before relying on these.
+
+
 ## Client Side ##
 
-Any client request needing to be cached or served from cache should use the new `$sbhttp` factory. All standard function of `$http` are replicated inside `$sbhttp`. You can use all of the shortcuts methods (i.e.: `get`, `post`...) as well as the full method `$sbhttp(options)`. 
+Client requests needing to be cached or served from cache should use the `$pwaRequest` provider (see below). `$sbhttp` still exists but only as a backward compatibility layer for pre 5.0 modules, do not use it in new code.
 
-**Only GET requests are cached.**
+**Only GET requests are cached by `$sbhttp`.**
 
 ### $pwaRequest
 
 When making requests with `$pwaRequest` you can provide a `cache` option :
 
 ```js
-// On GET requests cache defaults to true
+// On GET requests cache defaults to true (false in the app editor overview)
 $pwaRequest.get("/mymodule/mobile_view/myaction", {
     urlParams: {
         valueId: valueId
@@ -126,11 +131,12 @@ $pwaRequest.get("/mymodule/mobile_view/myaction", {
 });
 
 
-// POST requests always have cache set to false
+// POST requests are not meant to be served from cache, set cache: false explicitly
 $pwaRequest.post("/mymodule/mobile_view/myaction", {
     urlParams: {
         valueId: valueId
     },
+    cache: false,
     data: {
         myObject: {}
     }

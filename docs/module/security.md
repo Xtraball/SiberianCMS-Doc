@@ -4,14 +4,12 @@
 
 ## Slack notifications
 
-If you want to enable Slack notifications for the WAF.
+If you want to receive the WAF alerts in Slack.
 
-Edit the file `config.php` add the following line `$_config['fw_slack_is_active'] = 'yes';` then save!
-
-When done you will be see a new section in *Backoffice > Settings > Advanced > Firewall* 
+Open the Firewall page of the Backoffice, the *Slack notification settings* section is always available (no `config.php` flag is needed).
 
 ![slack-notifications](../img/module/slack-notifications.png)
 
-Simply fill it with your Webhook URL, Channel & Username then save!
+Simply fill it with your Webhook URL, Channel & Username, tick *Enabled?* then save!
 
 Every *Firewall* alert will trigger a notification in your subsequent Slack channel!

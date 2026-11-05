@@ -61,6 +61,7 @@ customerId|Current customer Id
 customer|The customer object
 token|Session token
 type|account or facebook
+request|The current HTTP Request
 
 ---
 
@@ -88,6 +89,7 @@ Hook::listen(
 key|details
 ---|---
 appId|The application id
+customerId|Current customer Id
 request|The current HTTP Request
 
 ---
@@ -147,6 +149,7 @@ key|details
 appId|The application id
 message|The error message
 type|account or facebook
+request|The current HTTP Request
 
 ---
 
@@ -205,6 +208,7 @@ appId|The application id
 customerId|Current customer Id
 customer|The customer object
 token|Session token
+request|The current HTTP Request
 
 ---
 
@@ -218,8 +222,8 @@ When a user fails to register
 use Siberian\Hook;
 
 Hook::listen(
-    'mobile.register.success',
-    'Listening Mobile register success',
+    'mobile.register.error',
+    'Listening Mobile register error',
     function ($payload) {
         // Your stuff!
     },
@@ -233,3 +237,21 @@ key|details
 ---|---
 appId|The application id
 message|The error message
+type|account
+request|The current HTTP Request
+
+---
+
+#### Other customer hooks
+
+These are triggered the same way (`Hook::listen('name', 'Listener name', $callback, 0)`), the payload keys are listed in the table. Every payload has `appId`.
+
+Hook|Payload
+----|-------
+`mobile.forgotpassword`|`request`, `type`
+`mobile.forgotpassword.success`|`customerId`, `customer`, `newPassword`, `token`, `type`
+`mobile.forgotpassword.error`|`message`, `type`, `request`
+`mobile.customer.changePassword.success`|`customerId`, `customer`, `newPassword`, `token`, `type`
+`mobile.delete`|`request`, `type`
+`mobile.delete.success`|`customerId`, `customer` (array), `token`, `type`, `request`
+`mobile.delete.error`|`message`, `type`, `request`

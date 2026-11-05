@@ -52,20 +52,20 @@ The recommended way to override a template is to create a minimal module package
 ```raw
 ModuleName
 ├─ resources
-│  └─ design/desktop/siberian/template/loyaltycard/application/edit.phtml
+│  └─ design/desktop/flat/template/loyaltycard/application/edit.phtml
 └─ package.json
 ```
 
 if you need to customize a template for example:
 
 ```raw
-/app/sae/design/desktop/siberian/template/loyaltycard/application/edit.phtml
+/app/sae/modules/LoyaltyCard/resources/design/desktop/flat/template/loyaltycard/application/edit.phtml
 ```
 
 simply duplicate the file in your module:
 
 ```raw
-ModuleName/resources/design/desktop/siberian/template/loyaltycard/application/edit.phtml
+ModuleName/resources/design/desktop/flat/template/loyaltycard/application/edit.phtml
 ```
 
 Then apply your modification into this module file/files.
@@ -95,7 +95,7 @@ $init = function ($bootstrap) {
 You want to override:
 
 ```raw
-/app/sae/modules/Admin/Model/Key.php
+/app/sae/modules/Api/Model/Key.php
 ```
 
 You have to create:
@@ -103,7 +103,7 @@ You have to create:
 ```raw
 ModuleName
 ├─ [...]
-├─ Admin/Model/Key.php
+├─ Api/Model/Key.php
 └─ [...]
 ```
 
@@ -116,7 +116,7 @@ $init = function ($bootstrap) {
     $base = path("/app/local/modules/ModuleName/");
 
     /** Require the classes */
-    require_once "{$base}/Admin/Model/Key.php";
+    require_once "{$base}/Api/Model/Key.php";
 };
 ```
 

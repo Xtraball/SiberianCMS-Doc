@@ -4,7 +4,7 @@
 
 Available from 4.16.0
 
-#### app.init.read
+#### app.init.ready
 
 This trigger gets called when the app init payload is done, you can alter it when needed.
 
@@ -32,7 +32,7 @@ $data = [
  * Listener (generally in your init.php)
  */
 Hook::listen(
-    'app.init.read',
+    'app.init.ready',
     'Listening app init ready',
     function ($payload) {
         // Your stuff here!
@@ -85,3 +85,25 @@ request|Current request object
 session|The current session, to access user, etc ...
 
 ---
+
+#### app.translation.ready
+
+Called when the translations of an app are built (the result is cached per locale and app), you can add or alter strings. Return the payload.
+
+key|details
+---|---
+application|The application object
+currentLanguage|The locale of the request
+translationBlock|array key/values with the translations, return it altered or not
+
+---
+
+#### editor.translation.ready
+
+Called when the translations of the Editor are loaded, return the payload.
+
+key|details
+---|---
+application|The application object
+currentLanguage|The locale
+translations|The translations collection, return it altered or not

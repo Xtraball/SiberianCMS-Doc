@@ -10,7 +10,7 @@ There are multiple ways to contribute: [report bugs](#submit-an-issue), [improve
 
 1. Search into existing issues before submitting yours
 2. Fork our Github repo: `https://github.com/Xtraball/Siberian.git`
-3. Create a new branch from master
+3. Create a new branch from `trunk` (the default branch)
     
     - Issue `git checkout -b issueid-shortdescription`
     
@@ -18,7 +18,7 @@ There are multiple ways to contribute: [report bugs](#submit-an-issue), [improve
     
 4. Review our [pull request guidelines](#pull-request).
 5. Follow our [coding conventions](#conventions).
-6. Test your code so it won't break any feature`
+6. Test your code so it won't break any feature, and add a test that fails on `trunk` without your change (`php tests/php-upgrade/run.php`)
 7. [Submit a pull request!](#pull-request)
 
 ## Help Improve The Docs
@@ -40,6 +40,10 @@ We wrote a [complete documentation](module) on how to create new `modules`
 ## Pull Request
 
 Keep your pull requests as small as possible, bundle only one feature or bug fix per pull request, it is also easier for us to test single bug fixes
+
+Before opening it, run `tests/php-upgrade/check-pr.sh` (it fails on CRLF line endings and on new texts that are not in a `.po` catalog) and read [AGENTS.md](https://github.com/Xtraball/Siberian/blob/trunk/AGENTS.md): new behaviour is an option off by default, one fix per pull request, new user-visible texts go in `siberian/languages/base/c_<context>.po` through `p__('<context>', '...')`, LF line endings only, and Android and iOS are changed together (see `docs/mobile-parity.md`).
+
+The repository `CHANGELOG.md` has an `[Unreleased]` section at the top (Added, Changed, Fixed), add a line there for user-visible changes, in the form `- YYYY-MM-DD Area: what changed`.
 
 ## Conventions
 

@@ -22,7 +22,7 @@ Hook::listen("mobile.controller.init", "mymodule_extendedfields", "extendedField
 ```php
 <?php
 
-Account::addFields(string $moduleName, array $fields, function $populateCallback, function $saveCallback);
+\Siberian\Account::addFields(string $moduleKey, array $fields, callable $populateCallback, callable $saveCallback);
 ```
 
 ```php
@@ -63,12 +63,14 @@ function extendedFields ($payload) {
                 "label" => __("Age"),
             ]
         ],
-        "populateMyFields",
-        "saveMyFields"
+        "populateExtended",
+        "saveExtended"
     );
     return $payload;
 }
 ```
+
+`$moduleKey` must be unique, `addFields` throws an exception if it is already used. Each field also gets a `_moduleKey` entry automatically.
 
 
 ---
@@ -76,14 +78,18 @@ function extendedFields ($payload) {
 
 The different field types
 
+All types accept `label`; `is_required` shows a required marker.
+
 Type|Usage
 ---|---
 spacer|This is a 20px blank spacer, simple.
 divider|This is a divider title, it uses `item item-divider item-divider-custom` classes
 text|A simple text input
 textarea|A textarea with configurable rows
-number|A range input with `min`, `max` & `step` settings 
-select|A dropdown selector with `options: {["value": "single", "label": "Single"], ["value": "married", "label": "Married"]}`
+number|A number input with `min`, `max` & `step` settings 
+select|A dropdown selector with `options: [["value" => "single", "label" => "Single"], ["value" => "married", "label" => "Married"]]`
+checkbox|A checkbox
+date|A date picker, with optional `date_format` and `date_skipdays`
 
 
 ---
@@ -137,7 +143,7 @@ function populateExtended ($context, $fields)
 }
 ```
 
-The *$saveCallback* is called before generating the fields, it's used to populate them with the actual values and/or with defaults.
+The *$saveCallback* is called when the customer saves its account (before the customer itself is saved), with the submitted values of your fields.
 
 Note: *$saveCallback* must be a pure function accessible from everywhere, it's a good practice to declare it inside `init.php`
 

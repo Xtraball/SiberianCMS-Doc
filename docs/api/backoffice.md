@@ -8,7 +8,7 @@
 
 ### Description
 
-Will trigger a complete application manifest rebuild.
+Rebuilds the application manifest.
 
 ```php
 <?php
@@ -21,6 +21,7 @@ $endpoint = "http://www.domain.com/backoffice/api_options/manifest"
 Param|Type|Details|Default
 -----|----|-------|-------
 success/error|int|Indicate whether there was an error during the process|1
+message|string|Confirmation message|
 
 ---
 
@@ -49,6 +50,7 @@ $endpoint = "http://www.domain.com/backoffice/api_options/cleartmp"
 Param|Type|Details|Default
 -----|----|-------|-------
 success/error|int|Indicate whether there was an error during the process|1
+message|string|Confirmation message|
 
 ---
 
@@ -77,6 +79,7 @@ $endpoint = "http://www.domain.com/backoffice/api_options/clearcache"
 Param|Type|Details|Default
 -----|----|-------|-------
 success/error|int|Indicate whether there was an error during the process|1
+message|string|Confirmation message|
 
 ---
 
@@ -105,5 +108,6 @@ $endpoint = "http://www.domain.com/backoffice/api_options/clearlogs"
 Param|Type|Details|Default
 -----|----|-------|-------
 success/error|int|Indicate whether there was an error during the process|1
+message|string|Confirmation message|
 
 ---

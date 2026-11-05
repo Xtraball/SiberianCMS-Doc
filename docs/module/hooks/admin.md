@@ -34,7 +34,7 @@ request|The current HTTP Request
 
 #### admin.register.success
 
-Called when an admin is successfully registered
+Called when an admin is successfully registered (the `admin` is an `Admin_Model_Admin`)
 
 ```php
 <?php
@@ -56,9 +56,10 @@ Hook::listen(
 key|details
 ---|---
 origin|The origin of the request `web` or `api`
-adminId|Current customer Id
-admin|The customer object
+adminId|Current admin Id
+admin|The admin object
 token|Session token
+request|The current HTTP Request
 
 ---
 
@@ -87,6 +88,7 @@ key|details
 ---|---
 origin|The origin of the request `web` or `api`
 message|The error message
+request|The current HTTP Request
 
 ---
 

@@ -14,9 +14,9 @@
 
 ### Requirements
 
-* Icons must be 512x512, border to border, can be full white if you want them to be colozired, or colorfull !
+* Icons must be 512x512, border to border, can be full white if you want them to be colorized, or colorfull !
 
-## Structure of a layout package
+## Structure of an icon pack
 
 Icons are installed in the `app/local/modules` folder
 
@@ -76,7 +76,7 @@ This file creates & updates the entry in database and copy assets at installatio
 
 If you need to change options in your module while providing an update you must change the values here
 
-**Note:** you must never change `code` as this is the unique_code used to update your layout, otherwise this will create a new layout.
+**Note:** the icon pack is identified by its name (1st parameter of `installIcons`), and an icon by its path, installing again the same name and path updates instead of duplicating.
 
 ```php
 <?php
@@ -86,7 +86,7 @@ $icons = [
     "app/local/modules/MyIconPack/resources/media/library/icon3.png",
     "app/local/modules/MyIconPack/resources/media/library/icon4.png",
 ];
-$result = Siberian_Feature::installIcons("MyIconPack", $icons, true);
+$result = \Siberian_Feature::installIcons("MyIconPack", $icons, true);
 
 ```
 
@@ -97,6 +97,10 @@ $result = Siberian_Feature::installIcons("MyIconPack", $icons, true);
     **2nd:**    $icons array()
 
     **3rd:**    colorizable true/false
+
+    Each entry of `$icons` can also be an array `["path" => "...", "colorize" => true/false]` to override the 3rd parameter for one icon.
+
+    It returns an array with `icon_id` (the first icon of the pack) and `library_id`, `icon_id` is used in the [Template](template) features.
 
 
 ## Package

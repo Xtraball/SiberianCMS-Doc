@@ -2,12 +2,14 @@
 
 [Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/push.md)
 
-Push notifications can be sent through various code
+Push notifications are sent through OneSignal, with the `Push2\Model\Onesignal\Scheduler` class (module `Push2`).
 
 ## Scheduler
 
 ```php
 <?php
+    use Push2\Model\Onesignal\Scheduler;
+
     $values = [
         'app_id' => $this->getApplication()->getId(), // The application ID, required
         'value_id' => $this->getId(), // The value ID, optional
@@ -21,7 +23,7 @@ Push notifications can be sent through various code
         'is_individual' => false, // If true, the message is individual, it works with player_ids, if false it will be sent to all customers
         'open_feature' => false, // If true, the message will open a feature, it works with feature_id
         'feature_id' => null, // The feature ID, required if open_feature is true
-        'player_ids' => [] || null, // The player IDs, required if is_individual is true
+        'player_ids' => null, // The player IDs, required if is_individual is true
     ];
 
     $scheduler = new Scheduler($application);
@@ -29,12 +31,18 @@ Push notifications can be sent through various code
     $scheduler->send();
 ```
 
+Other optional keys read by `Message::fromArray()`: `subtitle`, `big_picture`, `big_picture_url`, `open_url`, `feature_url`, `segment` (defaults to the app default segment, or "Subscribed Users"), and `use_location` with `latitude`, `longitude`, `radius`.
+
+`send()` returns the OneSignal response. `sendToTargets(AbstractTarget $targets)` sends to explicit targets instead of a segment, and `sendTest()` sends without persisting the message.
+
 ### Send to a single customer
 
 With the Individual push module, you can send a push to a single customer, this is done by using the `player_ids` parameter.
 
 ```php
 <?php
+    use Push2\Model\Onesignal\Scheduler;
+
     $values = [
         'app_id' => $this->getApplication()->getId(), // The application ID, required
         'value_id' => $this->getId(), // The value ID, optional

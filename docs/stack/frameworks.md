@@ -24,7 +24,7 @@ The main codebase inside the editor is powered with `jQuery` and `bootstrap`.
 
 ### CKEditor
 
-- Version: `4`
+- Version: `4.13.1`
 
 - CKEditor our richtext editor, used all across the Editor for every feature.
 
@@ -106,7 +106,7 @@ In the backoffice we are mainly using AngularJS along with some plugins for UI, 
 
 ### CKEditor
 
-- Version: `3`
+- Version: `4.4.6`
 
 - [See on Github](https://github.com/ckeditor)
 
@@ -117,13 +117,13 @@ All our backend is running under Zend Framework with a complete custom stack on 
 
 ### PHP
 
-- Version: from `7.0` up to `7.2` 
+- Version: from `8.2` up to `8.5` (`>=8.2 <8.6`), `8.5` recommended
 
 - [See on Github](https://github.com/php)
 
 ### Zend Framework
 
-- Based on ZF1, customized for Siberian & topped with Siberian library
+- Based on ZF1, customized for Siberian (Zend Framework `1.12.3`) & topped with Siberian library
 
 - [See on Github](https://github.com/zendframework/zf1)
 
@@ -131,6 +131,8 @@ All our backend is running under Zend Framework with a complete custom stack on 
 ## Applications
 
 ### Based on Ionic / AngularJS
+
+- Ionic `1.3.5` (Ionic 1, not Ionic 2+), AngularJS `1.5.3`
 
 #### Highly customized with
 
@@ -146,9 +148,13 @@ All our backend is running under Zend Framework with a complete custom stack on 
 
 #### Android
 
+- Minimum Android 8.0 (API 26), `cordova-android` 15.1.0
+
 - [See on Github](https://github.com/Xtraball/cordova-android)
 
 #### iOS
+
+- Minimum iOS 15, `cordova-ios` 6.1.1 (CordovaLib), the iOS shells are built with Xcode 26 in CI
 
 - [See on Github](https://github.com/Xtraball/cordova-ios)
 
@@ -162,141 +168,40 @@ All our backend is running under Zend Framework with a complete custom stack on 
 
 #### All our cordova plugins are forked and customized.
 
-#### Insomnia
-
-- Prevents sleep for continuous app usage like GPS navigation.
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-insomnia)
-
-&nbsp;
-
-#### MusicControls
-
-- Display music controls in Notification center.
-
-- [See on Github](https://github.com/Xtraball/cordova-music-controls-plugin)
-
-&nbsp;
-
-#### AdMob Pro
-
-- Google AdMob ads Banner & Interstitial.
-
-- [See on Github](https://github.com/Xtraball/cordova-admob-pro)
-
-&nbsp;
-
-#### AppEvent
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-app-event)
-
-&nbsp;
-
-#### App Version
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-app-version)
-
-&nbsp;
-
-#### BarcodeScanner
-
-- QRCode scanner.
-
-- [See on Github](https://github.com/Xtraball/phonegap-plugin-barcodescanner)
-
-&nbsp;
-
-#### Camera
-
-- Camera & Library manager.
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-camera)
-
-&nbsp;
-
-#### Hot Code Push
-
-- Manages assets codebase live updates.
-
-- [See on Github](https://github.com/Xtraball/cordova-hot-code-push)
-
-&nbsp;
-
-#### Device 
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-device)
-
-&nbsp;
-
-#### File
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-file)
-
-&nbsp;
-
-#### Geolocation
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-geolocation)
-
-&nbsp;
-
-#### InAppBrowser
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-inappbrowser)
-
-&nbsp;
-
-#### Local Notification
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-local-notifications)
-
-&nbsp;
-
-#### Media
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-media)
-
-&nbsp;
-
-#### Navigator
-
-- [See on Github](https://github.com/Xtraball/cordova-navigator)
-
-&nbsp;
-
-#### Permissions
-
-- [See on Github](https://github.com/Xtraball/Permissions)
-
-&nbsp;
-
-#### SecondWebview
-
-- [See on Github](https://github.com/Xtraball/cordova-second-webview)
-
-&nbsp;
-
-#### SocialSharing
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-socialsharing)
-
-&nbsp;
-
-#### SplashScreen
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-splashscreen)
-
-&nbsp;
-
-#### StatusBar
-
-- [See on Github](https://github.com/Xtraball/cordova-plugin-statusbar)
-
-&nbsp;
-
-#### Push
-
-- [See on Github](https://github.com/Xtraball/siberian-plugin-push)
+The list below follows `submodules.json`, each plugin lives in its own repository under `https://github.com/Xtraball/<Name>`, on the `siberian` branch.
+
+|Plugin|Usage|
+|------|-----|
+|[AdmobPro](https://github.com/Xtraball/AdmobPro)|Google AdMob ads Banner & Interstitial|
+|[AppVersion](https://github.com/Xtraball/AppVersion)||
+|[Badge](https://github.com/Xtraball/Badge)||
+|[BarcodeScanner](https://github.com/Xtraball/BarcodeScanner)|QRCode scanner|
+|[BrowserTab](https://github.com/Xtraball/BrowserTab)||
+|[Camera](https://github.com/Xtraball/Camera)|Camera & Library manager|
+|[Clipboard](https://github.com/Xtraball/Clipboard)||
+|[Device](https://github.com/Xtraball/Device)||
+|[File](https://github.com/Xtraball/File)||
+|[Geofence](https://github.com/Xtraball/Geofence)||
+|[Geolocation](https://github.com/Xtraball/Geolocation)||
+|[InAppBrowser](https://github.com/Xtraball/InAppBrowser)||
+|[Insomnia](https://github.com/Xtraball/Insomnia)|Prevents sleep for continuous app usage like GPS navigation|
+|[IonicWebview](https://github.com/Xtraball/IonicWebview)|Web view of the Android shell|
+|[Keyboard](https://github.com/Xtraball/Keyboard)||
+|[LocalNotifications](https://github.com/Xtraball/LocalNotifications)||
+|[MediaNative](https://github.com/Xtraball/MediaNative)||
+|[MusicControls](https://github.com/Xtraball/MusicControls)|Display music controls in Notification center|
+|[Navigator](https://github.com/Xtraball/Navigator)||
+|[Onesignal](https://github.com/Xtraball/Onesignal)|Push notifications|
+|[Permissions](https://github.com/Xtraball/Permissions)|Android runtime permissions (a dummy JavaScript file on iOS)|
+|[Promises](https://github.com/Xtraball/Promises)||
+|[PluginSiberian](https://github.com/Xtraball/PluginSiberian)||
+|[SocialSharing](https://github.com/Xtraball/SocialSharing)||
+|[SplashScreen](https://github.com/Xtraball/SplashScreen)||
+|[StatusBar](https://github.com/Xtraball/StatusBar)||
+|[WebView](https://github.com/Xtraball/WebView)||
+|[Whitelist](https://github.com/Xtraball/Whitelist)||
+
+The iOS shell uses `IosXhr` instead of `IonicWebview`, see [docs/mobile-parity.md](https://github.com/Xtraball/Siberian/blob/trunk/docs/mobile-parity.md) in the Siberian repository for the differences between the Android and iOS plugin versions.
 
 &nbsp;
 
@@ -304,7 +209,7 @@ All our backend is running under Zend Framework with a complete custom stack on 
 
 #### Swiper
 
-- Version: `3.4.1`
+- Version: `3.4.2`
 
 - [See on Github](https://github.com/nolimits4web/Swiper)
 
@@ -312,7 +217,7 @@ All our backend is running under Zend Framework with a complete custom stack on 
 
 #### Lodash
 
-- Version: `1.8.3`
+- Version: `4.13.1`
 
 - [See on Github](https://github.com/lodash/lodash)
 
