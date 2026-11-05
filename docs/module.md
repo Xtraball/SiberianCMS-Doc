@@ -1,7 +1,5 @@
 # Modules
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module.md)
-
 Here you'll find everything needed to start developing your first module, from structure to update routine & packaging.
 
 ## What is a module ?
@@ -71,7 +69,7 @@ The `package.json` is used by the Installer to know the requirements, and routin
   "dependencies": {
     "system": {
       "type": "SAE",
-      "version": "4.16.0"
+      "version": "5.1.0"
     },
     "modules": {
       "OtherModule": "2.1.0"
@@ -287,7 +285,7 @@ autoregister|Boolean|Set to `false` to not register the state automatically
 
 ## Translations
 
-Since version 4.16.5, siberian uses **.po** files, which are Gettext source files.
+Siberian uses **.po** files, which are Gettext source files.
 
 First create a new file named `mymodule.po` then place this file in the `translations/default` folder
 

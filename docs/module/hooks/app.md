@@ -1,9 +1,5 @@
 # App Hooks
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/hooks/app.md)
-
-Available from 4.16.0
-
 #### app.init.ready
 
 This trigger gets called when the app init payload is done, you can alter it when needed.

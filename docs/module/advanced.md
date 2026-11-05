@@ -1,7 +1,5 @@
 # Advanced usage 
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/advanced.md)
-
 ## Ionic code
 
 **Note: this page is not in the navigation and duplicates [Basic usage](basic.md). The current way to ship Ionic code is a `features/<code>/feature.json` with `assets/templates`, see [Module > feature.json](../module.md#featuresmodulenamefeaturejson).**

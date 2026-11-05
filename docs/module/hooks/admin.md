@@ -1,9 +1,5 @@
 # Editor admin hooks
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/hooks/admin.md)
-
-Available from 4.20.26
-
 #### admin.register
 
 This action is called on the very start of a registration request

@@ -1,10 +1,8 @@
 # My account
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/module/account.md)
-
 ## Account fields
 
-With the 4.16.0 update, you are now allowed to extend `My account` with more fields for your modules.
+You can extend `My account` with more fields for your modules.
 
 *Important* `Account::addFields` must be used within the following hook from `init.php`
 

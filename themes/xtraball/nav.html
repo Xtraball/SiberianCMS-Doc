@@ -44,39 +44,23 @@
                         </li>
                     {% endif %}
                 {% endfor %}
-                {%- block search_button %}
-                {%- if 'search' in config['plugins'] %}
-                <li class="sb-item">
-                    <a href="#"
-                       class="nav-link"
-                       data-toggle="modal"
-                       data-target="#mkdocs_search_modal">
-                        <i class="fa fa-search"></i> Search
-                    </a>
-                </li>
-                {%- endif %}
-                {%- endblock %}
             </ul>
 
-            <!-- Search, Navigation and Repo links -->
-            <ul class="nav navbar-nav navbar-right">
-                {% if config.repo_url %}
-                <li class="sb-item">
-                    <a href="{{ config.repo_url }}"
-                       class="btn btn-primary sb-white sb-radius">
-                        {% if config.repo_name == 'GitHub' %}
-                            <i class="fa fa-github"></i>
-                        {% elif config.repo_name == 'Bitbucket' %}
-                            <i class="fa fa-bitbucket"></i>
-                        {% endif %}
-                        &nbsp;
-                        {{ config.repo_name }}
-                    </a>
-                </li>
-                {% endif %}
-            </ul>
+
         </div>
     </div>
 
     <div style="clear:both;"></div>
 </div>
+
+{%- if 'search' in config['plugins'] %}
+<div class="sb-searchbar hidden-print">
+    <div class="container">
+        <form class="sb-nav-search" onsubmit="return false;" role="search">
+            <i class="fa fa-search"></i>
+            <input type="text" id="sb-nav-search" placeholder="Search the documentation: push, hooks, Dialog, feature.json..." autocomplete="off" aria-label="Search the documentation">
+            <kbd>/</kbd>
+        </form>
+    </div>
+</div>
+{%- endif %}

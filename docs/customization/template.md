@@ -1,8 +1,6 @@
 # Template
 
-[Edit this on Github](https://github.com/Xtraball/SiberianCMS-Doc/edit/master/docs/customization/template.md)
-
-** *Note: Template packages require Siberian 4.20.11 and above, otherwise they will not work* **
+** *Note: Template packages require Siberian 5.1.0 and above, otherwise they will not work* **
 
 Demo template can be found [here](../img/template/template-corporate.zip)! 
 
@@ -56,7 +54,7 @@ The `package.json` is used by the Installer to know the requirements, and routin
     "dependencies": {
         "system": {
             "type": "SAE",
-            "version": "4.20.11" /** 4.20.11 is required for the Template to work! */
+            "version": "5.1.0" /** 5.1.0 is required for the Template to work! */
         }
     },
     "type": "template" /** The type is important for Siberian to identify it as a template! */
@@ -69,9 +67,9 @@ The `package.json` is used by the Installer to know the requirements, and routin
 |description|yes|Package description|
 |type|yes|must be `template`|
 |version|yes|Your template pack version, for updates|
-|dependencies|yes|**version*:** 4.20.11 minimum, **type:** SAE/MAE/PE minimum installation type required|
+|dependencies|yes|**version*:** 5.1.0 minimum, **type:** SAE/MAE/PE minimum installation type required|
 
-** * version must be at least 4.20.11**
+** * version must be at least 5.1.0**
 
 ### Data
 

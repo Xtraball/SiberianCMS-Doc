@@ -40,6 +40,4 @@ theme:
 plugins:
   - 'search'
 site_dir: siberiancms
-repo_url: https://github.com/Xtraball/Siberian
-repo_name: GitHub
 google_analytics: ['UA-90544135-3', 'auto']
