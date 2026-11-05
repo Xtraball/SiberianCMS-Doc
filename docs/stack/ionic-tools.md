@@ -245,31 +245,56 @@ if the position was never fetched, it will try to fetch it however.
 
 # Picture
 
-The picture service will prompt for whether importing a Picture from your library or Taking a new with the Camera.
+The picture service asks the user whether to take a new picture with the camera or to import one from the library
+(in the browser preview, it opens a file picker instead). It needs no permission from your module: the system picker
+is used to import a picture, and the camera permission is asked by the camera plugin when it is needed.
 
 ## takePicture
 
 ```js
 Picture.takePicture(width, height, quality)
-    .then(function(response) {
-        /** 
-            The image is returned in base64.
+    .then(function (response) {
+        /**
+            The image is returned as a data URI.
             response: {
-                image
+                image: "data:image/jpeg;base64,/9j/4AAQ..."
             }
         */
-    }, function(error) {
-        // action on error
-    })
+    }, function (error) {
+        if (error && error.cancelled) {
+            // The user backed out of the menu, of the camera or of the library.
+            // Nothing went wrong and nothing was shown: do nothing.
+            return;
+        }
+
+        // Any other error was already reported to the user with a dialog,
+        // you only need to reset your own state here.
+    });
 ```
+
+All three arguments are optional.
 
 #### options
 
 |Key|Type|Default|Usage|
 |---|---|---|---|
-|width|Integer|1200|Max width in pixel|
-|height|Integer|1200|Max height in pixel|
-|quality_array|Integer|90|Picture quality 0-100|
+|width|Integer|1200|Max width in pixels, from 1 to 10000. The picture keeps its proportions.|
+|height|Integer|1200|Max height in pixels, from 1 to 10000.|
+|quality|Integer|90|JPEG quality, from 0 to 100.|
+
+A value that is missing, or not a number, falls back to its default. A value out of range is brought back to the
+nearest limit.
+
+#### Good to know
+
+- `response.image` is always a complete data URI, whatever the version of the camera plugin in the app: the plugin
+  returned the bare base64 up to version 7 and a data URI from version 8, and `Picture` accepts both. Use it as is,
+  for example `<img ng-src="{{ image }}">`, and do not add `data:image/jpeg;base64,` yourself.
+- Handle the rejection even if you do nothing with it: a promise rejected by the user backing out is otherwise
+  logged as "Possibly unhandled rejection".
+- Calling `takePicture` while the menu is already open rejects at once, without an error object.
+- The whole picture is kept in memory as text, so ask for a size that matches what you really need (the default
+  1200 px is enough for an avatar or a post), and send it to the server in one request.
 
 
 &nbsp;
