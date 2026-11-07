@@ -1365,3 +1365,111 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
     filter: grayscale(100%) brightness(60%);
     transition: all .2s ease-in-out;
 }
+
+/* Home tiles on phones: one card per line, icon on the left, title and description on the right */
+@media (max-width: 991px) {
+    .Index h4 {
+        position: relative;
+        float: none;
+        width: 100% !important;
+        height: auto;
+        min-height: 86px;
+        margin: 0 0 12px;
+        padding: 12px 14px 12px 96px;
+        border: 1px solid #dde3e7;
+        border-radius: 6px;
+        background-color: #ffffff;
+        text-align: left;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .Index h4 a {
+        display: block;
+        float: none;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0 0 2px;
+        background-position: 0 0;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+
+    /* The icon is the background of the link: draw it in the left gutter of the card */
+    .Index h4[id^="installation"] a,
+    .Index h4[id^="customization"] a,
+    .Index h4[id^="make"] a,
+    .Index h4[id^="structure-of-a-module"] a,
+    .Index h4[id^="api"] a,
+    .Index h4[id^="layout"] a,
+    .Index h4[id^="template"] a,
+    .Index h4[id^="forms"] a,
+    .Index h4[id^="icon"] a,
+    .Index h4[id^="stack"] a,
+    .Index h4[id^="for-ai"] a,
+    .Index h4[id^="contribute"] a {
+        background-size: 0 0;
+    }
+
+    .Index h4[id]:before {
+        display: block;
+        margin-top: 0;
+        content: "";
+        position: absolute;
+        top: 12px;
+        left: 14px;
+        width: 66px;
+        height: 62px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        filter: grayscale(100%) brightness(60%);
+    }
+
+    .Index h4[id^="installation"]:before { background-image: url("/img/installation-blue.png"); }
+    .Index h4[id^="customization"]:before { background-image: url("/img/configuration-blue.png"); }
+    .Index h4[id^="make"]:before { background-image: url("/img/creating-module-blue.png"); }
+    .Index h4[id^="api"]:before { background-image: url("/img/api-blue.png"); }
+    .Index h4[id^="contribute"]:before { background-image: url("/img/contribute-blue.png"); }
+    .Index h4[id^="layout"]:before { background-image: url("/img/layout-blue.png"); }
+    .Index h4[id^="template"]:before { background-image: url("/img/template-blue.png"); }
+    .Index h4[id^="icon"]:before { background-image: url("/img/icon-blue.png"); }
+    .Index h4[id^="forms"]:before { background-image: url("/img/form-blue.png"); }
+    .Index h4[id^="stack"]:before { background-image: url("/img/stack-blue.png"); }
+    .Index h4[id^="for-ai"]:before { background-image: url("/img/agents.svg"); }
+
+    .Index h4 em {
+        display: block;
+        color: #4a5b66;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .Index h4:hover a {
+        transform: none;
+    }
+}
+
+/* Tablets and large phones in landscape: two cards per row */
+@media (min-width: 600px) and (max-width: 991px) {
+    .Index h4 {
+        float: left;
+        width: 48.5% !important;
+        min-height: 118px;
+        margin-right: 3%;
+    }
+
+    .Index h4:nth-of-type(2n) {
+        margin-right: 0;
+    }
+}
+
+/* Footer text must not touch the screen edge */
+@media (max-width: 991px) {
+    .footer .container {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+}
